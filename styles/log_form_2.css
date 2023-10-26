@@ -57,11 +57,10 @@ body {
 h2{
   position: relative;
   text-align: center;
+  margin-top: 0;
   color: #FF40A7; 
   font-size: 64px; 
   font-family: Feature Mono; 
-  font-weight: 700; 
-  word-wrap: break-word;
 }
 /*задняя форма*/
 .screen-1 {
