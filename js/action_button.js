@@ -3,11 +3,6 @@ const butRating = document.querySelector("#rating");
 const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
-const butLvls = [
-  document.getElementById("#lvl1"),
-  document.getElementById("#lvl2"),
-  document.getElementById("#lvl3"),
-];
 
 butRating.addEventListener("click", () => {
   window.location.href = "player_rating.html";
