@@ -1,3 +1,4 @@
+"use strict"; //сертификат для проверки ошибок
 //кнопка войти
 const but_logIn = document.querySelector("#log_in_but");
 //поле логина
