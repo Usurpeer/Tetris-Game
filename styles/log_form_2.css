@@ -11,56 +11,55 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #811CB1;
+  background: #811cb1;
   /*отступ сверху*/
   height: 100vh;
 }
 
-.back_circle{
+.back_circle {
   background-attachment: fixed;
-  width: 100%; 
-  height: 100%; 
-  position: relative; 
-  background: #811CB1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #811cb1;
   overflow: hide;
 }
-.back_red{
+.back_red {
   background-attachment: fixed;
-  width: 140%; 
-  height: 140%; 
-  left: -70%; 
-  top: -10%; 
-  position: absolute; 
-  background: radial-gradient(circle closest-side at center, #C30E54, #811CB1); 
+  width: 140%;
+  height: 140%;
+  left: -70%;
+  top: -10%;
+  position: absolute;
+  background: radial-gradient(circle closest-side at center, #c30e54, #811cb1);
   border-radius: 9999px;
-  
 }
 
-.back_blue{
+.back_blue {
   background-attachment: fixed;
-  width: 140%; 
-  height: 140%; 
+  width: 140%;
+  height: 140%;
   left: 30%;
   top: 20%;
-  position: absolute; 
-  background: radial-gradient(circle closest-side at center, #3111E2, #811CB1); 
+  position: absolute;
+  background: radial-gradient(circle closest-side at center, #3111e2, #811cb1);
   border-radius: 9999px;
 }
-.tetris{
+.tetris {
   position: relative;
   text-align: center;
   margin-top: 3%;
-  color: white; 
-  font-size: 96px; 
-  font-family: Tetris; 
+  color: white;
+  font-size: 96px;
+  font-family: Tetris;
 }
-h2{
+h2 {
   position: relative;
   text-align: center;
-  color: #FF40A7; 
-  font-size: 64px; 
-  font-family: Feature Mono; 
-  font-weight: 700; 
+  color: #ff40a7;
+  font-size: 64px;
+  font-family: Feature Mono;
+  font-weight: 700;
   word-wrap: break-word;
 }
 /*задняя форма*/
