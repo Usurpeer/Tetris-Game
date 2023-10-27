@@ -18,29 +18,29 @@
 </head>
 
 <body>
+  <form action="..\php\log_in.php" method="post">
+    <div class="screen-1">
 
-  <div class="screen-1">
-
-    <div class="email">
-      <label for="email">Логин</label>
-      <div class="sec-2">
-        <ion-icon name="mail-outline"></ion-icon>
-        <input type="email" name="email" placeholder="Введите логин" id="log_inp" />
+      <div class="loginCl">
+        <label for="login">Логин</label>
+        <div class="sec-2">
+          <input type="text" name="login" placeholder="Введите логин" id="log_inp" />
+        </div>
+      </div>
+      <div class="password">
+        <label for="password">Пароль</label>
+        <div class="sec-2">
+          <input class="pas" type="password" name="password" placeholder="············" id="pass_inp" />
+          <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+        </div>
+      </div>
+      <button class="login" id="log_in_but">Войти</button>
+      <div class="footer">
+        <span><a href=".\main_sing_up.html">Зарегистрироваться</a></span>
       </div>
     </div>
-    <div class="password">
-      <label for="password">Пароль</label>
-      <div class="sec-2">
-        <ion-icon name="lock-closed-outline"></ion-icon>
-        <input class="pas" type="password" name="password" placeholder="············" id="pass_inp" />
-        <ion-icon class="show-hide" name="eye-outline"></ion-icon>
-      </div>
-    </div>
-    <button class="login" id="log_in_but">Войти</button>
-    <div class="footer">
-      <span><a href=".\main_sing_up.html">Зарегистрироваться</a></span>
-    </div>
-  </div>
+  </form>
+
   <script src="..\js\log_in.js"></script>
 </body>
 
