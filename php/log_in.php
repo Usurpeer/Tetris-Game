@@ -1,5 +1,6 @@
 <?php
 require_once('db_connect.php');
+die("Текст");
 
 
 $login = $_POST['login'];

@@ -1,4 +1,5 @@
 <?php
+die("Текст");
 require_once('db_connect.php');
 
 
