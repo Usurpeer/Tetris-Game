@@ -23,25 +23,31 @@ const stBut1 = document.getElementById("lvl1bt");
 const stBut2 = document.getElementById("lvl2bt");
 const stBut3 = document.getElementById("lvl3bt");
 console.log(stBut1);
-stBut1.style.color = "#811cb1";
+stBut1.style.boxShadow = "0px 0px 15px #ffff inset";
 stBut1.onclick = function () {
   let radio = document.querySelectorAll(".rad");
   radio[0].checked = true;
-  this.style.color = "#811cb1"; //#ff00f5
-  stBut2.style.color = "#ff4dad"; //#
-  stBut3.style.color = "#ff4dad";
+  this.style.boxShadow = "0px 0px 15px #ffff inset";
+  stBut2.style.color = "#ffff"; //#
+  stBut2.style.boxShadow = "0px 0px 0 #ffff inset";
+  stBut3.style.color = "#ffff";
+  stBut3.style.boxShadow = "0px 0px 0 #ffff inset";
 };
 stBut2.onclick = function () {
   let radio = document.querySelectorAll(".rad");
   radio[1].checked = true;
-  this.style.color = "#811cb1"; //#ff00f5
-  stBut1.style.color = "#ff4dad"; //#
-  stBut3.style.color = "#ff4dad";
+  this.style.boxShadow = "0px 0px 15px #ffff inset";
+  stBut1.style.color = "#ffff"; //#
+  stBut1.style.boxShadow = "0px 0px 0 #ffff inset";
+  stBut3.style.color = "#ffff";
+  stBut3.style.boxShadow = "0px 0px 0 #ffff inset";
 };
 stBut3.onclick = function () {
   let radio = document.querySelectorAll(".rad");
   radio[2].checked = true;
-  this.style.color = "#811cb1"; //#ff00f5
-  stBut1.style.color = "#ff4dad"; //#
-  stBut2.style.color = "#ff4dad";
+  this.style.boxShadow = "0px 0px 15px #ffff inset"
+  stBut1.style.color = "#ffff"; //#
+  stBut1.style.boxShadow = "0px 0px 0 #ffff inset";
+  stBut2.style.color = "#ffff";
+  stBut2.style.boxShadow = "0px 0px 0 #ffff inset";
 };
