@@ -1,19 +1,7 @@
 * {
   font-family: "Poppins";
 }
-body {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  overflow-y: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #811cb1;
-  /*отступ сверху*/
-  height: 100vh;
-}
+
 form {
   background-attachment: fixed;
   width: 100%;
@@ -21,26 +9,7 @@ form {
   background: #811cb1;
   overflow: hide;
 }
-.back_red {
-  background-attachment: fixed;
-  width: 140%;
-  height: 140%;
-  left: -70%;
-  top: -10%;
-  position: fixed;
-  background: radial-gradient(circle closest-side at center, #c30e54, #811cb1);
-  border-radius: 9999px;
-}
-.back_blue {
-  background-attachment: fixed;
-  width: 80%;
-  height: 140%;
-  margin-left: 50%;
-  top: 20%;
-  position: fixed;
-  background: radial-gradient(circle closest-side at center, #3111e2, #811cb1);
-  border-radius: 9999px;
-}
+
 
 .tetris {
   position: relative;
