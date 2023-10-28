@@ -25,7 +25,7 @@ else{
     }
     else{
         //запрос к бд на регистрацию
-       // $password = md5($password);
+        $password = md5($password);
         $sql = "INSERT INTO `users` (login, password, user_role) VALUES ('$login', '$password', 0)";
         if($conn -> query($sql) === TRUE){
             header("Location: ..\pages\player_menu_2.html", true, 302);

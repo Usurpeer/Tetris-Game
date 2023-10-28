@@ -13,6 +13,7 @@ else if(strlen($password) < 4 || strlen($password) > 12){
 }
 else{
     //запрос к бд
+    $password = md5($password);
     $sql = "SELECT * FROM `users` WHERE login = '$login' AND password = '$password'";
     $result = $conn -> query($sql);
 
@@ -27,7 +28,7 @@ else{
         
     }
     else{
-        echo 'Пользователь не найден.';
+        echo 'Неверный логин или пароль';
     }
 }
 
