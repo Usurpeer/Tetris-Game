@@ -13,10 +13,10 @@ form {
 .tetris {
   position: relative;
   text-align: center;
-  margin-top: 53%;
+  margin-top: 44%;
   margin-bottom: 0;
   color: white;
-  font-size: 90px;
+  font-size: 130px;
   font-family: Tetris;
 }
 h2 {
@@ -25,7 +25,7 @@ h2 {
   margin-top: -15px;
   color: #ff40a7;
   text-shadow: white 0px 0px 30px;
-  font-size: 40px;
+  font-size: 64px;
   font-family: "Feature Mono";
 }
 @font-face {
@@ -44,10 +44,10 @@ h2 {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  margin-top: -10px;
+  margin-top: -25px;
   margin-bottom: 10px;
-  width: 370px;
-  height: 450px;
+  width: 450px;
+  height: 490px;
   background: rgba(255, 255, 255, 0.17);
   box-shadow: 0px 0px 25px #4d4d4d;
   border-radius: 60px;
@@ -59,12 +59,12 @@ p {
   padding-top: 30px;
   position: relative;
   color: white;
-  font-size: 25px;
+  font-size: 30px;
   font-family: "BellotaText";
 }
 input {
   font-family: "BellotaText";
-  font-size: 20px;
+  font-size: 25px;
   width: 70%;
   height: 40px;
   margin-left: 15%;
@@ -84,17 +84,18 @@ input {
   padding-top: 0px;
   position: relative;
   color: white;
-  font-size: 25px;
+  font-size: 30px;
   font-family: "BellotaText";
 }
 button {
   font-family: "BellotaText";
   width: 100%;
+  margin-left: 2%;
   height: 52px;   
   top: 0px;
   position: absolute;
   background: #ff4dad;
-  font-size: 23px;
+  font-size: 30px;
   color: white;
   border-radius: 66.15px;
   border: 0px;
@@ -109,8 +110,8 @@ a {
   color: white;
   text-align: center;
   width: 70%;
-  margin-left: 15%;
-  margin-top: 25px;
+  margin-left: 16%;
+  margin-top: 30px;
   position: absolute;
-  font-size: 20px;
+  font-size: 25px;
 }
