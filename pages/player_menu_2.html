@@ -19,22 +19,20 @@
       <h3>Игрок</h3>
       <form action=""></form>
       <button id="play">Играть</button>
+
+      <label>
+        <input class="rad" type="radio" name="lvl" id="lvl1" checked value="1">
+        <button class="level" id="lvl1bt">1</button>
+      </label>
+      <label>
+        <input class="rad" type="radio" name="lvl" id="lvl2" value="2">
+        <button class="level" id="lvl2bt">2</button>
+      </label>
+      <label>
+        <input class="rad" type="radio" name="lvl" id="lvl3" value="3">
+        <button class="level" id="lvl3bt">3</button>
+      </label>
       </form>
-      <label>
-        <input type="radio" name="lvl" hidden>
-        <span class="butSpan" id="sp1">1</span>
-      </label>
-      <label>
-        <input type="radio" name="lvl" hidden>
-        <span class="butSpan" id="sp2">2</span>
-      </label>
-      <label>
-        <input type="radio" name="lvl" hidden>
-        <span class="butSpan" id="sp3">3</span>
-      </label>
-      <!-- <button class="level" id="lvl1">1</button>
-      <button class="level" id="lvl2">2</button>
-      <button class="level" id="lvl3">3</button>-->
       <button id="rating">Рейтинг</button>
       <button id="settings">Настройки</button>
       <button id="about">О разработчиках</button>
@@ -43,7 +41,7 @@
 
   </div>
 
-  <script src="..\js\action_button.js"></script>
 </body>
+<script src="..\js\action_button.js" defer></script>
 
 </html>
