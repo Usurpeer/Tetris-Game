@@ -29,6 +29,31 @@ h2 {
   font-size: 64px;
   font-family: "Feature Mono";
 }
+.player {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+  font-size: 30px;
+  color: white;
+  font-family: "BellotaText";
+  background: transparent;
+  cursor: pointer;
+  border: none;
+}
+.back {
+  position: fixed;
+  top: 30px;
+  left: 50px;
+  font-size: 30px;
+  font-family: "BellotaText";
+  width: 70px;
+  height: 70px;
+  border: none;
+  background: transparent;
+  background-image: url("../img/back.png");
+  background-size: cover;
+  cursor: pointer;
+}
 @font-face {
   font-family: "Feature Mono";
   src: url("../webfonts/FeatureMono-Regular.ttf") format("truetype");
@@ -57,18 +82,10 @@ p {
   position: relative;
   color: white;
   font-size: 30px;
-  margin-right: 0%;
   font-family: "BellotaText";
   margin-right: 38%;
   float: right;
-  margin-bottom: 0px;
-}
-.radioText{
-  position: relative;
-  color: white;
-  font-size: 30px;
-  font-family: "BellotaText";
-  float: left;
+  margin-bottom: -5px;
 }
 .check{
   transform:scale(2.2);
@@ -77,20 +94,32 @@ p {
   margin-top: 0px;
   cursor: pointer;
 }
+.form_radio{
+  position: relative;
+  color: white;
+  font-size: 30px;
+  font-family: "BellotaText";
+  margin-left: 59%;
+  margin-right: 19%;
+  float: left;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
 .rad{
   transform:scale(2.2);
   opacity: 0.7;
-  margin-right: 25px;
-  margin-left: 50%;
   cursor: pointer;
 }
-
-button {
+label{
   font-family: "BellotaText";
-  width: 100%;
-  margin-left: 2%;
-  height: 52px;   
-  top: 0px;
+  padding-left: 5px;
+}
+.theme {
+  font-family: "BellotaText";
+  width: 50%;
+  margin-left: 25%;
+  height: 60px;   
+  top: 78%;
   position: absolute;
   background: #ff4dad;
   font-size: 30px;
