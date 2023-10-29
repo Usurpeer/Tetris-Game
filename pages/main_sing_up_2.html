@@ -11,21 +11,21 @@
 </head>
 
 <body>
-  <form action="..\php\sing_up.php">
-      <div class = "back_red"></div>
-      <div class = "back_blue"></div>
-      <h1 class = "tetris">TETRIS</h1>
-      <h2>Регистрация</h2>
-      <div class = "box_log">
+  <form action="..\php\sing_up.php" method="post">
+    <div class="back_red"></div>
+    <div class="back_blue"></div>
+    <h1 class="tetris">TETRIS</h1>
+    <h2>Регистрация</h2>
+    <div class="box_log">
       <p>Логин</p>
-      <input type="text">
-      <p class = "pass">Пароль</p>
-      <input type="password">
-      <p class = "pass">Повторите пароль</p>
-      <input type="password">
-      <p><button>Зарегистрироваться</button></p>
+      <input type="text" name="login" placeholder="Введите логин">
+      <p class="pass">Пароль</p>
+      <input type="password" class="pas" name="password" placeholder="············">
+      <p class="pass">Повторите пароль</p>
+      <input type="password" class="pas" name="repeat_password" placeholder="············">
+      <p><button class="login">Зарегистрироваться</button></p>
       <a href="main_log_in_2.html">У меня уже есть аккаунт</a>
-    </div> 
+    </div>
   </form>
 </body>
 
