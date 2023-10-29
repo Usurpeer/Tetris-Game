@@ -6,35 +6,36 @@ form {
   background-attachment: fixed;
   width: 100%;
   position: absolute;
-  background: #811cb1;
+  background: #A7C8E1;
   overflow: hide;
 }
 
 .tetris {
   position: relative;
   text-align: center;
-  margin-top: 53%;
+  margin-top: 49%;
   margin-bottom: 0;
   color: white;
   font-size: 130px;
-  font-family: Tetris;
-
+  font-family: "Bungee";
+  -webkit-text-stroke: 1px #555555;
 }
 h2 {
   position: relative;
   text-align: center;
-  margin-top: -15px;
-  color: #ff40a7;
-  text-shadow: white 0px 0px 35px;
+  margin-top: -90px;
+  color: #ECAA50;
   font-size: 64px;
   font-family: "Feature Mono";
+  font-weight: bold;
+  text-shadow: 0px 0px 5px #555555;
 }
 .player {
   position: fixed;
   top: 40px;
   right: 50px;
   font-size: 30px;
-  color: white;
+  color: #5B3B3B;
   font-family: "BellotaText";
   background: transparent;
   cursor: pointer;
@@ -50,7 +51,7 @@ h2 {
   height: 70px;
   border: none;
   background: transparent;
-  background-image: url("../img/back.png");
+  background-image: url("../img/back2.png");
   background-size: cover;
   cursor: pointer;
 }
@@ -81,7 +82,7 @@ h2 {
 }
 p {
   position: relative;
-  color: white;
+  color: #5B3B3B;
   font-size: 30px;
   font-family: "BellotaText";
   margin-right: 38%;
@@ -97,7 +98,7 @@ p {
 }
 .form_radio{
   position: relative;
-  color: white;
+  color: #5B3B3B;
   font-size: 30px;
   font-family: "BellotaText";
   margin-left: 59%;
@@ -122,16 +123,17 @@ label{
   height: 60px;   
   top: 78%;
   position: absolute;
-  background: #ff4dad;
+  background: #ECAA50;
   font-size: 30px;
-  color: white;
+  color: #5B3B3B;
   border-radius: 66.15px;
-  border: 0px;
-  box-shadow: 0px 0px 15px #ff00f5;
+  border: 0;
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
   cursor: pointer;
 }
 .theme:active {
-  box-shadow: 0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset;
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
 }
 a {
   font-family: "BellotaText";
