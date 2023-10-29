@@ -129,7 +129,7 @@ label{
   box-shadow: 0px 0px 15px #ff00f5;
   cursor: pointer;
 }
-button:active {
+.theme:active {
   box-shadow: 0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset;
 }
 a {
