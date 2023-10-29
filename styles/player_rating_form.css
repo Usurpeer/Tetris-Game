@@ -1,0 +1,134 @@
+* {
+  font-family: "Poppins";
+}
+
+form {
+  background-attachment: fixed;
+  width: 100%;
+  position: absolute;
+  background: #811cb1;
+  overflow: hide;
+}
+
+.tetris {
+  position: relative;
+  text-align: center;
+  margin-top: 53%;
+  margin-bottom: 0;
+  color: white;
+  font-size: 130px;
+  font-family: Tetris;
+
+}
+h2 {
+  position: relative;
+  text-align: center;
+  margin-top: -15px;
+  color: #ff40a7;
+  text-shadow: white 0px 0px 35px;
+  font-size: 64px;
+  font-family: "Feature Mono";
+}
+.player {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+  font-size: 30px;
+  color: white;
+  font-family: "BellotaText";
+  background: transparent;
+  cursor: pointer;
+  border: none;
+}
+.back {
+  position: fixed;
+  top: 30px;
+  left: 50px;
+  font-size: 30px;
+  font-family: "BellotaText";
+  width: 70px;
+  height: 70px;
+  border: none;
+  background: transparent;
+  background-image: url("../img/back.png");
+  background-size: cover;
+  cursor: pointer;
+}
+@font-face {
+  font-family: "Feature Mono";
+  src: url("../webfonts/FeatureMono-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "BellotaText";
+  src: url("../webfonts/BellotaText-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+.box_log {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  margin-top: -30px;
+  margin-bottom: 10px;
+  padding-top: 10px;
+  width: 650px;
+  height: 520px;
+  background: rgba(255, 255, 255, 0.17);
+  box-shadow: 0px 0px 25px #4d4d4d;
+  border-radius: 60px;
+}
+p {
+  position: relative;
+  color: white;
+  font-size: 30px;
+  font-family: "BellotaText";
+  margin-right: 38%;
+  float: right;
+  margin-bottom: -5px;
+}
+
+.ball,.time {
+  font-family: "BellotaText";
+  width: 40%;
+  height: 60px;   
+  top: 10%;
+  position: absolute;
+  background: #ff4dad;
+  font-size: 30px;
+  color: white;
+  border-radius: 66.15px;
+  border: 0px;
+  box-shadow: 0px 0px 15px #ff00f5;
+  cursor: pointer;
+}
+.ball{
+  margin-left: 5%;
+}
+.time{
+  margin-left: 55%;
+}
+.ball:active,.time:active {
+  box-shadow: 0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset;
+}
+table{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+}
+td{
+  font-size: 30px;
+  color: white;
+  font-family: "BellotaText";
+  align: center;
+  width: 270px;
+  height: 40px;
+}
+th{
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 30px;
+  color: white;
+  font-family: "BellotaText";
+}
