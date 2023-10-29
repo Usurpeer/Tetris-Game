@@ -13,11 +13,12 @@ form {
 .tetris {
   position: relative;
   text-align: center;
-  margin-top: 44%;
+  margin-top: 53%;
   margin-bottom: 0;
   color: white;
   font-size: 130px;
   font-family: Tetris;
+
 }
 h2 {
   position: relative;
@@ -44,49 +45,46 @@ h2 {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  margin-top: -25px;
+  margin-top: -30px;
   margin-bottom: 10px;
-  width: 450px;
-  height: 490px;
+  width: 650px;
+  height: 520px;
   background: rgba(255, 255, 255, 0.17);
   box-shadow: 0px 0px 25px #4d4d4d;
   border-radius: 60px;
 }
 p {
-  width: 70%;
-  margin-left: 15%;
-  margin-bottom: 10px;
-  padding-top: 30px;
+  position: relative;
+  color: white;
+  font-size: 30px;
+  margin-right: 0%;
+  font-family: "BellotaText";
+  margin-right: 38%;
+  float: right;
+  margin-bottom: 0px;
+}
+.radioText{
   position: relative;
   color: white;
   font-size: 30px;
   font-family: "BellotaText";
+  float: left;
 }
-input {
-  font-family: "BellotaText";
-  font-size: 25px;
-  width: 70%;
-  height: 40px;
-  margin-left: 15%;
-  padding-left: 2%;
-  position: relative;
-  background: rgba(255, 255, 255, 0.23);
-  border: 0px;
-  outline: none;
-  box-shadow: 3px 3px 10px #4d4d4d;
-  border-radius: 13.88px;
-  color: white;
+.check{
+  transform:scale(2.2);
+  opacity: 0.7;
+  margin-left: 25px;
+  margin-top: 0px;
+  cursor: pointer;
 }
-.pass {
-  margin-left: 15%;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  padding-top: 0px;
-  position: relative;
-  color: white;
-  font-size: 30px;
-  font-family: "BellotaText";
+.rad{
+  transform:scale(2.2);
+  opacity: 0.7;
+  margin-right: 25px;
+  margin-left: 50%;
+  cursor: pointer;
 }
+
 button {
   font-family: "BellotaText";
   width: 100%;
