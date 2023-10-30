@@ -6,10 +6,9 @@ form {
   background-attachment: fixed;
   width: 100%;
   position: absolute;
-  background: #811cb1;
+  background: #A7C8E1;
   overflow: hide;
 }
-
 .tetris {
   position: relative;
   text-align: center;
@@ -17,24 +16,25 @@ form {
   margin-bottom: 0;
   color: white;
   font-size: 130px;
-  font-family: Tetris;
-
+  font-family: "Bungee";
+  -webkit-text-stroke: 1px #555555;
 }
 h2 {
   position: relative;
   text-align: center;
-  margin-top: -15px;
-  color: #ff40a7;
+  margin-top: -90px;
+  color: #ECAA50;
   text-shadow: white 0px 0px 35px;
   font-size: 64px;
   font-family: "Feature Mono";
+  text-shadow: 0px 0px 5px #555555; 
 }
 .player {
   position: fixed;
   top: 40px;
   right: 50px;
   font-size: 30px;
-  color: white;
+  color: #5B3B3B;
   font-family: "BellotaText";
   background: transparent;
   cursor: pointer;
@@ -50,7 +50,7 @@ h2 {
   height: 70px;
   border: none;
   background: transparent;
-  background-image: url("../img/back.png");
+  background-image: url("../img/back2.png");
   background-size: cover;
   cursor: pointer;
 }
@@ -95,12 +95,12 @@ p {
   height: 60px;   
   top: 10%;
   position: absolute;
-  background: #ff4dad;
+  background: #ECAA50;
   font-size: 30px;
-  color: white;
+  color: #5B3B3B;
   border-radius: 66.15px;
   border: 0px;
-  box-shadow: 0px 0px 15px #ff00f5;
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
   cursor: pointer;
 }
 .ball{
@@ -110,7 +110,8 @@ p {
   margin-left: 55%;
 }
 .ball:active,.time:active {
-  box-shadow: 0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset;
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
 }
 table{
   margin-left: auto;
@@ -119,7 +120,7 @@ table{
 }
 td{
   font-size: 30px;
-  color: #ffff;
+  color: #5B3B3B;
   font-family: "BellotaText";
   text-align: center;
   width: 270px;
@@ -127,6 +128,6 @@ td{
 }
 th{
   font-size: 30px;
-  color: #ffff;
+  color: #5B3B3B;
   font-family: "BellotaText";
 }
