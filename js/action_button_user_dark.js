@@ -15,10 +15,10 @@ const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
 
 butRating.addEventListener("click", () => {
-  window.location.href = "player_rating.html";
+  window.location.href = "player_rating_2.html";
 });
 butSettings.addEventListener("click", () => {
-  window.location.href = "player_settings.html";
+  window.location.href = "player_settings_2.html";
 });
 butAbout.addEventListener("click", () => {
   alert(

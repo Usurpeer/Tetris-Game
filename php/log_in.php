@@ -28,7 +28,7 @@ else{
         else if($user_role == '1'){
             setcookie('role', 1, 0,"/");
             setcookie('login', $login, 0,"/");
-            header("Location: ..\pages\admin_menu.html");
+            header("Location: ..\pages\admin_menu_2.html");
             die();
         }
         
