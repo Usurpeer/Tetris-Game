@@ -1,4 +1,14 @@
 "use strict"; //сертификат для проверки ошибок
+
+import script_cookie from "./get_cookies.js";
+
+window.onload = () => {
+  let user_role = script_cookie("role");
+  if (user_role != "1") {
+    window.location.href = "main_log_in_2.html";
+  }
+};
+
 const butRating = document.querySelector("#contruct");
 const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
@@ -22,7 +32,7 @@ butAbout.addEventListener("click", () => {
 const stBut1 = document.getElementById("lvl1bt");
 const stBut2 = document.getElementById("lvl2bt");
 const stBut3 = document.getElementById("lvl3bt");
-console.log(stBut1);
+
 stBut1.style.color = "#ffff";
 stBut1.onclick = function () {
   let radio = document.querySelectorAll(".rad");

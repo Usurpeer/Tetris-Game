@@ -27,14 +27,14 @@ else{
         //запрос к бд на регистрацию
         $password = md5($password);
         
-        $sql = "INSERT INTO `users` login, password, ratingScore, ratingTime, user_role) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')";
-
 
         $sql = "INSERT INTO `users` (login, password, ratingScore, ratingTime, user_role) VALUES ('$login', '$password', 0, 0, 0)";
 
         if($conn -> query($sql) === TRUE){
+            setcookie('role', 0, 0,"/");
+            setcookie('login', $login, 0,"/");
             header("Location: ..\pages\player_menu_2.html", true, 302);
-    
+            die();
             
         }
         else{
