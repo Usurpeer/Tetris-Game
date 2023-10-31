@@ -6,39 +6,54 @@ form {
   background-attachment: fixed;
   width: 100%;
   position: absolute;
-  background: #811cb1;
   overflow: hide;
 }
-
-.tetris {
+.tetris{
   position: relative;
   text-align: center;
-  margin-top: 53%;
+  margin-top: 45%;
   margin-bottom: 0;
   color: white;
   font-size: 130px;
+}
+body.pink .tetris{
   font-family: Tetris;
-
+}
+body.blue .tetris {
+  font-family: "Bungee";
+  -webkit-text-stroke: 1px #555555;
 }
 h2 {
   position: relative;
   text-align: center;
-  margin-top: -15px;
-  color: #ff40a7;
   text-shadow: white 0px 0px 35px;
   font-size: 64px;
   font-family: "Feature Mono";
+}
+body.pink h2{
+  margin-top: -15px;
+  color: #ff40a7;
+}
+body.blue h2{
+  margin-top: -90px;
+  color: #ECAA50;
+  text-shadow: 0px 0px 5px #555555; 
 }
 .player {
   position: fixed;
   top: 40px;
   right: 50px;
   font-size: 30px;
-  color: white;
   font-family: "BellotaText";
   background: transparent;
   cursor: pointer;
   border: none;
+}
+body.pink .player{
+  color: white;
+}
+body.blue .player{
+  color: #5B3B3B;
 }
 .back {
   position: fixed;
@@ -50,9 +65,14 @@ h2 {
   height: 70px;
   border: none;
   background: transparent;
-  background-image: url("../img/back.png");
   background-size: cover;
   cursor: pointer;
+}
+body.pink .back{
+  background-image: url("../img/back.png");
+}
+body.blue .back{
+  background-image: url("../img/back2.png");
 }
 @font-face {
   font-family: "Feature Mono";
@@ -95,12 +115,9 @@ p {
   height: 60px;   
   top: 10%;
   position: absolute;
-  background: #ff4dad;
   font-size: 30px;
-  color: white;
   border-radius: 66.15px;
   border: 0px;
-  box-shadow: 0px 0px 15px #ff00f5;
   cursor: pointer;
 }
 .ball{
@@ -109,17 +126,37 @@ p {
 .time{
   margin-left: 55%;
 }
-.ball:active,.time:active {
+body.pink .ball,body.pink .time{
+  background: #ff4dad;
+  color: white;
+  box-shadow: 0px 0px 15px #ff00f5;
+}
+body.blue .ball, body.blue .time{
+  background: #ECAA50;
+  color: #5B3B3B;
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
+}
+body.pink .ball:active,.time:active {
   box-shadow: 0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset;
+}
+body.blue .ball:active,.time:active {
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
 }
 table{
   margin-left: auto;
   margin-right: auto;
   margin-top: 20%;
 }
+body.pink table{
+  color: #ffff;
+}
+body.blue table{
+  color: #5B3B3B;
+}
 td{
   font-size: 30px;
-  color: #ffff;
+  
   font-family: "BellotaText";
   text-align: center;
   width: 270px;
@@ -127,6 +164,5 @@ td{
 }
 th{
   font-size: 30px;
-  color: #ffff;
   font-family: "BellotaText";
 }

@@ -1,13 +1,13 @@
 "use strict"; //сертификат для проверки ошибок
 
-import get_cookies from "./get_cookies.js";
+/*import get_cookies from "./get_cookies.js";
 
 window.onload = () => {
   let user_role = get_cookies("role");
   if (user_role != "0") {
     window.location.href = "main_log_in_2.html";
   }
-};
+};*/
 
 const butRating = document.querySelector("#rating");
 const butSettings = document.querySelector("#settings");
@@ -15,10 +15,10 @@ const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
 
 butRating.addEventListener("click", () => {
-  window.location.href = "player_rating_2.html";
+  window.location.href = "player_rating.html";
 });
 butSettings.addEventListener("click", () => {
-  window.location.href = "player_settings_2.html";
+  window.location.href = "player_settings.html";
 });
 butAbout.addEventListener("click", () => {
   alert(

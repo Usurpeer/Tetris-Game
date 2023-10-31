@@ -6,39 +6,55 @@ form {
   background-attachment: fixed;
   width: 100%;
   position: absolute;
-  background: #811cb1;
   overflow: hide;
 }
-
-.tetris {
+/*------------------------*/
+.tetris{
   position: relative;
   text-align: center;
-  margin-top: 53%;
+  margin-top: 45%;
   margin-bottom: 0;
   color: white;
   font-size: 130px;
+}
+body.pink .tetris{
   font-family: Tetris;
-
+}
+body.blue .tetris {
+  font-family: "Bungee";
+  -webkit-text-stroke: 1px #555555;
 }
 h2 {
   position: relative;
   text-align: center;
-  margin-top: -15px;
-  color: #ff40a7;
   text-shadow: white 0px 0px 35px;
   font-size: 64px;
   font-family: "Feature Mono";
+}
+body.pink h2{
+  margin-top: -15px;
+  color: #ff40a7;
+}
+body.blue h2{
+  margin-top: -90px;
+  color: #ECAA50;
+  text-shadow: 0px 0px 5px #555555; 
 }
 .player {
   position: fixed;
   top: 40px;
   right: 50px;
   font-size: 30px;
-  color: white;
   font-family: "BellotaText";
   background: transparent;
   cursor: pointer;
   border: none;
+}
+body.pink .player{
+  color: white;
+}
+body.blue .player{
+  color: #5B3B3B;
 }
 .back {
   position: fixed;
@@ -50,10 +66,16 @@ h2 {
   height: 70px;
   border: none;
   background: transparent;
-  background-image: url("../img/back.png");
   background-size: cover;
   cursor: pointer;
 }
+body.pink .back{
+  background-image: url("../img/back.png");
+}
+body.blue .back{
+  background-image: url("../img/back2.png");
+}
+/*------------------------*/
 @font-face {
   font-family: "Feature Mono";
   src: url("../webfonts/FeatureMono-Regular.ttf") format("truetype");
@@ -81,12 +103,17 @@ h2 {
 }
 p {
   position: relative;
-  color: white;
   font-size: 30px;
   font-family: "BellotaText";
   margin-right: 38%;
   float: right;
   margin-bottom: -5px;
+}
+body.pink p{
+  color: white;
+}
+body.blue p{
+  color: #5B3B3B;
 }
 .check{
   transform:scale(2.2);
@@ -97,7 +124,6 @@ p {
 }
 .form_radio{
   position: relative;
-  color: white;
   font-size: 30px;
   font-family: "BellotaText";
   margin-left: 59%;
@@ -122,16 +148,27 @@ label{
   height: 60px;   
   top: 78%;
   position: absolute;
-  background: #ff4dad;
   font-size: 30px;
-  color: white;
   border-radius: 66.15px;
   border: 0px;
-  box-shadow: 0px 0px 15px #ff00f5;
   cursor: pointer;
 }
-.theme:active {
+body.pink .theme{
+  background: #ff4dad;
+  color: white;
+  box-shadow: 0px 0px 15px #ff00f5;
+}
+body.blue .theme{
+  background: #ECAA50;
+  color: #5B3B3B;
+  filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
+}
+body.pink .theme:active {
   box-shadow: 0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset;
+}
+body.blue .theme:active {
+  box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
 }
 a {
   font-family: "BellotaText";
