@@ -2,13 +2,12 @@
   font-family: "Poppins";
 }
 
-form {
+.back_circle {
   background-attachment: fixed;
   width: 100%;
   position: absolute;
   overflow: hide;
 }
-/*------------------------*/
 .tetris{
   position: relative;
   text-align: center;
@@ -75,7 +74,6 @@ body.pink .back{
 body.blue .back{
   background-image: url("../img/back2.png");
 }
-/*------------------------*/
 @font-face {
   font-family: "Feature Mono";
   src: url("../webfonts/FeatureMono-Regular.ttf") format("truetype");

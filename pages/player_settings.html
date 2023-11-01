@@ -9,12 +9,13 @@
   <title>Настройки</title>
 </head>
 
-<body class="blue" id="bodyId">
-  <form action="">
+<body class="" id="bodyId">
+    <div class="back_circle">
       <div class = "back_red"></div>
       <div class = "back_blue"></div>
-      <div class="head">
-        <button class="back"></button>
+      <form action="">
+      <div>
+        <button class="back" id="back"></button>
         <button class="player">Игрок</button>
       </div>
       <h1 class = "tetris">TETRIS</h1>
@@ -36,9 +37,11 @@
             <label for="radio-2">Очки</label>
         </p>
         <button id="theme" class="theme">Сменить тему</button>
+      </form>
     </div> 
-  </form>
+    </div>
+  
 </body>
 <script type="module" src="..\js\theme_cookies.js" defer></script>
-<!--<script type="module" src="..\js\action_button_player_settings.js" defer></script>-->
+<script type="module" src="..\js\action_button_player_settings.js" defer></script>
 </html>

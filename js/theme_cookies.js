@@ -12,21 +12,48 @@ theme.addEventListener("click", () => {
         element.documentElement.classList.add('pink');
     }
     
-  });*/
-  document.cookie = "blue";
-  var a = document.cookie;
+  });
+
+
+  if(document.getElementById("bodyId").classList.contains("pink")){
+    document.cookie = "theme=pink";
+  }else if(document.getElementById("bodyId").classList.contains("blue")){
+    document.cookie = "theme=blue";
+  }
+  let a = document.cookie;
   console.log(a);
   document.getElementById("theme").addEventListener("click", function() {
     if(document.cookie === "pink"){
-        document.documentElement.classList.remove('pink');
-        document.getElementById("bodyId").classList.toggle("blue");
-        document.cookie("blue");
+        document.getElementById("bodyId").classList.remove("pink");
+        document.getElementById("bodyId").classList.add("blue");
+        document.cookie = "theme=blue";
     }else{
-        document.documentElement.classList.remove('blue');
-        document.getElementById("bodyId").classList.toggle("pink");
-        document.cookie = "pink";
+        document.getElementById("bodyId").classList.remove("blue");
+        document.getElementById("bodyId").classList.add("pink");
+        document.cookie = "theme=pink";
     }
     console.log(a);
     console.log(document.getElementById("bodyId").classList);
+  });*/
+
+  const theme = document.getElementById("theme");
+
+  document.body.classList.add(localStorage.getItem("themes"));
+  theme.addEventListener("click", function(){
+    document.body.classList.toggle("blue");
+    const themes = localStorage.getItem("themes");
+    if(themes === "blue"){
+        localStorage.clear();
+        localStorage.setItem("themes", "pink");
+    }else{
+        localStorage.setItem("themes", "");
+        localStorage.setItem("themes", "blue");
+    }
   });
+
+const butBack = document.querySelector(".back");
+
+butBack.addEventListener("click", () => {
+  window.location.href = "player_menu.html";
+});
   
