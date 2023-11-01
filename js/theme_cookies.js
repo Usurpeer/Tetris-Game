@@ -37,23 +37,23 @@ theme.addEventListener("click", () => {
   });*/
 
   const theme = document.getElementById("theme");
-
-  document.body.classList.add(localStorage.getItem("themes"));
+  const themes = localStorage.getItem("themes");
+  if(themes === "blue"){
+    document.body.className = localStorage.getItem("themes");
+  }else{
+    document.body.className = "pink";
+  }
   theme.addEventListener("click", function(){
-    document.body.classList.toggle("blue");
     const themes = localStorage.getItem("themes");
     if(themes === "blue"){
         localStorage.clear();
         localStorage.setItem("themes", "pink");
+        document.body.className = "pink";
     }else{
-        localStorage.setItem("themes", "");
+        localStorage.clear();
         localStorage.setItem("themes", "blue");
+        document.body.className = "blue";
     }
   });
 
-const butBack = document.querySelector(".back");
-
-butBack.addEventListener("click", () => {
-  window.location.href = "player_menu.html";
-});
   
