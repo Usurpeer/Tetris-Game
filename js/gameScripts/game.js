@@ -125,14 +125,6 @@ export default class Game {
     }
   }
 
-  //проверка на выход за границы стакана. Этот вариант проверяет только [0][0] элемент на выход.
-  /*isOutOfBounds() {
-    const { y, x } = this.activeFigure;
-
-    return (
-      this._playfield[y] === undefined || this._playfield[y][x] === undefined
-    );
-  }*/
   hasCollision() {
     const { y, x, form } = this.activeFigure;
     for (let i = 0; i < 4; i++) {
