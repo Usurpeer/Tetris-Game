@@ -1,86 +1,82 @@
 export default class Game {
   constructor(
-    countFigureOnLvls,
-    stringAllFigures,
-    sizesPlayfield,
-    speedOnLvls,
-    scoresForLvls
+    countFigureOnLvls, // массив, в котором хранится количество фигур на уровень по индексам
+    AllFigures, // двумерный массив со всеми фигурами. Сначала идут на первый уровень, то есть первые на первый, следующие на второй и далее третий
+    sizesPlayfield, // двумерный массив размерностей поля
+    speedOnLvls, // массив значений скоростей на уровни
+    scoresForLvls // массив количества очков за линию
   ) {
-    this._countFiguresLvl1 = 3;
-    this._countFiguresLvl2 = 1;
-    this._countFiguresLvl3 = 1;
-    this.setFiguresOnLvl(stringAllFigures);
-    this.setSizesPlayfield(sizesPlayfield);
+    this._countFiguresOnLvls = countFigureOnLvls;
+    this._figuresOnLvls = AllFigures;
+    this._sizesPlayfield = sizesPlayfield;
+    this._speedOnLvls = speedOnLvls;
+    this._scorePerLine = scoresForLvls;
 
-    //тк она не инициализирована
-    this.activeFigure.form = this.getActiveFigure();
+    this.activeFigure.form = this.getActiveFigure(); // тк она не инициализирована
+    this.get_set_PlayField();
   }
-  //количество очков
-  _score = 0;
-  _time = 0;
-  //количество линий за игру
-  _lines = 0;
-  //текущий уровень
-  _currentLvl = 1;
-  //количество фигур на уровне 1
-  _countFiguresLvl1 = 3;
-  //количество фигур на уровне 2
-  _countFiguresLvl2 = 1;
-  //количество фигур на уровне 3
-  _countFiguresLvl3 = 1;
+  // поля каркаса
+  _countFiguresOnLvls = []; // массив, в котором хранится количество фигур для каждого уровня сложности
 
-  //массив всех фигур, то есть для третьего уровня
-  figuresOnLvl = [];
-  //метод заполняет массив всех фигур из строки на входе, срока должна быть отранжирована в виде фигуры первого уровня, потом добавленные на второй, потом добавленные на третий
-  setFiguresOnLvl(stringAllFigures) {
-    let _countFigures =
-      this._countFiguresLvl1 + this._countFiguresLvl2 + this._countFiguresLvl3;
-    for (let i = 0; i < _countFigures; i++) {
-      this.figuresOnLvl[i] = [];
-      for (let j = 0; j < 16; j++) {
-        this.figuresOnLvl[i][j] = stringAllFigures[i * 16 + j]; //так будут посимвольно считываться фигуры
-      }
-    }
-  }
+  _figuresOnLvls = []; // массив всех фигур, то есть для третьего уровня
 
-  //фигура на поле
+  _sizesPlayfield = []; // массив значений скоростей на уровень
+
+  _speedOnLvls = []; // массив, в котором хранится скорость падения фигур для каждого уровня сложности
+
+  _scorePerLine = []; // массив в котором хранится количество очков за одну линию для каждой сложности
+
+  _playField = []; // игровое поле
+
+  // поля игрового процесса
+  _score = 0; // текущие очки
+  _time = 0; // текущее время
+
+  _lines = 0; // текущее количество собранных линий за игру
+
+  _currentLvl = 1; // текущий уровень
+
+  // фигура на поле
   activeFigure = {
-    //координата фигуры в стакане
-    x: 0,
+    x: 0, // координата фигуры в стакане
     y: 0,
     form: this.getActiveFigure(),
   };
 
-  //Если фигуры абсолютно случайно возвращает фигуру по случайному индексу
-  //Задумка такая: на первом уровне фигуры [0]-[_countFiguresLvl - 1], на втором [0]-[_countFiguresLv2 - 1], на третьем [0]-[_countFiguresLv3 - 1]
+  // Метод - Если фигуры абсолютно случайны - возвращает фигуру по случайному индексу из массива всех фигур с учетом уровня сложности
+  // Задумка такая: на первом уровне фигуры [0]-[_countFiguresLvl - 1], на втором [0]-[_countFiguresLv2 - 1], на третьем [0]-[_countFiguresLv3 - 1]
   getActiveFigure() {
-    let randomIndex = 0;
-    let maxIndex = this._countFiguresLvl1 - 1;
-    //смещает диапазон фигур [0] - [_countFiguresLvl2 - 1]
-    if (this._currentLvl == 2) {
-      maxIndex += this._countFiguresLvl2;
-    } else if (this._currentLvl == 3) {
-      maxIndex += this._countFiguresLvl3;
+    // чтобы не вылетала ошибка при инициализации класса
+    if (this._figuresOnLvls[0] != undefined) {
+      let maxIndex = this._countFiguresOnLvls[0] - 1;
+      // смещает диапазон фигур [0] - [_countFiguresLvl2 - 1]
+      if (this._currentLvl == 2) {
+        maxIndex = this._countFiguresOnLvls[0] + this._countFiguresOnLvls[1];
+      } else if (this._currentLvl == 3) {
+        maxIndex +=
+          this._countFiguresOnLvls[0] +
+          this._countFiguresOnLvls[1] +
+          this._countFiguresOnLvls[2];
+      }
+
+      let randomIndex = 0;
+      randomIndex = Math.floor(Math.random() * (maxIndex + 1) + 0); // ранмдомное число от 0 до maxIndex
+
+      let stringFig = this._figuresOnLvls[randomIndex] + ""; //получение строки фигуры по случайному индексу из списка всех фигур
+
+      // преобразование строки в двумерный массив 4*4
+      let figure = [];
+      for (let i = 0; i < 4; i++) {
+        figure[i] = [];
+        for (let j = 0; j < 4; j++) {
+          figure[i][j] = stringFig[i * 3 + j + i];
+        }
+      }
+      return figure;
     }
-    //ранмдомное число от 0 до maxIndex
-    randomIndex = Math.floor(Math.random() * (maxIndex + 1) + 0);
-    return this.figuresOnLvl[randomIndex];
   }
 
-  //поле
-  //массив размеров поля по сложностям, эти значения надо заполнить или просто держать 6 значений
-  _sizesPlayfield = [];
-  setSizesPlayfield(sizesPlayfield) {
-    this._sizesPlayfield = sizesPlayfield;
-    /*for(let i = 0; i < 3; i++){
-      this._sizesPlayfield[i] = [];
-      for(let j = 0; j < 2; j++){
-        this._sizesPlayfield[i][j] = sizesPlayfield[i][j];
-      }
-    }*/
-  }
-  //метод заполняет нулями поле размерностью по сложности, пока хз надо ли такое. Может пригодиться, когда фигура упирается и останавливается и для подсчета очков.
-  _playfield = [];
+  //метод заполняет нулями поле размерностью по сложности, пока хз надо ли такое. Может пригодится
   get_set_PlayField() {
     let indexSizes = 0;
     if (this._currentLvl == 2) {
@@ -92,12 +88,12 @@ export default class Game {
     let weidth = this._sizesPlayfield[indexSizes][1];
 
     for (let i = 0; i < height; i++) {
-      this._playfield[i] = [];
+      this._playField[i] = [];
       for (let j = 0; j < weidth; j++) {
-        this._playfield[i][j] = 0;
+        this._playField[i][j] = 0; // то, что заполняет нулями надо будет переделать, тк будут стираться значения
       }
     }
-    return this._playfield;
+    return this._playField;
   }
 
   //методы движения фигуры
@@ -130,10 +126,10 @@ export default class Game {
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         if (
-          form[i * 3 + j + i] && //проверка на нулевые значение в фигуре
-          (this._playfield[y + i] === undefined ||
-            this._playfield[y + i][x + j] === undefined ||
-            this._playfield[y + i][x + j]) //свободно ли место в поле
+          form[i][j] == 1 && //проверка на нулевые значение в фигуре
+          (this._playField[y + i] === undefined ||
+            this._playField[y + i][x + j] === undefined ||
+            this._playField[y + i][x + j] == 1) //свободно ли место в поле
         ) {
           return true;
         }
@@ -148,11 +144,16 @@ export default class Game {
 
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
-        if (form[i * 3 + j + i]) {
+        if (form[i][j] == 1) {
           //проверка чтобы фигура лочилась только когда значение есть
-          this._playfield[y + i][x + j] = form[i * 3 + j + i];
+          this._playField[y + i][x + j] = form[i][j];
         }
       }
     }
+  }
+
+  //повороты фигуры на выходе нужна строка из 16 символов, а для удобного поворота нужен двумерный массив 4*4, соответственно в методе происходит такое преобразование
+  rotateFigure() {
+    // поворот по часовой на 90 градусов
   }
 }
