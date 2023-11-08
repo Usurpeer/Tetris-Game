@@ -123,6 +123,7 @@ export default class Game {
 
   hasCollision() {
     const { y, x, form } = this.activeFigure;
+
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         if (
@@ -152,10 +153,21 @@ export default class Game {
     }
   }
 
-  // повороты фигуры
+  // повороты фигуры по часовой
   rotateFigure() {
-    // поворот по часовой на 90 градусов
-    //что если обрезать массив где есть нулевые значения, его повернуть и засунуть в угол 4*4
-    //чтобы обрезатать надо еще и сдвинуть
+    const form = this.activeFigure.form;
+    let rotateForm = [];
+    for (let i = 0; i < 4; i++) {
+      rotateForm[i] = [];
+      for (let j = 0; j < 4; j++) {
+        rotateForm[i][j] = form[j][i];
+      }
+    }
+    this.activeFigure.form = rotateForm;
+
+    // если есть столкновения после поворота, то нужно вернуть прошлое положение
+    if (this.hasCollision()) {
+      this.activeFigure.form = form;
+    }
   }
 }
