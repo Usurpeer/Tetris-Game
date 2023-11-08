@@ -24,7 +24,4 @@ const game = new Game(
   scoresForLvls
 );
 
-let playfield = game.get_set_PlayField();
-//console.log(playfield);
-
-window.game = game;
+window.game = game; // вроде надо, чтобы отображалось в консоли
