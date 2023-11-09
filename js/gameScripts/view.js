@@ -1,5 +1,5 @@
 export default class View {
-  constructor(element, width, height, rows, columns) {
+  constructor(element, width, height, rows, columns, countFigures, theme) {
     this._element = element;
     this._width = width;
     this._height = height;
@@ -13,60 +13,26 @@ export default class View {
     this.blockWidth = this._width / columns;
     this.blockHeight = this._height / rows;
 
+    this._theme = theme;
+
     this._element.appendChild(this.canvas);
-    this.initPlayField(columns, rows);
+    this.arrayColorsFigures = this.getAllColors(countFigures);
   }
 
-  _platField = []; // необходимо сохранять поле, для того, чтобы цвет не менялся у старого состояния
+  // поле темы
+  _theme;
 
-  // инициализация стакана визуализации
-  initPlayField(columns, rows) {
-    for (let i = 0; i < rows; i++) {
-      this._platField[i] = [];
-      for (let j = 0; j < columns; j++) {
-        this._platField[i][j] = 0;
-      }
-    }
-    console.log(this._platField);
-  }
+  arrayColorsFigures = [];
 
-  // метод визуализации
-  render({ playField }, theme) {
-    // очистка прямоугольника
-    this.clearScreen();
-    let color = this.getRandomColor(theme);
-    this.renderPlayField(playField, color);
-  }
+  // метод очищает экран
   clearScreen() {
     this.context.clearRect(0, 0, this._width, this._height);
   }
-  renderPlayField(playField, color) {
-    for (let i = 0; i < playField.length; i++) {
-      for (let j = 0; j < playField[i].length; j++) {
-        const block = playField[i][j];
-        if (block == 1) {
-          this.renderBlock(
-            j * this.blockWidth,
-            i * this.blockHeight,
-            this.blockWidth,
-            this.blockHeight,
-            color
-          );
-        }
-      }
-    }
-  }
-  renderBlock(x, y, weidth, height, color) {
-    this.context.fillStyle = color; // цвет заливки
-    this.context.strokeStyle = "black"; // цвет обводки
-    this.context.lineWidth = 2; // ширина обводки
 
-    this.context.fillRect(x, y, weidth, height);
-    this.context.strokeRect(x, y, weidth, height); // создание обводки вокруг фигуры
-  }
-  getRandomColor(theme) {
+  // метод получает случайный цвет из заполненного набора по указанной теме
+  getRandomColor() {
     let colors = [];
-    if (theme == 1) {
+    if (this._theme == 1) {
       colors = [
         "red",
         "orange",
@@ -76,7 +42,7 @@ export default class View {
         "yellow",
         "SlateBlue",
       ];
-    } else if (theme == 2) {
+    } else if (this._theme == 2) {
       colors = [
         "Cornsilk",
         "RosyBrown",
@@ -87,7 +53,69 @@ export default class View {
         "LightCoral",
       ];
     }
-    let index = Math.floor(Math.random() * (colors.length + 1) + 0);
-    return colors[index];
+    let index = Math.floor(Math.random() * (colors.length + 0) + 0);
+    let color = colors[index];
+    return color;
+  }
+
+  // метод визуализации
+  render({ playField }) {
+    // очистка прямоугольника
+    this.clearScreen();
+    // визуализация поля
+    this.renderPlayField(playField);
+  }
+
+  // отрисовка игрового поля
+  renderPlayField(playField) {
+    for (let i = 0; i < playField.length; i++) {
+      for (let j = 0; j < playField[i].length; j++) {
+        const block = playField[i][j];
+        if (block != "0") {
+          this.renderBlock(
+            block,
+            j * this.blockWidth,
+            i * this.blockHeight,
+            this.blockWidth,
+            this.blockHeight
+          );
+        }
+      }
+    }
+  }
+
+  // отрисвка квадрата в поле
+  renderBlock(symbol, x, y, weidth, height) {
+    const color = this.getColorBySymbol(symbol);
+    this.context.fillStyle = color; // цвет заливки
+    this.context.strokeStyle = "black"; // цвет обводки
+    this.context.lineWidth = 2; // ширина обводки
+
+    this.context.fillRect(x, y, weidth, height);
+    this.context.strokeRect(x, y, weidth, height); // создание обводки вокруг фигуры
+  }
+
+  getAllColors(countFigures) {
+    // каждая фигура кодируется разным символом латинским алфавитом, чтобы цвета отличались
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+      .toUpperCase()
+      .slice(0, countFigures);
+
+    let arrayColors = [];
+    for (let i = 0; i < alphabet.length; i++) {
+      arrayColors[i] = [];
+      arrayColors[i][0] = alphabet[i];
+      arrayColors[i][1] = this.getRandomColor(this._theme);
+    }
+
+    return arrayColors;
+  }
+  getColorBySymbol(symbol) {
+    for (let i = 0; i < this.arrayColorsFigures.length; i++) {
+      if (this.arrayColorsFigures[i][0] == symbol) {
+        return this.arrayColorsFigures[i][1];
+      }
+    }
+    return "red";
   }
 }

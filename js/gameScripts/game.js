@@ -57,7 +57,8 @@ export default class Game {
       }
 
       let randomIndex = 0;
-      randomIndex = Math.floor(Math.random() * (maxIndex + 1) + 0); // ранмдомное число от 0 до maxIndex
+
+      randomIndex = Math.floor(Math.random() * (maxIndex + 3) + 0); // ранмдомное число от 0 до maxIndex, но надо максиндекс + 1
 
       let stringFig = this._figuresOnLvls[randomIndex] + ""; // получение строки фигуры по случайному индексу из списка всех фигур
 
@@ -131,10 +132,10 @@ export default class Game {
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         if (
-          form[i][j] == 1 && // проверка на нулевые значение в фигуре
+          form[i][j] != 0 && // проверка на нулевые значение в фигуре
           (this._playField[y + i] === undefined ||
             this._playField[y + i][x + j] === undefined ||
-            this._playField[y + i][x + j] == 1) // свободно ли место в поле
+            this._playField[y + i][x + j] != 0) // свободно ли место в поле
         ) {
           return true;
         }
@@ -150,7 +151,7 @@ export default class Game {
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         // проверка чтобы фигура лочилась только когда значение есть
-        if (form[i][j] == 1) {
+        if (form[i][j] != 0) {
           this._playField[y + i][x + j] = form[i][j];
         }
       }
@@ -160,19 +161,66 @@ export default class Game {
   // повороты фигуры по часовой
   rotateFigure() {
     const form = this.activeFigure.form;
-    let rotateForm = [];
+    let tempForm = [];
     for (let i = 0; i < 4; i++) {
-      rotateForm[i] = [];
+      tempForm[i] = [];
       for (let j = 0; j < 4; j++) {
-        rotateForm[i][j] = form[j][i];
+        tempForm[i][j] = form[4 - 1 - j][i];
       }
     }
-    this.activeFigure.form = rotateForm;
+    this.activeFigure.form = this.moveInEmpty(tempForm);
 
     // если есть столкновения после поворота, то нужно вернуть прошлое положение
     if (this.hasCollision()) {
       this.activeFigure.form = form;
     }
+  }
+
+  // метод, который сдвигает фигуру в левый верхний угол, если там свободно
+  moveInEmpty(form) {
+    let checkEmptyY = [0, 0, 0, 0]; // счетчик пустых клеток, индекс - строка
+    let checkEmptyX = [0, 0, 0, 0]; // счетчик пустых клеток, индекс - столбец
+    let checkBreakY = 0;
+    let checkBreakX = 0;
+    // подсчет пустых строк
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        if (checkBreakY == 0 && form[i][j] == 0) {
+          checkEmptyY[i]++;
+        } else {
+          checkBreakY = 1;
+        }
+        if (checkBreakX == 0 && form[j][i] == 0) {
+          checkEmptyX[i]++;
+        } else {
+          checkBreakX = 1;
+        }
+      }
+    }
+
+    // сдвиг матрицы наверх, если надо.
+    for (let i = 0; i < 4; i++) {
+      // сдвиг вверх
+      if (checkEmptyY[i] == 4) {
+        for (let i = 1; i < 4; i++) {
+          for (let j = 0; j < 4; j++) {
+            form[i - 1][j] = form[i][j];
+            form[i][j] = 0;
+          }
+        }
+      }
+      // сдвиг влево
+      if (checkEmptyX[i] == 4) {
+        for (let i = 0; i < 4; i++) {
+          for (let j = 1; j < 4; j++) {
+            form[i][j - 1] = form[i][j];
+            form[i][j] = 0;
+          }
+        }
+      }
+    }
+
+    return form;
   }
 
   // метод для получения всех данных во время игры
@@ -188,13 +236,14 @@ export default class Game {
 
     for (let i = 0; i < form.length; i++) {
       for (let j = 0; j < form[i].length; j++) {
-        if (form[i][j] == 1) {
+        if (form[i][j] != 0) {
           playField[y + i][x + j] = form[i][j];
         }
       }
     }
     return { playField };
   }
+
   updateOnNextFigure() {
     this.activeFigure = this.nextFigure;
     this.nextFigure = this.getRandomFigure();

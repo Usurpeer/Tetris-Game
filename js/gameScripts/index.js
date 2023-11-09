@@ -10,11 +10,11 @@ const countFigureOnLvls = [3, 1, 1],
     [20, 14],
   ],
   allFigures = [
-    ["1000100010001000"], // линия
-    ["1100110000000000"], // квадрат
-    ["1000110010000000"], // T образная
-    ["0011110000000000"], // L
-    ["1000111000000000"], // другая L
+    ["A000A000A000A000"], // линия
+    ["BB00BB0000000000"], // квадрат
+    ["C000CC00C0000000"], // T образная
+    ["0DD0DD0000000000"], // L
+    ["E000EEE000000000"], // другая L
   ];
 
 const game = new Game(
@@ -34,9 +34,9 @@ const width = 400, // соотношение этих сторон необхо�
   widthPlayField = 10, // размер  стакана
   heightPlayField = 20; // размер стакана надо соотношение пикселей такое же, как и соотношение длины/ширины, чтобы фигуры были не вытянутые
 
-const view = new View(root, width, height, heightPlayField, widthPlayField);
+const view = new View(root, width, height, heightPlayField, widthPlayField, allFigures.length, 1);
 
-view.render(game.getState(), 1);
+view.render(game.getState());
 
 window.view = view;
 
@@ -44,19 +44,19 @@ document.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "ArrowUp":
       game.rotateFigure();
-      view.render(game.getState(), 1);
+      view.render(game.getState());
       break;
     case "ArrowDown":
       game.moveDown();
-      view.render(game.getState(), 1);
+      view.render(game.getState());
       break;
     case "ArrowRight":
       game.moveRight();
-      view.render(game.getState(), 1);
+      view.render(game.getState());
       break;
     case "ArrowLeft":
       game.moveLeft();
-      view.render(game.getState(), 1);
+      view.render(game.getState());
       break;
     case " ":
       console.log("Space");
