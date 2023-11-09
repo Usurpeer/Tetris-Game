@@ -12,8 +12,9 @@ export default class Game {
     this._speedOnLvls = speedOnLvls;
     this._scorePerLine = scoresForLvls;
 
-    this.activeFigure.form = this.getActiveFigure(); // тк она не инициализирована
-    this.get_set_PlayField();
+    this.activeFigure = this.getRandomFigure(); // тк она не инициализирована
+    this.nextFigure = this.getRandomFigure();
+    this._playField = this.get_set_PlayField();
   }
   // поля каркаса
   _countFiguresOnLvls = []; // массив, в котором хранится количество фигур для каждого уровня сложности
@@ -36,16 +37,12 @@ export default class Game {
 
   _currentLvl = 1; // текущий уровень
 
-  // фигура на поле
-  activeFigure = {
-    x: 0, // координата фигуры в стакане
-    y: 0,
-    form: this.getActiveFigure(),
-  };
+  activeFigure; // фигура на поле
 
+  nextFigure; // следующая фигура
   // Метод - Если фигуры абсолютно случайны - возвращает фигуру по случайному индексу из массива всех фигур с учетом уровня сложности
   // Задумка такая: на первом уровне фигуры [0]-[_countFiguresLvl - 1], на втором [0]-[_countFiguresLv2 - 1], на третьем [0]-[_countFiguresLv3 - 1]
-  getActiveFigure() {
+  getRandomFigure() {
     // чтобы не вылетала ошибка при инициализации класса
     if (this._figuresOnLvls[0] != undefined) {
       let maxIndex = this._countFiguresOnLvls[0] - 1;
@@ -72,13 +69,19 @@ export default class Game {
           figure[i][j] = stringFig[i * 3 + j + i];
         }
       }
-      return figure;
+
+      return {
+        x: 0,
+        y: 0,
+        form: figure,
+      };
     }
   }
 
   // метод заполняет нулями поле размерностью по сложности, пока хз надо ли такое. Может пригодится
   get_set_PlayField() {
     let indexSizes = 0;
+
     if (this._currentLvl == 2) {
       indexSizes = 1;
     } else if (this._currentLvl == 3) {
@@ -87,13 +90,14 @@ export default class Game {
     let height = this._sizesPlayfield[indexSizes][0];
     let weidth = this._sizesPlayfield[indexSizes][1];
 
+    let playField = [];
     for (let i = 0; i < height; i++) {
-      this._playField[i] = [];
+      playField[i] = [];
       for (let j = 0; j < weidth; j++) {
-        this._playField[i][j] = 0; // то, что заполняет нулями надо будет переделать, тк будут стираться значения
+        playField[i][j] = 0; // то, что заполняет нулями надо будет переделать, тк будут стираться значения
       }
     }
-    return this._playField;
+    return playField;
   }
 
   //методы движения фигуры
@@ -118,12 +122,12 @@ export default class Game {
     if (this.hasCollision()) {
       this.activeFigure.y -= 1;
       this.lockFigure();
+      this.updateOnNextFigure();
     }
   }
 
   hasCollision() {
     const { y, x, form } = this.activeFigure;
-
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
         if (
@@ -169,5 +173,30 @@ export default class Game {
     if (this.hasCollision()) {
       this.activeFigure.form = form;
     }
+  }
+
+  // метод для получения всех данных во время игры
+  getState() {
+    let playField = this.get_set_PlayField();
+    for (let i = 0; i < playField.length; i++) {
+      for (let j = 0; j < playField[i].length; j++) {
+        playField[i][j] = this._playField[i][j];
+      }
+    }
+
+    const { x, y, form } = this.activeFigure;
+
+    for (let i = 0; i < form.length; i++) {
+      for (let j = 0; j < form[i].length; j++) {
+        if (form[i][j] == 1) {
+          playField[y + i][x + j] = form[i][j];
+        }
+      }
+    }
+    return { playField };
+  }
+  updateOnNextFigure() {
+    this.activeFigure = this.nextFigure;
+    this.nextFigure = this.getRandomFigure();
   }
 }
