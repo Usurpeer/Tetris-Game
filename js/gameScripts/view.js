@@ -1,5 +1,5 @@
 export default class View {
-  constructor(element, width, height, rows, columns, countFigures, theme) {
+  constructor(element, width, height, countFigures, theme) {
     this._element = element;
     this._width = width;
     this._height = height;
@@ -8,10 +8,6 @@ export default class View {
     this.canvas.width = this._width;
     this.canvas.height = this._height;
     this.context = this.canvas.getContext("2d");
-
-    // необходимо вычислить ширину и высоту "клетки"
-    this.blockWidth = this._width / columns;
-    this.blockHeight = this._height / rows;
 
     this._theme = theme;
 
@@ -68,10 +64,14 @@ export default class View {
 
   // отрисовка игрового поля
   renderPlayField(playField) {
+    // необходимо вычислить ширину и высоту "клетки"
+    this.blockWidth = this._width / playField[0].length;
+    this.blockHeight = this._height / playField.length;
+
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
         const block = playField[i][j];
-        if (block != "0") {
+        if (block != "0" && block != undefined) {
           this.renderBlock(
             block,
             j * this.blockWidth,
@@ -97,9 +97,7 @@ export default class View {
 
   getAllColors(countFigures) {
     // каждая фигура кодируется разным символом латинским алфавитом, чтобы цвета отличались
-    const alphabet = "abcdefghijklmnopqrstuvwxyz"
-      .toUpperCase()
-      .slice(0, countFigures);
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".slice(0, countFigures);
 
     let arrayColors = [];
     for (let i = 0; i < alphabet.length; i++) {
@@ -116,6 +114,6 @@ export default class View {
         return this.arrayColorsFigures[i][1];
       }
     }
-    return "red";
+    return "black";
   }
 }

@@ -6,7 +6,7 @@ const countFigureOnLvls = [3, 1, 1],
   scoresForLvls = [1000, 3000, 4000],
   sizesPlayfield1 = [
     [20, 10],
-    [20, 12],
+    [20, 14],
     [20, 14],
   ],
   allFigures = [
@@ -15,17 +15,21 @@ const countFigureOnLvls = [3, 1, 1],
     ["C000CC00C0000000"], // T образная
     ["0DD0DD0000000000"], // L
     ["E000EEE000000000"], // другая L
-  ];
+  ],
+  quantityLinesForNextLvl = [1, 3];
 
 const game = new Game(
   countFigureOnLvls,
   allFigures,
   sizesPlayfield1,
   speedOnLvls,
-  scoresForLvls
+  scoresForLvls,
+  quantityLinesForNextLvl
 );
 
 window.game = game; // вроде надо, чтобы отображалось в консоли
+
+game.updateScrore();
 
 // view
 const root = document.querySelector("#root");
@@ -34,7 +38,13 @@ const width = 400, // соотношение этих сторон необхо�
   widthPlayField = 10, // размер  стакана
   heightPlayField = 20; // размер стакана надо соотношение пикселей такое же, как и соотношение длины/ширины, чтобы фигуры были не вытянутые
 
-const view = new View(root, width, height, heightPlayField, widthPlayField, allFigures.length, 1);
+const view = new View(
+  root,
+  width,
+  height,
+  allFigures.length,
+  1
+);
 
 view.render(game.getState());
 

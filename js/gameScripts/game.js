@@ -4,18 +4,21 @@ export default class Game {
     AllFigures, // двумерный массив со всеми фигурами. Сначала идут на первый уровень, то есть первые на первый, следующие на второй и далее третий
     sizesPlayfield, // двумерный массив размерностей поля
     speedOnLvls, // массив значений скоростей на уровни
-    scoresForLvls // массив количества очков за линию
+    scoresForLvls, // массив количества очков за линию
+    quantityLinesForNextLvl
   ) {
     this._countFiguresOnLvls = countFigureOnLvls;
     this._figuresOnLvls = AllFigures;
     this._sizesPlayfield = sizesPlayfield;
     this._speedOnLvls = speedOnLvls;
     this._scorePerLine = scoresForLvls;
+    this._quantityLinesForNextLvl = quantityLinesForNextLvl;
 
     this.activeFigure = this.getRandomFigure(); // тк она не инициализирована
     this.nextFigure = this.getRandomFigure();
     this._playField = this.get_set_PlayField();
   }
+
   // поля каркаса
   _countFiguresOnLvls = []; // массив, в котором хранится количество фигур для каждого уровня сложности
 
@@ -26,6 +29,8 @@ export default class Game {
   _speedOnLvls = []; // массив, в котором хранится скорость падения фигур для каждого уровня сложности
 
   _scorePerLine = []; // массив в котором хранится количество очков за одну линию для каждой сложности
+
+  _quantityLinesForNextLvl = []; //массив, содержащий количество линий для перехода на след уровень. Массив из двух элементов
 
   _playField = []; // игровое поле
 
@@ -40,6 +45,7 @@ export default class Game {
   activeFigure; // фигура на поле
 
   nextFigure; // следующая фигура
+
   // Метод - Если фигуры абсолютно случайны - возвращает фигуру по случайному индексу из массива всех фигур с учетом уровня сложности
   // Задумка такая: на первом уровне фигуры [0]-[_countFiguresLvl - 1], на втором [0]-[_countFiguresLv2 - 1], на третьем [0]-[_countFiguresLv3 - 1]
   getRandomFigure() {
@@ -48,17 +54,19 @@ export default class Game {
       let maxIndex = this._countFiguresOnLvls[0] - 1;
       // смещает диапазон фигур [0] - [_countFiguresLvl2 - 1]
       if (this._currentLvl == 2) {
-        maxIndex = this._countFiguresOnLvls[0] + this._countFiguresOnLvls[1];
+        maxIndex =
+          this._countFiguresOnLvls[0] + this._countFiguresOnLvls[1] - 1;
       } else if (this._currentLvl == 3) {
-        maxIndex +=
+        maxIndex =
           this._countFiguresOnLvls[0] +
           this._countFiguresOnLvls[1] +
-          this._countFiguresOnLvls[2];
+          this._countFiguresOnLvls[2] -
+          1;
       }
 
       let randomIndex = 0;
 
-      randomIndex = Math.floor(Math.random() * (maxIndex + 3) + 0); // ранмдомное число от 0 до maxIndex, но надо максиндекс + 1
+      randomIndex = Math.floor(Math.random() * (maxIndex + 1) + 0); // ранмдомное число от 0 до maxIndex, но надо максиндекс + 1
 
       let stringFig = this._figuresOnLvls[randomIndex] + ""; // получение строки фигуры по случайному индексу из списка всех фигур
 
@@ -72,7 +80,7 @@ export default class Game {
       }
 
       return {
-        x: 0,
+        x: Math.floor(this._sizesPlayfield[this._currentLvl - 1][1] / 2 - 1),
         y: 0,
         form: figure,
       };
@@ -81,15 +89,8 @@ export default class Game {
 
   // метод заполняет нулями поле размерностью по сложности, пока хз надо ли такое. Может пригодится
   get_set_PlayField() {
-    let indexSizes = 0;
-
-    if (this._currentLvl == 2) {
-      indexSizes = 1;
-    } else if (this._currentLvl == 3) {
-      indexSizes = 2;
-    }
-    let height = this._sizesPlayfield[indexSizes][0];
-    let weidth = this._sizesPlayfield[indexSizes][1];
+    let height = this._sizesPlayfield[this._currentLvl - 1][0];
+    let weidth = this._sizesPlayfield[this._currentLvl - 1][1];
 
     let playField = [];
     for (let i = 0; i < height; i++) {
@@ -116,13 +117,13 @@ export default class Game {
       this.activeFigure.x -= 1;
     }
   }
-
   moveDown() {
     this.activeFigure.y += 1;
 
     if (this.hasCollision()) {
       this.activeFigure.y -= 1;
       this.lockFigure();
+      this.clearLines();
       this.updateOnNextFigure();
     }
   }
@@ -228,7 +229,12 @@ export default class Game {
     let playField = this.get_set_PlayField();
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
-        playField[i][j] = this._playField[i][j];
+        if (this._playField[i][j] === undefined) {
+          this._playField[i][j] = 0;
+          playField[i][j] = 0;
+        } else {
+          playField[i][j] = this._playField[i][j];
+        }
       }
     }
 
@@ -236,7 +242,7 @@ export default class Game {
 
     for (let i = 0; i < form.length; i++) {
       for (let j = 0; j < form[i].length; j++) {
-        if (form[i][j] != 0) {
+        if (form[i][j] != 0 && form[i][j] != undefined) {
           playField[y + i][x + j] = form[i][j];
         }
       }
@@ -247,5 +253,64 @@ export default class Game {
   updateOnNextFigure() {
     this.activeFigure = this.nextFigure;
     this.nextFigure = this.getRandomFigure();
+  }
+
+  // метод, удаляющий линии с подсчетом очков
+  clearLines() {
+    let lines = [];
+    const rows = this._sizesPlayfield[this._currentLvl - 1][0];
+    const columns = this._sizesPlayfield[this._currentLvl - 1][1];
+
+    for (let i = rows - 1; i >= 0; i--) {
+      let numberOfBlocks = 0;
+      for (let j = 0; j < columns; j++) {
+        if (this._playField[i][j] != "0") {
+          numberOfBlocks++;
+        }
+      }
+
+      if (numberOfBlocks == 0) {
+        break;
+      } else if (numberOfBlocks < columns) {
+        continue;
+      } else if (numberOfBlocks == columns) {
+        // добавление индекса линии, которую надо стереть в начало
+        lines.unshift(i);
+      }
+    }
+    for (let index of lines) {
+      // удаление ряда по индексу, второе число - количество
+      this._playField.splice(index, 1);
+      this._playField.unshift(new Array(columns).fill(0));
+    }
+
+    this.updateScrore(lines.length);
+  }
+
+  updateScrore(clearedLines) {
+    if (clearedLines > 0) {
+      this._score +=
+        this._scorePerLine[this._currentLvl - 1] * Math.pow(clearedLines, 2); //
+      this._lines += clearedLines;
+      this.checkLinesForNextLvl();
+    }
+  }
+  checkLinesForNextLvl() {
+    if (this._currentLvl != 3) {
+      if (this._lines >= this._quantityLinesForNextLvl[0]) {
+        // если, то это третий уровень сложности
+        if (
+          this._lines >=
+          this._quantityLinesForNextLvl[1] + this._quantityLinesForNextLvl[0]
+        ) {
+          this._currentLvl = 3;
+          this._playField = this.get_set_PlayField();
+          // иначе это первый
+        } else {
+          this._currentLvl = 2;
+          this._playField = this.get_set_PlayField();
+        }
+      }
+    }
   }
 }
