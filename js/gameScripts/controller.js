@@ -25,6 +25,12 @@ export default class Controller {
       this.intervalId = null;
     }
   }
+
+  getStateAndCheckGameover() {
+    const gameState = game.getState();
+    if (gameState.topOut == true) {
+    }
+  }
   handleKeyDown(event) {
     switch (event.key) {
       case "ArrowUp":
