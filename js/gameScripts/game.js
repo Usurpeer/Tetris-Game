@@ -46,6 +46,8 @@ export default class Game {
 
   nextFigure; // следующая фигура
 
+  topOut = false; // свойство для проверки завершенности игры
+
   // Метод - Если фигуры абсолютно случайны - возвращает фигуру по случайному индексу из массива всех фигур с учетом уровня сложности
   // Задумка такая: на первом уровне фигуры [0]-[_countFiguresLvl - 1], на втором [0]-[_countFiguresLv2 - 1], на третьем [0]-[_countFiguresLv3 - 1]
   getRandomFigure() {
@@ -118,6 +120,8 @@ export default class Game {
     }
   }
   moveDown() {
+    if (this.topOut == true) return false;
+
     this.activeFigure.y += 1;
 
     if (this.hasCollision()) {
@@ -125,10 +129,14 @@ export default class Game {
       this.lockFigure();
       this.clearLines();
       this.updateOnNextFigure();
+      return false;
+    } else {
+      return true;
     }
   }
 
   hasCollision() {
+    if (this.topOut == true) return true;
     const { y, x, form } = this.activeFigure;
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
@@ -138,6 +146,14 @@ export default class Game {
             this._playField[y + i][x + j] === undefined ||
             this._playField[y + i][x + j] != 0) // свободно ли место в поле
         ) {
+          if (
+            x ==
+            Math.floor(
+              this._sizesPlayfield[this._currentLvl - 1][1] / 2 - 1 
+            ) && y == 1
+          ) {
+            this.topOut = true;
+          }
           return true;
         }
       }
@@ -175,6 +191,11 @@ export default class Game {
     if (this.hasCollision()) {
       this.activeFigure.form = form;
     }
+  }
+
+  // сброс фигуры вниз
+  dropFigure() {
+    while (this.moveDown()) {}
   }
 
   // метод, который сдвигает фигуру в левый верхний угол, если там свободно
@@ -247,10 +268,18 @@ export default class Game {
         }
       }
     }
-    return { playField };
+    return {
+      score: this._score,
+      currentLvl: this._currentLvl,
+      lines: this.getNeededLines(),
+      nextFigure: this.nextFigure.form,
+      playField,
+    };
   }
 
   updateOnNextFigure() {
+    console.log(this.topOut);
+    if (this.topOut == true) return false;
     this.activeFigure = this.nextFigure;
     this.nextFigure = this.getRandomFigure();
   }
@@ -307,10 +336,32 @@ export default class Game {
           this._playField = this.get_set_PlayField();
           // иначе это первый
         } else {
-          this._currentLvl = 2;
-          this._playField = this.get_set_PlayField();
+          if (this._currentLvl != 2) {
+            this._currentLvl = 2;
+            this._playField = this.get_set_PlayField();
+          }
         }
       }
     }
+  }
+
+  getNeededLines() {
+    if (this._currentLvl != 1) {
+      if (this._currentLvl == 2) {
+        return (
+          this._quantityLinesForNextLvl[1] +
+          this._quantityLinesForNextLvl[0] -
+          this._lines
+        );
+      } else {
+        return "";
+      }
+    } else {
+      return this._quantityLinesForNextLvl[0] - this._lines;
+    }
+  }
+
+  getSpeed() {
+    return this._speedOnLvls[this._currentLvl - 1];
   }
 }

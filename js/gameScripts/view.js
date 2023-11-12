@@ -9,6 +9,22 @@ export default class View {
     this.canvas.height = this._height;
     this.context = this.canvas.getContext("2d");
 
+    ///////////////////////////////////////////////////
+    this.playfieldBorderWidth = 4; // ширина границы
+    this.playfieldX = this.playfieldBorderWidth; // начало игрового поля
+    this.playfieldY = this.playfieldBorderWidth;
+    this.playfieldWidth = (this._width * 2) / 3; // ширина игрового поля
+    this.playfieldHeight = this._height;
+    this.playfieldInnerWidth =
+      this.playfieldWidth - this.playfieldBorderWidth * 2; // внутренняя ширина игр поля
+    this.playfieldInnerheight =
+      this.playfieldHeight - this.playfieldBorderWidth * 2;
+    ///////////////////////////////////////////////////
+    this.panelX = this.playfieldWidth + 10;
+    this.panelY = 0;
+    this.panelWidth = this._width / 3;
+    this.panelHeight = this._height;
+
     this._theme = theme;
 
     this._element.appendChild(this.canvas);
@@ -55,18 +71,20 @@ export default class View {
   }
 
   // метод визуализации
-  render({ playField }) {
+  render(gameInfo) {
     // очистка прямоугольника
     this.clearScreen();
     // визуализация поля
-    this.renderPlayField(playField);
+    this.renderPlayField(gameInfo.playField);
+    // визуализация боковой панели
+    this.renderPanel(gameInfo);
   }
 
   // отрисовка игрового поля
   renderPlayField(playField) {
     // необходимо вычислить ширину и высоту "клетки"
-    this.blockWidth = this._width / playField[0].length;
-    this.blockHeight = this._height / playField.length;
+    this.blockWidth = this.playfieldInnerWidth / playField[0].length;
+    this.blockHeight = this.playfieldInnerheight / playField.length;
 
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
@@ -74,14 +92,19 @@ export default class View {
         if (block != "0" && block != undefined) {
           this.renderBlock(
             block,
-            j * this.blockWidth,
-            i * this.blockHeight,
+            this.playfieldX + j * this.blockWidth,
+            this.playfieldY + i * this.blockHeight,
             this.blockWidth,
             this.blockHeight
           );
         }
       }
     }
+
+    // отрисовка границы
+    this.context.strokeStyle = 'white';
+    this.context.lineWidth = this.playfieldBorderWidth;
+    this.context.strokeRect(0,0,this.playfieldWidth, this.playfieldHeight);
   }
 
   // отрисвка квадрата в поле
@@ -115,5 +138,43 @@ export default class View {
       }
     }
     return "black";
+  }
+
+  // метод отображает боковую панель
+  renderPanel({ score, currentLvl, lines, nextFigure }) {
+    this.context.textAlign = "start"; // текст по левому краю
+    this.context.textBaseline = "top"; // текст по верхнему краю
+    this.context.fillStyle = "white"; // цвет текста
+    this.context.font = '14px "Press Start 2P"'; // Шрифт
+
+    this.context.fillText(
+      `Текущий уровень: ${currentLvl}`,
+      this.panelX,
+      this.panelY + 0
+    );
+    this.context.fillText(`Очки: ${score}`, this.panelX, this.panelY + 24);
+    this.context.fillText(
+      `Осталось линий: ${lines}`,
+      this.panelX,
+      this.panelY + 48
+    );
+    this.context.fillText(`Рекорд:`, this.panelX, this.panelY + 64);
+    this.context.fillText("Следующая", this.panelX, this.panelY + 96);
+
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
+        const block = nextFigure[i][j];
+
+        if (block != "0") {
+          this.renderBlock(
+            block,
+            this.panelX + j * this.blockWidth * 0.5,
+            this.panelY + 130 + i * this.blockHeight * 0.5,
+            this.blockWidth * 0.5,
+            this.blockHeight * 0.5
+          );
+        }
+      }
+    }
   }
 }
