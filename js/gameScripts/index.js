@@ -32,12 +32,12 @@ window.game = game; // вроде надо, чтобы отображалось 
 
 /////////////////////////////////////////// view
 const root = document.querySelector("#root");
-const width = 410, // соотношение этих сторон необходимо считать относительно количества фигур
-  height = 820,
+const width = 600, // соотношение этих сторон необходимо считать относительно количества фигур
+  height = 800,
   widthPlayField = 10, // размер  стакана
   heightPlayField = 20; // размер стакана надо соотношение пикселей такое же, как и соотношение длины/ширины, чтобы фигуры были не вытянутые
 
-const view = new View(root, width, height, allFigures.length, 1);
+const view = new View(root, width, height, allFigures.length, 1, 1);
 
 window.view = view;
 ////////////////////////////////////////////

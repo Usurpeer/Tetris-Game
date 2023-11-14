@@ -1,5 +1,5 @@
 export default class View {
-  constructor(element, width, height, countFigures, theme) {
+  constructor(element, width, height, countFigures, theme, gridOn) {
     this._element = element;
     this._width = width;
     this._height = height;
@@ -26,6 +26,7 @@ export default class View {
     this.panelHeight = this._height;
 
     this._theme = theme;
+    this.gridOn = gridOn;
 
     this._element.appendChild(this.canvas);
     this.arrayColorsFigures = this.getAllColors(countFigures);
@@ -86,9 +87,17 @@ export default class View {
     this.blockWidth = this.playfieldInnerWidth / playField[0].length;
     this.blockHeight = this.playfieldInnerheight / playField.length;
 
+    this.renderCetka(this.blockWidth, this.blockHeight);
+
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
         const block = playField[i][j];
+        this.renderBlockGrid(
+          this.playfieldX + j * this.blockWidth,
+          this.playfieldY + i * this.blockHeight,
+          this.blockWidth,
+          this.blockHeight
+        );
         if (block != "0" && block != undefined) {
           this.renderBlock(
             block,
@@ -102,9 +111,9 @@ export default class View {
     }
 
     // отрисовка границы
-    this.context.strokeStyle = 'white';
+    this.context.strokeStyle = "white";
     this.context.lineWidth = this.playfieldBorderWidth;
-    this.context.strokeRect(0,0,this.playfieldWidth, this.playfieldHeight);
+    this.context.strokeRect(0, 0, this.playfieldWidth, this.playfieldHeight);
   }
 
   // отрисвка квадрата в поле
@@ -175,6 +184,30 @@ export default class View {
           );
         }
       }
+    }
+  }
+
+  // метод рисует сетку
+  renderCetka(blockWidth, blockHeight) {
+    const playfieldWidth = this.playfieldWidth;
+    const playfieldHeight = this.playfieldHeight;
+
+    if (this.gridOn == 1) {
+      // цикл, который рисует горизонтальные линии
+      for (let i = blockHeight; i < playfieldHeight; i += blockHeight) {
+        for (let j = 0; j < playfieldWidth; j++) {}
+      }
+      // цикл, который рисует вертикальные линии
+    }
+  }
+  renderBlockGrid(x, y, weidth, height) {
+    if(this.gridOn == 1){
+      this.context.fillStyle = "black"; // !!!!!!!!!!!!!!!нужно цвет фона
+      this.context.strokeStyle = "white"; // цвет обводки
+      this.context.lineWidth = 3; // ширина обводки
+  
+      this.context.fillRect(x, y, weidth, height);
+      this.context.strokeRect(x, y, weidth, height); // создание обводки вокруг фигуры
     }
   }
 }
