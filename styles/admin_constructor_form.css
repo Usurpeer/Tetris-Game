@@ -238,3 +238,26 @@ body{
     box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
     filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
   }
+  .count{
+    width: 100%;
+    position: absolute;
+    display: flex;
+  }
+  .input_count{
+    position: absolute;
+    margin-top: 520px;
+    margin-left: 380px;
+    width: 50px;
+  }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none; 
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+    appearance: none;
+    -moz-appearance: textfield;
+}

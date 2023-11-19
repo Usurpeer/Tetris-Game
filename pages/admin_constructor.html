@@ -26,41 +26,43 @@
             <div class="added">
                 <div class="navigation">
                     <button class="btn_left"></button>
-                    <canvas></canvas>
+                    <canvas id="added_fig" width="250" height="250"></canvas>
                     <button class="btn_right"></button>
                 </div>
                     <div class="buttons">
-                    <button class="do_btn">Удалить</button>
+                    <button class="do_btn" id="btn_delete">Удалить</button>
                     <button class="do_btn">Изменить</button>
                 </div>
             </div>
     
             <div class="constructor">
                 <div class="navigation">
-                    <button class="btn_left"></button>
-                    <canvas></canvas>
-                    <button class="btn_right"></button>
+                    <canvas id="construct_fig" width="250" height="250"></canvas>
                 </div>
                 <div class="buttons">
-                    <button class="do_btn">Добавить</button>
-                    <button class="do_btn">Сбросить</button>
+                    <button class="do_btn" id="add_fig">Добавить</button>
+                    <button class="do_btn" id="clean_fig">Сбросить</button>
                 </div>
             </div>
-          <p class="count_fig">Количество фигур: </p>
+            <div class="count">
+                <p class="count_fig">Количество фигур: </p> 
+                <input type="text" class="input_count"readonly>
+            </div>
+          
         </div>
         <h2 class="cup">Настройка размерности стакана</h2>
         <div class="constructor_cup">
             <div class="width_cup">
                 <p class="cup_p">Ширина</p>
-                <input type="text" class="width_cup_input">
-                <button class="btn_min"></button>
-                <button class="btn_plus"></button>
+                <input type="number" class="width_cup_input" value="7"readonly>
+                <button class="btn_min" id="btn_min_w"></button>
+                <button class="btn_plus" id="btn_plus_w"></button>
             </div>
             <div class="heigth_cup">
                 <p class="cup_p">Высота</p>
-                <input type="text" class="heigth_cup_input">
-                <button class="btn_min"></button>
-                <button class="btn_plus"></button>
+                <input type="number" class="heigth_cup_input" value="10"readonly>
+                <button class="btn_min" id="btn_min_h"></button>
+                <button class="btn_plus" id="btn_plus_h"></button>
             </div>
         </div>
         <button class="end_setting">Завершить</button>
@@ -72,7 +74,6 @@
   </form>
 </div>
 </body>
-<script type="module" src="..\js\theme_cookies.js" defer></script>
-<script src="..\js\action_button_rating.js" defer></script>
+<script src="..\js\action_constructor_fig.js" defer></script>
 
 </html>
