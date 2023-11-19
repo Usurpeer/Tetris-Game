@@ -3,12 +3,12 @@ import View from "./view.js";
 import Controller from "./controller.js";
 import ConvertAlphabet from "../convertToAlpgabet.js";
 
-const speedOnLvls = [1000, 500, 300],
-  scoresForLvls = [1000, 3000, 4000],
+const speedOnLvls = [1000, 500, 250],
+  scoresForLvls = [1000, 2000, 5000],
   sizesPlayfield1 = [
     [20, 10],
     [20, 14],
-    [20, 14],
+    [20, 8],
   ],
   allFigures = [
     ["1000100010001000"], // линия
@@ -31,7 +31,7 @@ const speedOnLvls = [1000, 500, 300],
     ["1000110010001000"], // Q 10
     ["0110010011000000"], // R 11
   ],
-  countFigureOnLvls = [allFigures.length - 7, 3, 4],
+  countFigureOnLvls = [allFigures.length - 11, 1, 1],
   quantityLinesForNextLvl = [1, 1];
 
 const convertAlp = new ConvertAlphabet();
@@ -53,14 +53,12 @@ window.game = game; // вроде надо, чтобы отображалось 
 /////////////////////////////////////////// view
 const root = document.querySelector("#root");
 const width = 600, // соотношение этих сторон необходимо считать относительно количества фигур
-  height = 800,
-  widthPlayField = 10, // размер  стакана
-  heightPlayField = 20; // размер стакана надо соотношение пикселей такое же, как и соотношение длины/ширины, чтобы фигуры были не вытянутые
+  height = 800;
 
 const view = new View(root, width, height, allFigures.length, 1, 1);
 
 window.view = view;
 ////////////////////////////////////////////
-const controller = new Controller(game, view, 1000);
+const controller = new Controller(game, view);
 
 window.controller = controller;

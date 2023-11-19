@@ -95,10 +95,34 @@ export default class Game {
     let weidth = this._sizesPlayfield[this._currentLvl - 1][1];
 
     let playField = [];
+   
+      for (let i = 0; i < height; i++) {
+        playField[i] = [];
+        for (let j = 0; j < weidth; j++) {
+          playField[i][j] = 0;
+        }
+      }
+    
+    return playField;
+  }
+
+  afterChangeLvl(){
+    let height = this._sizesPlayfield[this._currentLvl - 1][0];
+    let weidth = this._sizesPlayfield[this._currentLvl - 1][1];
+
+    let playField = [];
     for (let i = 0; i < height; i++) {
       playField[i] = [];
       for (let j = 0; j < weidth; j++) {
-        playField[i][j] = 0; // то, что заполняет нулями надо будет переделать, тк будут стираться значения
+        if (
+          i < this._playField.length &&
+          j < this._playField[i].length &&
+          this._playField[i][j] != 0
+        ) {
+          playField[i][j] = this._playField[i][j];
+        } else {
+          playField[i][j] = 0;
+        }
       }
     }
     return playField;
@@ -148,9 +172,10 @@ export default class Game {
         ) {
           if (
             x ==
-            Math.floor(
-              this._sizesPlayfield[this._currentLvl - 1][1] / 2 - 1 
-            ) && y == 1
+              Math.floor(
+                this._sizesPlayfield[this._currentLvl - 1][1] / 2 - 1
+              ) &&
+            y == 1
           ) {
             this.topOut = true;
           }
@@ -333,12 +358,12 @@ export default class Game {
           this._quantityLinesForNextLvl[1] + this._quantityLinesForNextLvl[0]
         ) {
           this._currentLvl = 3;
-          this._playField = this.get_set_PlayField();
+          this._playField = this.afterChangeLvl();
           // иначе это первый
         } else {
           if (this._currentLvl != 2) {
             this._currentLvl = 2;
-            this._playField = this.get_set_PlayField();
+            this._playField = this.afterChangeLvl();
           }
         }
       }
