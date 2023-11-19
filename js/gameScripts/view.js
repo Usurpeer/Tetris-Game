@@ -54,6 +54,13 @@ export default class View {
         "green",
         "yellow",
         "SlateBlue",
+        "Cornsilk",
+        "RosyBrown",
+        "Sienna",
+        "Teal",
+        "CadetBlue",
+        "LightGreen",
+        "LightCoral",
       ];
     } else if (this._theme == 2) {
       colors = [
@@ -87,11 +94,10 @@ export default class View {
     this.blockWidth = this.playfieldInnerWidth / playField[0].length;
     this.blockHeight = this.playfieldInnerheight / playField.length;
 
-    this.renderCetka(this.blockWidth, this.blockHeight);
-
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
         const block = playField[i][j];
+        
         this.renderBlockGrid(
           this.playfieldX + j * this.blockWidth,
           this.playfieldY + i * this.blockHeight,
@@ -101,7 +107,7 @@ export default class View {
         if (block != "0" && block != undefined) {
           this.renderBlock(
             block,
-            this.playfieldX + j * this.blockWidth,
+            this.playfieldX + (j - 0) * this.blockWidth, // можно дописать -1 чтобы она была посередине, но так выглядит странно
             this.playfieldY + i * this.blockHeight,
             this.blockWidth,
             this.blockHeight
@@ -187,19 +193,6 @@ export default class View {
     }
   }
 
-  // метод рисует сетку
-  renderCetka(blockWidth, blockHeight) {
-    const playfieldWidth = this.playfieldWidth;
-    const playfieldHeight = this.playfieldHeight;
-
-    if (this.gridOn == 1) {
-      // цикл, который рисует горизонтальные линии
-      for (let i = blockHeight; i < playfieldHeight; i += blockHeight) {
-        for (let j = 0; j < playfieldWidth; j++) {}
-      }
-      // цикл, который рисует вертикальные линии
-    }
-  }
   renderBlockGrid(x, y, weidth, height) {
     if(this.gridOn == 1){
       this.context.fillStyle = "black"; // !!!!!!!!!!!!!!!нужно цвет фона

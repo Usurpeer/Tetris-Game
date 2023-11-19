@@ -1,9 +1,9 @@
 import Game from "./game.js";
 import View from "./view.js";
 import Controller from "./controller.js";
+import ConvertAlphabet from "../convertToAlpgabet.js";
 
-const countFigureOnLvls = [3, 1, 1],
-  speedOnLvls = [1000, 500, 300],
+const speedOnLvls = [1000, 500, 300],
   scoresForLvls = [1000, 3000, 4000],
   sizesPlayfield1 = [
     [20, 10],
@@ -11,17 +11,37 @@ const countFigureOnLvls = [3, 1, 1],
     [20, 14],
   ],
   allFigures = [
-    ["A000A000A000A000"], // линия
-    ["BB00BB0000000000"], // квадрат
-    ["C000CC00C0000000"], // T образная
-    ["0DD0DD0000000000"], // L
-    ["E000EEE000000000"], // другая L
+    ["1000100010001000"], // линия
+    ["1100110000000000"], // квадрат
+    ["0100111000000000"], // T образная
+    ["0110110000000000"], // S
+    ["1100011000000000"], // Z
+    ["1000100011000000"], // L
+    ["0100010011000000"], // Other L
+    // отсуда свои фигуры
+    ["0110110001000000"], // H 1
+    ["1100110010000000"], // I 2
+    ["1100100010001000"], // J 3
+    ["0100010011001000"], // K 4
+    ["0100010011100000"], // L 5
+    ["1110101000000000"], // M 6
+    ["1110100010000000"], // N 7
+    ["0010011011000000"], // O 8
+    ["0100111001000000"], // P 9
+    ["1000110010001000"], // Q 10
+    ["0110010011000000"], // R 11
   ],
-  quantityLinesForNextLvl = [3, 3];
+  countFigureOnLvls = [allFigures.length - 7, 3, 4],
+  quantityLinesForNextLvl = [1, 1];
+
+const convertAlp = new ConvertAlphabet();
+
+const arraySymbol = convertAlp.convertNumbInAplphabet(allFigures);
+console.log(arraySymbol);
 
 const game = new Game(
   countFigureOnLvls,
-  allFigures,
+  arraySymbol,
   sizesPlayfield1,
   speedOnLvls,
   scoresForLvls,
