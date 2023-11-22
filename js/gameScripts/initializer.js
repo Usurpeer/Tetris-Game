@@ -13,19 +13,19 @@ let allFigures = [], // массив всех фигур
     [0, 0],
     [0, 0],
   ], // высота, ширина поля 3*2
-  quantityLinesForNextLvl = [], // количество линий для перехода на следующий уровень
-  rating = 0; // рейтинг
+  quantityLinesForNextLvl = [0, 0], // количество линий для перехода на следующий уровень
+  rating = 0, // рейтинг
+  theme = 1, // тема 0/1
+  gridOn = 1; // включен ли показ сетки
 
 window.onload = go();
 
 async function go() {
   await getData(); // инициализация всего
 
-  //нужно преобразовать массив в буквенный вид
-  const convertAlp = new ConvertAlphabet();
-
+  // нужно преобразовать массив в буквенный вид
   // итоговый массив фигур, который нужно в класс Game
-  const arraySymbol = convertAlp.convertNumbInAplphabet(allFigures);
+  const arraySymbol = ConvertAlphabet.convertNumbInAplphabet(allFigures);
 
   const game = new Game(
     countFigureOnLvls,
@@ -35,13 +35,21 @@ async function go() {
     scoresForLvls,
     quantityLinesForNextLvl
   );
-
+  console.log(quantityLinesForNextLvl);
   /////////////////////////////////////////// view
   const root = document.querySelector("#root");
   const width = 600, // соотношение этих сторон необходимо считать относительно количества фигур
     height = 800;
 
-  const view = new View(root, width, height, allFigures.length, 1, 1, 50000);
+  const view = new View(
+    root, // имя класса div*а
+    width,
+    height,
+    arraySymbol.length,
+    theme,
+    gridOn,
+    rating
+  );
   const controller = new Controller(game, view);
   window.controller = controller;
   console.log("Низ метода");

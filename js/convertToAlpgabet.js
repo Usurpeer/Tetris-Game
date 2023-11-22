@@ -1,5 +1,5 @@
 export default class ConvertAlphabet {
-  convertNumbInAplphabet(inputArray) {
+  static convertNumbInAplphabet(inputArray) {
     const numbArray = inputArray;
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let outputArray = [];
