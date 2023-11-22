@@ -2,50 +2,78 @@
 <html lang="ru">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-
-    <link rel="stylesheet" href="..\styles\icons font.css">
-    <link rel="stylesheet" href="..\styles\main.css">
-
-    <title>Конструктор</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="..\styles\design_1.css">
+  <link rel="stylesheet" href="..\styles\admin_constructor_form.css">
+  <link href="https://fonts.cdnfonts.com/css/tetris" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Feature+Mono&display=swap">
+  <title>Настройки</title>
 </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="fa-solid fa-circle-arrow-left fa-2x"></i></a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 top-menu">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#">
-                            Администратор
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#"><i class="far fa-user fa-1.5x"> Логин игрока</i></a>
-                            </li>
-                            <li><a class="dropdown-item" href="#">Рейтинг</a></li>
-                        </ul>
-                    </li>
-                </ul>
+<body class="blue">
+  <div class="back_circle">
+    <div>
+      <button class="back" id="back"></button>
+      <button class="player" id="player">Игрок</button>
+    </div>
+    <form action="">
+    <h1 class="tetris">TETRIS</h1>
+
+    <div class="box_construct">
+        <div class="constructor_fig">
+            <h2>Настройка фигур</h2>
+    
+            <div class="added">
+                <div class="navigation">
+                    <button class="btn_left"></button>
+                    <canvas id="added_fig" width="250" height="250"></canvas>
+                    <button class="btn_right"></button>
+                </div>
+                    <div class="buttons">
+                    <button class="do_btn" id="btn_delete">Удалить</button>
+                    <button class="do_btn">Изменить</button>
+                </div>
+            </div>
+    
+            <div class="constructor">
+                <div class="navigation">
+                    <canvas id="construct_fig" width="250" height="250"></canvas>
+                </div>
+                <div class="buttons">
+                    <button class="do_btn" id="add_fig">Добавить</button>
+                    <button class="do_btn" id="clean_fig">Сбросить</button>
+                </div>
+            </div>
+            <div class="count">
+                <p class="count_fig">Количество фигур: </p> 
+                <input type="text" class="input_count"readonly>
+            </div>
+          
+        </div>
+        <h2 class="cup">Настройка размерности стакана</h2>
+        <div class="constructor_cup">
+            <div class="width_cup">
+                <p class="cup_p">Ширина</p>
+                <input type="number" class="width_cup_input" value="7"readonly>
+                <button class="btn_min" id="btn_min_w"></button>
+                <button class="btn_plus" id="btn_plus_w"></button>
+            </div>
+            <div class="heigth_cup">
+                <p class="cup_p">Высота</p>
+                <input type="number" class="heigth_cup_input" value="10"readonly>
+                <button class="btn_min" id="btn_min_h"></button>
+                <button class="btn_plus" id="btn_plus_h"></button>
             </div>
         </div>
-    </nav>
+        <button class="end_setting">Завершить</button>
+    </div>
+
+    
+
+    
+  </form>
+</div>
 </body>
+<script src="..\js\action_constructor_fig.js" defer></script>
 
 </html>
