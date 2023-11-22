@@ -32,7 +32,7 @@ const speedOnLvls = [1000, 500, 250],
     ["0110010011000000"], // R 11
   ],
   countFigureOnLvls = [allFigures.length - 11, 1, 1],
-  quantityLinesForNextLvl = [1, 1];
+  quantityLinesForNextLvl = [7, 7];
 
 const arraySymbol = ConvertAlphabet.convertNumbInAplphabet(allFigures);
 
