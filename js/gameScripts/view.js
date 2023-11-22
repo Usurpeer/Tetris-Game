@@ -1,5 +1,6 @@
 export default class View {
-  constructor(element, width, height, countFigures, theme, gridOn) {
+  constructor(element, width, height, countFigures, theme, gridOn, rating) {
+    this.rating = rating;
     this._element = element;
     this._width = width;
     this._height = height;
@@ -173,7 +174,7 @@ export default class View {
       this.panelX,
       this.panelY + 48
     );
-    this.context.fillText(`Рекорд:`, this.panelX, this.panelY + 64);
+    this.context.fillText(`Рекорд: ${this.rating}`, this.panelX, this.panelY + 64);
     this.context.fillText("Следующая", this.panelX, this.panelY + 96);
 
     for (let i = 0; i < 4; i++) {

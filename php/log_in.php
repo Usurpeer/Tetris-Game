@@ -14,8 +14,8 @@ else if(strlen($password) < 4 || strlen($password) > 12){
 else{
     //запрос к бд
     $password = md5($password);
-    $sql = "SELECT * FROM `users` WHERE login = '$login' AND password = '$password'";
-    $result = $conn -> query($sql);
+    $sqlAllFigures = "SELECT * FROM `users` WHERE login = '$login' AND password = '$password'";
+    $result = $conn -> query($sqlAllFigures);
 
     if($result -> num_rows > 0){
         $user_role = ($result -> fetch_assoc())['user_role'];

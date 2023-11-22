@@ -7,8 +7,8 @@ const speedOnLvls = [1000, 500, 250],
   scoresForLvls = [1000, 2000, 5000],
   sizesPlayfield1 = [
     [20, 10],
-    [20, 14],
-    [20, 8],
+    [18, 8],
+    [16, 7],
   ],
   allFigures = [
     ["1000100010001000"], // линия
@@ -37,7 +37,6 @@ const speedOnLvls = [1000, 500, 250],
 const convertAlp = new ConvertAlphabet();
 
 const arraySymbol = convertAlp.convertNumbInAplphabet(allFigures);
-console.log(arraySymbol);
 
 const game = new Game(
   countFigureOnLvls,
@@ -55,7 +54,7 @@ const root = document.querySelector("#root");
 const width = 600, // соотношение этих сторон необходимо считать относительно количества фигур
   height = 800;
 
-const view = new View(root, width, height, allFigures.length, 1, 1);
+const view = new View(root, width, height, allFigures.length, 1, 1, 50000);
 
 window.view = view;
 ////////////////////////////////////////////
