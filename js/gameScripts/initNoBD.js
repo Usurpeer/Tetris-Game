@@ -34,9 +34,7 @@ const speedOnLvls = [1000, 500, 250],
   countFigureOnLvls = [allFigures.length - 11, 1, 1],
   quantityLinesForNextLvl = [1, 1];
 
-const convertAlp = new ConvertAlphabet();
-
-const arraySymbol = convertAlp.convertNumbInAplphabet(allFigures);
+const arraySymbol = ConvertAlphabet.convertNumbInAplphabet(allFigures);
 
 const game = new Game(
   countFigureOnLvls,
