@@ -32,8 +32,6 @@ export default class ConstructorGame {
 
   // проверка уникальности с массивом имеющихся фигур сдвиг, повороты и сравнение
   isUnique() {
-    let uniq = 1; // если будет единица, значит фигура уникальна
-
     for (let i = 0; i < this.countFigures; i++) {
       // получили фигуру, её надо сравнить с newFig поворотами, сдвигами
       let arraySavedFigure = this.getArrayFromString(
@@ -45,35 +43,26 @@ export default class ConstructorGame {
       this.newFigure = this.moveInEmpty(this.newFigure);
 
       // надо сравнить в текущем положении
-      uniq = this.compareArrays(arraySavedFigure, this.newFigure);
-      if (uniq == 0) {
+      if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
         return 0;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
-      uniq = this.compareArrays(arraySavedFigure, this.newFigure);
-      if (uniq == 0) {
+      if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
         return 0;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
-      uniq = this.compareArrays(arraySavedFigure, this.newFigure);
-      if (uniq == 0) {
+      if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
         return 0;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
-      uniq = this.compareArrays(arraySavedFigure, this.newFigure);
-      if (uniq == 0) {
+      if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
         return 0;
       }
     }
-    if (uniq == 1) {
-      console.log("Фигура уникальна.");
-    } else {
-      console.log("Фигура не уникальная.");
-    }
-    return uniq;
+    return 1;
   }
   // сравнивает два массива, в случае совпадения возвращает 0
   compareArrays(fig1, fig2) {

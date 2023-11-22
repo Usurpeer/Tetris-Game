@@ -7,21 +7,19 @@ header('Content-Type: application/json');
 $sqlCountFigures = "SELECT COUNT(`id`) FROM `figures` WHERE level > 0";
 
 $data = array();
-$result = $conn -> query($sqlCountFigures);
+$result = $conn->query($sqlCountFigures);
 
-while($row = $result -> fetch_array())
-{       
+while ($row = $result->fetch_array()) {
     array_push($data, $row["COUNT(`id`)"]);
 }
 //////////////////////////////////////////
 
-//////////////////////////////////////////
+// фигура и ее принадлежность к уровню
 $sqlAllFigures = "SELECT `structure`, `level` FROM `figures` WHERE level > 0 ORDER BY `level`";
 
-$result = $conn -> query($sqlAllFigures);
+$result = $conn->query($sqlAllFigures);
 
-while($row = $result -> fetch_array())
-{       
+while ($row = $result->fetch_array()) {
     array_push($data, $row["structure"], $row["level"]);
 }
 //////////////////////////////////////////
@@ -29,10 +27,9 @@ while($row = $result -> fetch_array())
 // таблица настроек уровня
 $sqlAllLvlSettings = "SELECT * FROM `levelsettings`";
 
-$result = $conn -> query($sqlAllLvlSettings);
+$result = $conn->query($sqlAllLvlSettings);
 
-while($row = $result -> fetch_array())
-{       
+while ($row = $result->fetch_array()) {
     array_push($data, $row["height"], $row["width"], $row["speed"], $row["countOfLines"], $row["pointsOfLine"]);
 }
 
