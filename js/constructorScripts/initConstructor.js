@@ -2,7 +2,7 @@ import ConstructorGame from "./constructorGame.js";
 
 const allFigures = [
     ["1000100010001000"], // линия
-    ["1100110000000000"], // квадрат
+   // ["1100110000000000"], // квадрат
     ["0100111000000000"], // T образная
     ["0110110000000000"], // S
     ["1100011000000000"], // Z
@@ -29,7 +29,7 @@ const allFigures = [
   newFigureZ = "1100011000000000",
   //testFig = "1011100110011111";
   //
-  testFig = "1111101111011111";
+  testFig = "1111100110011101";
 
 const constructorGame = new ConstructorGame(allFigures, testFig);
 

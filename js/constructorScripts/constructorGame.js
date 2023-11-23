@@ -24,7 +24,7 @@ export default class ConstructorGame {
 
   // итоговый метод, который вызывается и возвращает True/False - результат общей проверки
   isCorrect() {
-    if (this.isUnique() == 1 && this.isWholeness() == true) {
+    if (this.isUnique() == true && this.isWholeness() == true) {
       return true;
     }
     return false;
@@ -37,32 +37,31 @@ export default class ConstructorGame {
       let arraySavedFigure = this.getArrayFromString(
         this.allFiguresString[i] + ""
       );
-
       // сдвинули фигуры в левых вернхий угол
       arraySavedFigure = this.moveInEmpty(arraySavedFigure);
       this.newFigure = this.moveInEmpty(this.newFigure);
 
       // надо сравнить в текущем положении
       if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
-        return 0;
+        return false;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
       if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
-        return 0;
+        return false;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
       if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
-        return 0;
+        return false;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
       if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
-        return 0;
+        return false;
       }
     }
-    return 1;
+    return true;
   }
   // сравнивает два массива, в случае совпадения возвращает 0
   compareArrays(fig1, fig2) {
@@ -163,7 +162,7 @@ export default class ConstructorGame {
     if (chekedFigure[i][j] != undefined && chekedFigure[i][j] == 1) {
       currentLength[0]++;
       chekedFigure[i][j] = currentLength[0];
-
+      console.log(chekedFigure);
       // вправо
       if (chekedFigure[i].length > j + 1 && chekedFigure[i][j + 1] == 1) {
         this.getLengthFigure(i, j + 1, chekedFigure, currentLength);
@@ -204,9 +203,9 @@ export default class ConstructorGame {
     // мб нашел ошибку, если фигура будет 1111111111011111, то тк тут нет входа для перебора, то да. Нужно сделать вход не по 1.1, а по перебору - нулю
 
     // проверить эту реализацию.
-    for(let i = 1; i < checkedFigure.length; i++){
-      for(let j = 1; j < checkedFigure[i].length; j++){
-        if(checkedFigure[i][j] == 0){
+    for (let i = 1; i < checkedFigure.length; i++) {
+      for (let j = 1; j < checkedFigure[i].length; j++) {
+        if (checkedFigure[i][j] == 0) {
           this.getArrayEmptiness(i, j, checkedFigure);
           break;
         }
@@ -250,14 +249,15 @@ export default class ConstructorGame {
     if (checkedFigure[i].length - 1 > j + 1 && checkedFigure[i][j + 1] == 0) {
       this.getArrayEmptiness(i, j + 1, checkedFigure);
     }
-    // назад
-    if (checkedFigure[i].length - j > 0 && checkedFigure[i][j - 1] == 0) {
-      this.getArrayEmptiness(i, j - 1, checkedFigure);
-    }
     // вниз, под текущем положением
     if (checkedFigure.length - 1 > i + 1 && checkedFigure[i + 1][j] == 0) {
       this.getArrayEmptiness(i + 1, j, checkedFigure);
     }
+    // назад
+    if (checkedFigure[i].length - j > 0 && checkedFigure[i][j - 1] == 0) {
+      this.getArrayEmptiness(i, j - 1, checkedFigure);
+    }
+
     // вверх
     if (i - 1 > 1 && checkedFigure[i - 1][j] == 0) {
       this.getArrayEmptiness(i - 1, j, checkedFigure);
