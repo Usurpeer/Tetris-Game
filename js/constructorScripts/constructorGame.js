@@ -156,7 +156,7 @@ export default class ConstructorGame {
       }
     }
     console.log("Успешная проверка на целостность.");
-    return this.isNoEmpty(checkedFigure);
+    return this.isNoEmpty();
   }
   // составление длины рекурсивным методом
   getLengthFigure(i, j, chekedFigure, currentLength) {
@@ -196,12 +196,14 @@ export default class ConstructorGame {
   }
 
   // проверка на пустоту
-  isNoEmpty(checkedFigure) {
-    this.setBorders(checkedFigure);
+  isNoEmpty() {
+    let checkedFigure = [];
+    this.arrayCopy(checkedFigure);
 
+    this.setBorders(checkedFigure);
     // мб нашел ошибку, если фигура будет 1111111111011111, то тк тут нет входа для перебора, то да. Нужно сделать вход не по 1.1, а по перебору - нулю
 
-    /* проверить эту реализацию.
+    // проверить эту реализацию.
     for(let i = 1; i < checkedFigure.length; i++){
       for(let j = 1; j < checkedFigure[i].length; j++){
         if(checkedFigure[i][j] == 0){
@@ -209,8 +211,7 @@ export default class ConstructorGame {
           break;
         }
       }
-    }*/
-    this.getArrayEmptiness(1, 1, checkedFigure); // стартовый индекс сразу 1,1
+    }
 
     // проверка, если осталось хоть 1 нулевое значение, значит оно закрыто от границ, значит false
     for (let i = 0; i < checkedFigure.length; i++) {
