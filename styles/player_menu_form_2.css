@@ -128,3 +128,19 @@ body.blue .level:active {
 .btlvl3 {
   margin-left: 12%;
 }
+h3 {
+  position: fixed;
+  top: 40px;
+  right: 50px;
+  font-size: 30px;
+  font-family: "BellotaText";
+  background: transparent;
+  cursor: pointer;
+  border: none;
+}
+body.pink h3{
+  color: white;
+}
+body.blue h3{
+  color: #5B3B3B;
+}
