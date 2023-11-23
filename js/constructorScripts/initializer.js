@@ -1,10 +1,8 @@
-// работа с конструктором, здесь всё будет в нем
-// вопрос в том, что делать с кнопкой изменить
-
+// работа с конструктором
 import ConstructorGame from "./constructorGame.js";
 
 let allFigures = [], // [i][0] - строка фигуры, [i][1] - ID
-  countFigures = 0;
+  currentIndex = 0; // индекс отображаемой фигуры, чтобы знать какая сейчас на экране и удалить изменить ее легко
 
 window.onload = go();
 
@@ -12,32 +10,27 @@ window.onload = go();
 async function go() {
   console.log("go");
 
+  // инициализация всех данных из бд
   await getDataFigures();
-
-  console.log("Инициализировал все поля из бд.");
   console.log(allFigures);
+  await updateFigure();
+  // метод, который должен вызываться по клику кнопки добавить.
+  // await checkFigure();
 
-  await checkFigure();
+  // метод вызывается по кнопке удалить
+  // await deleteFigureByID(36);
 
-  console.log("Добавил фигуру. ");
-  console.log(allFigures);
   // здесь вызов функции, которая отображает фигуры
 }
 
 // функция получает из БД список фигур, количество фигур
 async function getDataFigures() {
   try {
-    console.log("Зашел в метод получения данных из бд.");
     const res = await fetch(`../../php/constructor/getData.php`);
     const data = await res.json();
 
-    countFigures = data[0];
+    let countFigures = data[0];
 
-    console.log("Данные.");
-    console.log(data);
-
-    console.log("Все фигуры до изменения.");
-    console.log(allFigures);
     let iterator = 1; // итератор по data
     for (let i = 0; i < countFigures; i++) {
       // четный индекс, значит фигура
@@ -49,17 +42,75 @@ async function getDataFigures() {
       allFigures[i][1] = data[iterator];
       iterator++; // нечетный
     }
-    console.log("Все фигуры после изменения.");
-    console.log(allFigures);
   } catch (error) {
     console.warn(error);
   }
 }
 
+// заменить фигуру при нажатии на кнопку добавить
+async function updateFigure() {
+  // сохранение id фигуры
+  const idFig = allFigures[currentIndex][1];
+  console.log("idFig: " + idFig);
+  // формирование массива новой фигуры
+  const newFig = "1111111111111001"; // = getNewFigure();
+
+  let filteredArray = arrayCopy();
+
+  filteredArray.splice(0, 1); // в первый параметр надо index удаляемого
+
+  const constructorGame = new ConstructorGame(filteredArray, newFig);
+  // если корректно, то изменяет в бд, перезаписывает данные
+
+  if (constructorGame.isCorrect()) {
+    // добавление в бд
+    await updateFigureInBD(idFig, newFig);
+    await getDataFigures(); // тк нужно заново обновить массив всех фигур, по хорошему это как раз через связь с бд делать
+    // currentIndex--;
+  } else {
+    console.warn("Фигура неуникальная или нецелостна.");
+  }
+}
+async function updateFigureInBD(ID, newFig){
+    try {
+        let sendArray = {
+          id: ID,
+          figure: newFig
+        };
+    
+        const res = await fetch("../../php/constructor/updateFigure.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(sendArray),
+        });
+        // данные от ответа сервера
+        console.log(await res.json());
+      } catch (error) {
+        console.warn(error);
+      }
+}
 // функция отправляет id фигуры на удаление, после заново формируется весь массив
 async function deleteFigureByID(ID) {
-  // отправка
-  await getDataFigures();
+  try {
+    let sendArray = {
+      id: ID,
+    };
+
+    const res = await fetch("../../php/constructor/deleteFigure.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sendArray),
+    });
+    await getDataFigures();
+    // данные от ответа сервера
+    console.log(await res.json());
+  } catch (error) {
+    console.warn(error);
+  }
 }
 
 // метод, который вызывается по нажатию кнопки "добавить"
@@ -67,13 +118,16 @@ async function checkFigure() {
   // формирование массива новой фигуры
   const newFig = "1111111111111000"; // = getNewFigure();
 
-  const arrayStringFigures = getArrayStringFigures();
+  const arrayStringFigures = getArrayStringFigures(); // создает массив строк всех фигур
   const constructorGame = new ConstructorGame(arrayStringFigures, newFig);
 
+  // если корректно, то изменяет в бд, перезаписывает данные
   if (constructorGame.isCorrect()) {
     // добавление в бд
     await addFigureInBD(newFig);
     await getDataFigures(); // тк нужно заново обновить массив всех фигур, по хорошему это как раз через связь с бд делать
+  } else {
+    console.warn("Фигура неуникальная или нецелостна.");
   }
 }
 // функция отправляет на добавление строку фигуры, текущий уровень будет 0
@@ -105,4 +159,12 @@ function getArrayStringFigures() {
   }
 
   return arrayStringFigures;
+}
+
+function arrayCopy() {
+  let newArray = [];
+  for (let i = 0; i < allFigures.length; i++) {
+    newArray[i] = allFigures[i];
+  }
+  return newArray;
 }

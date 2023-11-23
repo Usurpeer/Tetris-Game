@@ -6,8 +6,8 @@ if (isset($_POST)) {
     $data = json_decode(file_get_contents('php://input'), true);
     // операции с данными
     $strFig = $data['figure'];
-    $sqlAddFigure = "INSERT INTO `figures`(`structure`, `level`) VALUES ('$strFig','0')";
-    if ($conn->query($sqlAddFigure) === TRUE) {
+    $sqlUpdateFigure = "INSERT INTO `figures`(`structure`, `level`) VALUES ('$strFig','0')";
+    if ($conn->query($sqlUpdateFigure) === TRUE) {
         $result = '1';
     } else {
         $result = '0';
