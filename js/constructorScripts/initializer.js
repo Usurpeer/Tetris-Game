@@ -13,7 +13,7 @@ async function go() {
   // инициализация всех данных из бд
   await getDataFigures();
   console.log(allFigures);
-  await updateFigure();
+  //await updateFigure();
   // метод, который должен вызываться по клику кнопки добавить.
   // await checkFigure();
 
