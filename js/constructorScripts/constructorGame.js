@@ -199,6 +199,17 @@ export default class ConstructorGame {
   isNoEmpty(checkedFigure) {
     this.setBorders(checkedFigure);
 
+    // мб нашел ошибку, если фигура будет 1111111111011111, то тк тут нет входа для перебора, то да. Нужно сделать вход не по 1.1, а по перебору - нулю
+
+    /* проверить эту реализацию.
+    for(let i = 1; i < checkedFigure.length; i++){
+      for(let j = 1; j < checkedFigure[i].length; j++){
+        if(checkedFigure[i][j] == 0){
+          this.getArrayEmptiness(i, j, checkedFigure);
+          break;
+        }
+      }
+    }*/
     this.getArrayEmptiness(1, 1, checkedFigure); // стартовый индекс сразу 1,1
 
     // проверка, если осталось хоть 1 нулевое значение, значит оно закрыто от границ, значит false
@@ -233,6 +244,7 @@ export default class ConstructorGame {
         checkedFigure[i][j] = -1;
       }
     }
+
     // вправо
     if (checkedFigure[i].length - 1 > j + 1 && checkedFigure[i][j + 1] == 0) {
       this.getArrayEmptiness(i, j + 1, checkedFigure);

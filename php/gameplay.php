@@ -32,6 +32,7 @@ $result = $conn->query($sqlAllLvlSettings);
 while ($row = $result->fetch_array()) {
     array_push($data, $row["height"], $row["width"], $row["speed"], $row["countOfLines"], $row["pointsOfLine"]);
 }
+//////////////////////////////////////////
 
 print json_encode($data);
 
