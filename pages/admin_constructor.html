@@ -14,7 +14,7 @@
   <div class="back_circle">
     <div>
       <button class="back" id="back"></button>
-      <button class="player" id="player">Игрок</button>
+      <button class="player" id="player">Администратор</button>
     </div>
     <form action="">
     <h1 class="tetris">TETRIS</h1>
@@ -24,18 +24,20 @@
             <h2>Настройка фигур</h2>
     
             <div class="added">
+                <p class="title_canvas">Добавленные фигуры</p>
                 <div class="navigation">
                     <button class="btn_left"></button>
                     <canvas id="added_fig" width="250" height="250"></canvas>
                     <button class="btn_right"></button>
                 </div>
-                    <div class="buttons">
+                <div class="buttons">
                     <button class="do_btn" id="btn_delete">Удалить</button>
                     <button class="do_btn">Изменить</button>
                 </div>
             </div>
     
             <div class="constructor">
+                <p class="title_canvas">Конструктор фигур</p>
                 <div class="navigation">
                     <canvas id="construct_fig" width="250" height="250"></canvas>
                 </div>
@@ -50,27 +52,8 @@
             </div>
           
         </div>
-        <h2 class="cup">Настройка размерности стакана</h2>
-        <div class="constructor_cup">
-            <div class="width_cup">
-                <p class="cup_p">Ширина</p>
-                <input type="number" class="width_cup_input" value="7"readonly>
-                <button class="btn_min" id="btn_min_w"></button>
-                <button class="btn_plus" id="btn_plus_w"></button>
-            </div>
-            <div class="heigth_cup">
-                <p class="cup_p">Высота</p>
-                <input type="number" class="heigth_cup_input" value="10"readonly>
-                <button class="btn_min" id="btn_min_h"></button>
-                <button class="btn_plus" id="btn_plus_h"></button>
-            </div>
-        </div>
         <button class="end_setting">Завершить</button>
-    </div>
-
-    
-
-    
+    </div>    
   </form>
 </div>
 </body>

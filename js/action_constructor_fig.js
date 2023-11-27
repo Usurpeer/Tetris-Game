@@ -1,12 +1,12 @@
 const btnAdd = document.querySelector("#add_fig");                //кнопка добавить фигуру
 const btnClean = document.querySelector("#clean_fig");            //кнопка сбросить фигуру
 const inputCount = document.querySelector(".input_count");        //вывод количества фигур
-const inputWidth = document.querySelector(".width_cup_input");    //ввод ширины стакана
-const inputHeigth = document.querySelector(".heigth_cup_input");  //ввод высоты стакана
-const btnMinW = document.querySelector("#btn_min_w");             //кнопка - ширины
-const btnPlusW = document.querySelector("#btn_plus_w");           //кнопка + ширины
-const btnMinH = document.querySelector("#btn_min_h");             //кнопка - высоты
-const btnPlusH = document.querySelector("#btn_plus_h");           //кнопка + высоты
+// const inputWidth = document.querySelector(".width_cup_input");    //ввод ширины стакана
+// const inputHeigth = document.querySelector(".heigth_cup_input");  //ввод высоты стакана
+// const btnMinW = document.querySelector("#btn_min_w");             //кнопка - ширины
+// const btnPlusW = document.querySelector("#btn_plus_w");           //кнопка + ширины
+// const btnMinH = document.querySelector("#btn_min_h");             //кнопка - высоты
+// const btnPlusH = document.querySelector("#btn_plus_h");           //кнопка + высоты
 const btnLeft = document.querySelector(".btn_left");              //кнопка навигации
 const btnRigth = document.querySelector(".btn_right");            //кнопка навигации
 const btnDelete = document.querySelector("#btn_delete");            //кнопка удаления
@@ -98,26 +98,26 @@ btnClean.addEventListener("click", () => {                          //сброс
   }
 });
 
-btnPlusW.addEventListener("click", () => {                        //увеличение ширины стакана
-  if(inputWidth.value < 14){
-    inputWidth.value = parseInt(inputWidth.value) + 1;
-  }
-});
-btnMinW.addEventListener("click", () => {                         //уменьшение ширины стакана
-  if(inputWidth.value > 7){
-    inputWidth.value = parseInt(inputWidth.value) - 1;
-  }
-});
-btnPlusH.addEventListener("click", () => {                        //увеличение высоты стакана
-  if(inputHeigth.value < 20){
-    inputHeigth.value = parseInt(inputHeigth.value) + 1;
-  }
-});
-btnMinH.addEventListener("click", () => {                         //уменьшение высоты стакана
-  if(inputHeigth.value > 10){
-    inputHeigth.value = parseInt(inputHeigth.value) - 1;
-  }
-});
+// btnPlusW.addEventListener("click", () => {                        //увеличение ширины стакана
+//   if(inputWidth.value < 14){
+//     inputWidth.value = parseInt(inputWidth.value) + 1;
+//   }
+// });
+// btnMinW.addEventListener("click", () => {                         //уменьшение ширины стакана
+//   if(inputWidth.value > 7){
+//     inputWidth.value = parseInt(inputWidth.value) - 1;
+//   }
+// });
+// btnPlusH.addEventListener("click", () => {                        //увеличение высоты стакана
+//   if(inputHeigth.value < 20){
+//     inputHeigth.value = parseInt(inputHeigth.value) + 1;
+//   }
+// });
+// btnMinH.addEventListener("click", () => {                         //уменьшение высоты стакана
+//   if(inputHeigth.value > 10){
+//     inputHeigth.value = parseInt(inputHeigth.value) - 1;
+//   }
+// });
 
 btnRigth.addEventListener("click", () => {                         //навигация по фигурам
   if(currentFig < parseInt(inputCount.value) - 1){
