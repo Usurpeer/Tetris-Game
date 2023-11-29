@@ -1,0 +1,64 @@
+.back_circle {
+    background-attachment: fixed;
+    width: 100%;
+    position: absolute;
+    overflow: hide;
+}
+.player {
+position: fixed;
+top: 40px;
+right: 50px;
+font-size: 30px;
+font-family: "BellotaText";
+background: transparent;
+cursor: pointer;
+border: none;
+}
+body.pink .player{
+color: white;
+}
+body.blue .player{
+color: #5B3B3B;
+}
+.back {
+position: fixed;
+top: 30px;
+left: 50px;
+width: 70px;
+height: 70px;
+border: none;
+background: transparent;
+background-size: cover;
+cursor: pointer;
+}
+body.pink .back{
+background-image: url("../img/back.png");
+}
+body.blue .back{
+background-image: url("../img/back2.png");
+}
+@font-face {
+font-family: "Feature Mono";
+src: url("../webfonts/FeatureMono-Regular.ttf") format("truetype");
+font-style: normal;
+font-weight: normal;
+}
+@font-face {
+font-family: "BellotaText";
+src: url("../webfonts/BellotaText-Bold.ttf") format("truetype");
+font-style: normal;
+font-weight: normal;
+}
+.box_log {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    padding-top: 50px;
+    padding-left: 50px;
+    width: 680px;
+    height: 850px;
+    background: rgba(255, 255, 255, 0.17);
+    box-shadow: 0px 0px 25px #4d4d4d;
+    border-radius: 60px;
+  }

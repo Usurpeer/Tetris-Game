@@ -51,8 +51,8 @@ window.game = game; // вроде надо, чтобы отображалось 
 const root = document.querySelector("#root");
 const width = 600, // соотношение этих сторон необходимо считать относительно количества фигур
   height = 800;
-
-const view = new View(root, width, height, allFigures.length, 1, 1, 50000);
+  
+const view = new View(root, width, height, allFigures.length, document.body.className, 1, 50000);
 
 window.view = view;
 ////////////////////////////////////////////

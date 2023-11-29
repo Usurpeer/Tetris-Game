@@ -21,7 +21,7 @@ export default class View {
     this.playfieldInnerheight =
       this.playfieldHeight - this.playfieldBorderWidth * 2;
     ///////////////////////////////////////////////////
-    this.panelX = this.playfieldWidth + 10;
+    this.panelX = this.playfieldWidth + 30;
     this.panelY = 0;
     this.panelWidth = this._width / 3;
     this.panelHeight = this._height;
@@ -46,7 +46,7 @@ export default class View {
   // метод получает случайный цвет из заполненного набора по указанной теме
   getRandomColor() {
     let colors = [];
-    if (this._theme == 1) {
+    if (this._theme == "pink") {
       colors = [
         "red",
         "orange",
@@ -63,7 +63,7 @@ export default class View {
         "LightGreen",
         "LightCoral",
       ];
-    } else if (this._theme == 2) {
+    } else if (this._theme == "blue") {
       colors = [
         "Cornsilk",
         "RosyBrown",
@@ -118,7 +118,13 @@ export default class View {
     }
 
     // отрисовка границы
-    this.context.strokeStyle = "white";
+    if(this._theme == "pink"){
+      this.context.strokeStyle = "white";
+    }else{
+      this.context.strokeStyle = "#5B3B3B";
+    }
+
+    
     this.context.lineWidth = this.playfieldBorderWidth;
     this.context.strokeRect(0, 0, this.playfieldWidth, this.playfieldHeight);
   }
@@ -127,7 +133,11 @@ export default class View {
   renderBlock(symbol, x, y, weidth, height) {
     const color = this.getColorBySymbol(symbol);
     this.context.fillStyle = color; // цвет заливки
-    this.context.strokeStyle = "black"; // цвет обводки
+    if(this._theme == "pink"){      // цвет обводки
+      this.context.strokeStyle = "white";
+    }else{
+      this.context.strokeStyle = "#5B3B3B";
+    }  
     this.context.lineWidth = 2; // ширина обводки
 
     this.context.fillRect(x, y, weidth, height);
@@ -160,22 +170,26 @@ export default class View {
   renderPanel({ score, currentLvl, lines, nextFigure }) {
     this.context.textAlign = "start"; // текст по левому краю
     this.context.textBaseline = "top"; // текст по верхнему краю
-    this.context.fillStyle = "white"; // цвет текста
-    this.context.font = '14px "Press Start 2P"'; // Шрифт
+    if(this._theme == "pink"){      // цвет текста
+      this.context.fillStyle = "white"; 
+    }else{
+      this.context.fillStyle = "#5B3B3B";
+    }  
+    this.context.font = '26px "BellotaText"'; // Шрифт
 
     this.context.fillText(
       `Текущий уровень: ${currentLvl}`,
       this.panelX,
-      this.panelY + 0
+      this.panelY + 50
     );
-    this.context.fillText(`Очки: ${score}`, this.panelX, this.panelY + 24);
+    this.context.fillText(`Очки: ${score}`, this.panelX, this.panelY + 80);
     this.context.fillText(
       `Осталось линий: ${lines}`,
       this.panelX,
-      this.panelY + 48
+      this.panelY + 110
     );
-    this.context.fillText(`Рекорд: ${this.rating}`, this.panelX, this.panelY + 64);
-    this.context.fillText("Следующая", this.panelX, this.panelY + 96);
+    this.context.fillText(`Рекорд: ${this.rating}`, this.panelX, this.panelY + 140);
+    this.context.fillText("Следующая", this.panelX, this.panelY + 170);
 
     for (let i = 0; i < 4; i++) {
       for (let j = 0; j < 4; j++) {
@@ -184,10 +198,10 @@ export default class View {
         if (block != "0") {
           this.renderBlock(
             block,
-            this.panelX + j * this.blockWidth * 0.5,
-            this.panelY + 130 + i * this.blockHeight * 0.5,
-            this.blockWidth * 0.5,
-            this.blockHeight * 0.5
+            this.panelX + 60 + j * this.blockWidth * 0.9,
+            this.panelY + 210 + i * this.blockHeight * 0.9,
+            this.blockWidth * 0.9,
+            this.blockHeight * 0.9
           );
         }
       }
@@ -196,8 +210,12 @@ export default class View {
 
   renderBlockGrid(x, y, weidth, height) {
     if(this.gridOn == 1){
-      this.context.fillStyle = "black"; // !!!!!!!!!!!!!!!нужно цвет фона
-      this.context.strokeStyle = "white"; // цвет обводки
+      this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; // !!!!!!!!!!!!!!!нужно цвет фона
+      if(this._theme == "pink"){      // цвет обводки
+        this.context.strokeStyle = "white"; 
+      }else{
+        this.context.strokeStyle = "#5B3B3B";
+      } 
       this.context.lineWidth = 3; // ширина обводки
   
       this.context.fillRect(x, y, weidth, height);
