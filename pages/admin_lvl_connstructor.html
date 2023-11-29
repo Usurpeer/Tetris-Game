@@ -15,7 +15,7 @@
   <div class="back_circle">
     <div>
       <button class="back" id="back"></button>
-      <button class="player" id="player">Администратор</button>
+      <button onclick="myFunction()" class="player" id="player">Администратор</button>
     </div>
     <form action="">
     <h1 class="tetris">TETRIS</h1>
@@ -93,13 +93,16 @@
         <button class="end_setting">Завершить</button>
         <div style="width: 100%; height: 110px;"></div>
     </div>
-
-    
-
-    
-
-    
   </form>
+</div>
+<div id="window">
+    <div class="image">
+        <img class="admin_img" src="..\img\admin.png" alt="">  
+    </div>
+    <div class="info">
+        <p class="login">Login</p>
+        <p class="role">Роль: администратор</p>
+    </div> 
 </div>
 </body>
 <script src="..\js\action_constructor_fig.js" defer></script>

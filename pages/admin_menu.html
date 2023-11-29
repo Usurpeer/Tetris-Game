@@ -12,7 +12,9 @@
 
 <body class="blue">
   <div class="back_circle">
-    <h3>Администратор</h3>
+    <div>
+      <button onclick="myFunction()" class="player" id="player">Администратор</button>
+    </div>
     <div class="box_menu">
 
 
@@ -22,15 +24,15 @@
 
       <label>
         <input class="rad" type="radio" name="lvl" id="lvl1" checked value="1" hidden>
-        <button class="level btlvl1" id="lvl1bt">1</button>
+        <button class="level" id="lvl1bt">1</button>
       </label>
       <label>
         <input class="rad" type="radio" name="lvl" id="lvl2" value="2" hidden>
-        <button class="level btlvl2" id="lvl2bt">2</button>
+        <button class="level" id="lvl2bt">2</button>
       </label>
       <label>
         <input class="rad" type="radio" name="lvl" id="lvl3" value="3" hidden>
-        <button class="level btlvl3" id="lvl3bt">3</button>
+        <button class="level" id="lvl3bt">3</button>
       </label>
       </form>
       <button id="contruct">Конструктор</button>
@@ -39,8 +41,16 @@
     </div>
 
   </div>
+  <div id="window">
+    <div class="image">
+        <img class="admin_img" src="..\img\admin.png" alt="">  
+    </div>
+    <div class="info">
+        <p class="login">Login</p>
+        <p class="role">Роль: администратор</p>
+    </div> 
+</div>
 
 </body>
-<script type="module" src="..\js\action_button_admin.js" defer></script>
-
+<script src="..\js\action_button_admin.js" defer></script>
 </html>

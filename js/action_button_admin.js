@@ -9,6 +9,7 @@ window.onload = () => {
   }
 };*/
 
+
 const butRating = document.querySelector("#contruct");
 const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
@@ -25,6 +26,15 @@ butAbout.addEventListener("click", () => {
     "Веб-приложение игра 'Тетрис' с функциями администратора\nО разработчиках.\nВыполнили: 6402 Белоусов Христич\nКурс: \"Технологии программирования\"\nПреподватель: Зеленко Лариса Сергеевна"
   );
 });
+
+function myFunction() {
+  var window = document.getElementById("window");
+  if (window.style.display === "none") {
+    window.style.display = "flex";
+  } else {
+    window.style.display = "none";
+  }
+}
 //////////////////////////////////////////////
 //работа чекбокс и кнопок
 //////////////////////////////////////////////

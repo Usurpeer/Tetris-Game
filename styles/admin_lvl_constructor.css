@@ -96,3 +96,40 @@
   color: #ECAA50;
   text-shadow: 0px 0px 5px #555555; 
 }
+#window{
+  display: none;
+  width: 500px;
+  height: 150px;
+  background-color: #C4D9EB;
+  position: fixed;
+  top: 100px;
+  right: 50px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 26px #4d4d4d;
+}
+.image{
+  width: 100px;
+  height: 100px;
+  border-radius: 90px;
+  box-shadow: 5px 5px 26px #4d4d4d;
+  margin-top: 25px;
+  margin-left: 30px;
+}
+.admin_img{
+  width: 70px;
+  height: 70px;
+  margin-left: 15px;
+  margin-top: 15px;
+}
+.info{
+  text-align: right;
+  width: 300px;
+  margin-top: 25px;
+}
+.login, .role{
+  font-size: 25px;
+  font-family: "BellotaText";
+  color: #5B3B3B;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
