@@ -105,7 +105,12 @@ async function deleteFigureByID(ID) {
       },
       body: JSON.stringify(sendArray),
     });
-    await getDataFigures();
+    const data = await res.json(res.json());
+    if(data[0] == "Недопустимое количество фигур"){
+      console.warn("Слишком мало фигур, удалить невозможно");
+    }else{
+      await getDataFigures();
+    }
     // данные от ответа сервера
     console.log(await res.json());
   } catch (error) {

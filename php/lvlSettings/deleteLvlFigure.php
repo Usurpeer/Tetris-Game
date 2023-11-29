@@ -5,10 +5,9 @@ require_once('../db_connect.php');
 if (isset($_POST)) {
     $data = json_decode(file_get_contents('php://input'), true);
     // операции с данными
-    $idFig = $data['figure'];
-    $level = $data['id'];
+    $id = $data['id'];
 
-    $sqlUpdateFigure = "UPDATE `figures` SET `structure`=$idFig WHERE `id`=$level";
+    $sqlUpdateFigure = "UPDATE `figures` SET `level`=0 WHERE `id`=$id";
 
     // проверка была ли удалена фигура
     if ($conn->query($sqlUpdateFigure) == TRUE && $conn->affected_rows > 0) {
