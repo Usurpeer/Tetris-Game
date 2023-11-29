@@ -86,6 +86,8 @@ btnAdd.addEventListener("click", () => {                          //добавл
   }
   countFig++;
   inputCount.value = countFig;
+  context.clearRect(0, 0, 250, 250);
+  figura = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 });
 
 btnClean.addEventListener("click", () => {                          //сброс фигуры
@@ -145,10 +147,11 @@ btnLeft.addEventListener("click", () => {                         //навига
   }
 });
 
-btnDelete.addEventListener("click", () => {                         //навигация по фигурам
+btnDelete.addEventListener("click", () => {                         //удаление
   shapes.splice(currentFig, 1);
-  countFig--;
-  currentFig--;
+  if (currentFig != 0){
+    currentFig--;
+  }
   context2.clearRect(0, 0, 250, 250);
   if(countFig != 0){
     for (let i = 0; i < 16; i++){                                   
@@ -158,8 +161,7 @@ btnDelete.addEventListener("click", () => {                         //навиг
       }
     }
   }
-  
-
+  countFig--;
   inputCount.value = countFig;
 });
 

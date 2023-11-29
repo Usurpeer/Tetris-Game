@@ -2,7 +2,7 @@ export default class View {
   constructor(element, width, height, countFigures, theme, gridOn, rating) {
     this.rating = rating;
     this._element = element;
-    this._width = width;
+    this._width = width + 70;
     this._height = height;
 
     this.canvas = document.createElement("canvas");
@@ -14,14 +14,14 @@ export default class View {
     this.playfieldBorderWidth = 4; // ширина границы
     this.playfieldX = this.playfieldBorderWidth; // начало игрового поля
     this.playfieldY = this.playfieldBorderWidth;
-    this.playfieldWidth = (this._width * 2) / 3; // ширина игрового поля
+    this.playfieldInnerWidth = (this._width * 2) / 3 - 45; // ширина игрового поля
     this.playfieldHeight = this._height;
-    this.playfieldInnerWidth =
-      this.playfieldWidth - this.playfieldBorderWidth * 2; // внутренняя ширина игр поля
+    //this.playfieldInnerWidth =
+      //this.playfieldWidth - this.playfieldBorderWidth * 2; // внутренняя ширина игр поля
     this.playfieldInnerheight =
       this.playfieldHeight - this.playfieldBorderWidth * 2;
     ///////////////////////////////////////////////////
-    this.panelX = this.playfieldWidth + 30;
+    this.panelX = this.playfieldInnerWidth + 30;
     this.panelY = 0;
     this.panelWidth = this._width / 3;
     this.panelHeight = this._height;
@@ -92,8 +92,9 @@ export default class View {
   // отрисовка игрового поля
   renderPlayField(playField) {
     // необходимо вычислить ширину и высоту "клетки"
-    this.blockWidth = this.playfieldInnerWidth / playField[0].length;
     this.blockHeight = this.playfieldInnerheight / playField.length;
+    this.blockWidth = this.blockHeight;
+    this.playfieldInnerWidth = this.blockWidth * playField[0].length
 
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
