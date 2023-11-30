@@ -99,7 +99,7 @@ export default class View {
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
         const block = playField[i][j];
-        
+
         this.renderBlockGrid(
           this.playfieldX + j * this.blockWidth,
           this.playfieldY + i * this.blockHeight,
@@ -119,13 +119,12 @@ export default class View {
     }
 
     // отрисовка границы
-    if(this._theme == "pink"){
+    if (this._theme == "pink") {
       this.context.strokeStyle = "white";
-    }else{
+    } else {
       this.context.strokeStyle = "#5B3B3B";
     }
 
-    
     this.context.lineWidth = this.playfieldBorderWidth;
     this.context.strokeRect(0, 0, this.playfieldWidth, this.playfieldHeight);
   }
@@ -134,11 +133,12 @@ export default class View {
   renderBlock(symbol, x, y, weidth, height) {
     const color = this.getColorBySymbol(symbol);
     this.context.fillStyle = color; // цвет заливки
-    if(this._theme == "pink"){      // цвет обводки
+    if (this._theme == "pink") {
+      // цвет обводки
       this.context.strokeStyle = "white";
-    }else{
+    } else {
       this.context.strokeStyle = "#5B3B3B";
-    }  
+    }
     this.context.lineWidth = 2; // ширина обводки
 
     this.context.fillRect(x, y, weidth, height);
@@ -171,11 +171,12 @@ export default class View {
   renderPanel({ score, currentLvl, lines, nextFigure }) {
     this.context.textAlign = "start"; // текст по левому краю
     this.context.textBaseline = "top"; // текст по верхнему краю
-    if(this._theme == "pink"){      // цвет текста
-      this.context.fillStyle = "white"; 
-    }else{
+    if (this._theme == "pink") {
+      // цвет текста
+      this.context.fillStyle = "white";
+    } else {
       this.context.fillStyle = "#5B3B3B";
-    }  
+    }
     this.context.font = '26px "BellotaText"'; // Шрифт
 
     this.context.fillText(
@@ -189,7 +190,11 @@ export default class View {
       this.panelX,
       this.panelY + 110
     );
-    this.context.fillText(`Рекорд: ${this.rating}`, this.panelX, this.panelY + 140);
+    this.context.fillText(
+      `Рекорд: ${this.rating}`,
+      this.panelX,
+      this.panelY + 140
+    );
     this.context.fillText("Следующая", this.panelX, this.panelY + 170);
 
     for (let i = 0; i < 4; i++) {
@@ -210,15 +215,16 @@ export default class View {
   }
 
   renderBlockGrid(x, y, weidth, height) {
-    if(this.gridOn == 1){
+    if (this.gridOn == 1) {
       this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; // !!!!!!!!!!!!!!!нужно цвет фона
-      if(this._theme == "pink"){      // цвет обводки
-        this.context.strokeStyle = "white"; 
-      }else{
+      if (this._theme == "pink") {
+        // цвет обводки
+        this.context.strokeStyle = "white";
+      } else {
         this.context.strokeStyle = "#5B3B3B";
-      } 
+      }
       this.context.lineWidth = 3; // ширина обводки
-  
+
       this.context.fillRect(x, y, weidth, height);
       this.context.strokeRect(x, y, weidth, height); // создание обводки вокруг фигуры
     }

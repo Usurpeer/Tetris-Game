@@ -71,25 +71,25 @@ async function updateFigure() {
     console.warn("Фигура неуникальная или нецелостна.");
   }
 }
-async function updateFigureInBD(ID, newFig){
-    try {
-        let sendArray = {
-          id: ID,
-          figure: newFig
-        };
-    
-        const res = await fetch("../../php/constructor/updateFigure.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(sendArray),
-        });
-        // данные от ответа сервера
-        console.log(await res.json());
-      } catch (error) {
-        console.warn(error);
-      }
+async function updateFigureInBD(ID, newFig) {
+  try {
+    let sendArray = {
+      id: ID,
+      figure: newFig,
+    };
+
+    const res = await fetch("../../php/constructor/updateFigure.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(sendArray),
+    });
+    // данные от ответа сервера
+    console.log(await res.json());
+  } catch (error) {
+    console.warn(error);
+  }
 }
 // функция отправляет id фигуры на удаление, после заново формируется весь массив
 async function deleteFigureByID(ID) {
@@ -105,7 +105,12 @@ async function deleteFigureByID(ID) {
       },
       body: JSON.stringify(sendArray),
     });
-    await getDataFigures();
+    const data = await res.json(res.json());
+    if(data[0] == "Недопустимое количество фигур"){
+      console.warn("Слишком мало фигур, удалить невозможно");
+    }else{
+      await getDataFigures();
+    }
     // данные от ответа сервера
     console.log(await res.json());
   } catch (error) {
