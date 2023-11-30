@@ -28,21 +28,21 @@
             <div class="added">
                 <p class="title_canvas">Фигуры на уровень</p>
                 <div class="navigation">
-                    <button class="btn_left"></button>
+                    <button class="btn_left" id="btn_left_lvl"></button>
                     <canvas id="added_fig" width="250" height="250"></canvas>
-                    <button class="btn_right"></button>
+                    <button class="btn_right" id="btn_right_lvl"></button>
                 </div>
                     <div class="buttons">
-                    <button class="do_btn">Удалить</button>
+                    <button class="do_btn" id="delete_fig">Удалить</button>
                 </div>
             </div>
     
             <div class="constructor">
                 <p class="title_canvas">Все фигуры</p>
                 <div class="navigation">
-                    <button class="btn_left"></button>
+                    <button class="btn_left" id="btn_left_all"></button>
                     <canvas id="construct_fig" width="250" height="250"></canvas>
-                    <button class="btn_right"></button>
+                    <button class="btn_right" id="btn_right_all"></button>
                 </div>
                 <div class="buttons">
                     <button class="do_btn" id="add_fig">Добавить</button>
@@ -50,7 +50,7 @@
             </div>
             <div class="count">
                 <p class="count_fig">Количество фигур: </p> 
-                <input type="text" class="input_count"readonly>
+                <input type="text" class="input_count"  id="input_count" readonly>
             </div>
             
         </div>
@@ -74,20 +74,20 @@
             <div class="setting">
                 <span>Скорость падения фигур</span>
                 <button class="btn_min" id=""></button>
-                <input type="number" name="speed_fall" id="" class="speed_input" readonly>
-                <button class="btn_plus" id=""></button>
+                <input type="number" name="speed_fall" id="speed_input" class="speed_input" readonly>
+                <button class="btn_plus" id="btn_speed"></button>
             </div>
             <div class="setting2">
                 <span>Необходимое количество рядов</span>
                 <button class="btn_min" id=""></button>
-                <input type="number" name="speed_fall" id="" class="speed_input" readonly>
-                <button class="btn_plus" id=""></button>
+                <input type="number" name="count_rows" id="" class="speed_input" readonly>
+                <button class="btn_plus" id="btn_rows"></button>
             </div>
             <div class="setting3">
                 <span>Количество начисляемых очков за линию</span>
                 <button class="btn_min" id=""></button>
-                <input type="number" name="speed_fall" id="" class="speed_input" readonly>
-                <button class="btn_plus" id=""></button>
+                <input type="number" name="point_line" id="" class="speed_input" readonly>
+                <button class="btn_plus" id="btn_point"></button>
             </div>
         </div>
         <button class="end_setting">Завершить</button>
