@@ -16,15 +16,16 @@ form{
 .tetris{
   position: relative;
   text-align: center;
-  margin-top: 45%;
   margin-bottom: 0;
   color: white;
   font-size: 130px;
 }
 body.pink .tetris{
-  font-family: Tetris;
+  font-family: "Tetris";
+  margin-top: 55%;
 }
 body.blue .tetris {
+  margin-top: 50%;
   font-family: "Bungee";
   -webkit-text-stroke: 1px #555555;
 }
