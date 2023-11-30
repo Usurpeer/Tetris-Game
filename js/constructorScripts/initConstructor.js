@@ -29,7 +29,7 @@ const allFigures = [
   newFigureZ = "1100011000000000",
   //testFig = "1011100110011111";
   //
-  testFig = "1111100110011101";
+  testFig = "1111100110011111";
 
 const constructorGame = new ConstructorGame(allFigures, testFig);
 

@@ -1,5 +1,14 @@
 export default class View {
-  constructor(element, width, height, countFigures, theme, gridOn, rating) {
+  constructor(
+    element,
+    width,
+    height,
+    countFigures,
+    theme,
+    gridOn,
+    time,
+    rating
+  ) {
     this.rating = rating;
     this._element = element;
     this._width = width + 70;
@@ -17,7 +26,7 @@ export default class View {
     this.playfieldInnerWidth = (this._width * 2) / 3 - 45; // ширина игрового поля
     this.playfieldHeight = this._height;
     //this.playfieldInnerWidth =
-      //this.playfieldWidth - this.playfieldBorderWidth * 2; // внутренняя ширина игр поля
+    //this.playfieldWidth - this.playfieldBorderWidth * 2; // внутренняя ширина игр поля
     this.playfieldInnerheight =
       this.playfieldHeight - this.playfieldBorderWidth * 2;
     ///////////////////////////////////////////////////
@@ -28,15 +37,16 @@ export default class View {
 
     this._theme = theme;
     this.gridOn = gridOn;
+    this._time = time;
 
     this._element.appendChild(this.canvas);
     this.arrayColorsFigures = this.getAllColors(countFigures);
   }
 
+  // если = 1, то по времени
+  _time;
   // поле темы
   _theme;
-
-  arrayColorsFigures = [];
 
   // метод очищает экран
   clearScreen() {
@@ -88,13 +98,15 @@ export default class View {
     // визуализация боковой панели
     this.renderPanel(gameInfo);
   }
-
+  getScoringMethod(){
+    return this._time;
+  }
   // отрисовка игрового поля
   renderPlayField(playField) {
     // необходимо вычислить ширину и высоту "клетки"
     this.blockHeight = this.playfieldInnerheight / playField.length;
     this.blockWidth = this.blockHeight;
-    this.playfieldInnerWidth = this.blockWidth * playField[0].length
+    this.playfieldInnerWidth = this.blockWidth * playField[0].length;
 
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
@@ -168,7 +180,7 @@ export default class View {
   }
 
   // метод отображает боковую панель
-  renderPanel({ score, currentLvl, lines, nextFigure }) {
+  renderPanel({ time, score, currentLvl, lines, nextFigure }) {
     this.context.textAlign = "start"; // текст по левому краю
     this.context.textBaseline = "top"; // текст по верхнему краю
     if (this._theme == "pink") {
@@ -184,7 +196,11 @@ export default class View {
       this.panelX,
       this.panelY + 50
     );
-    this.context.fillText(`Очки: ${score}`, this.panelX, this.panelY + 80);
+    if(this._time == 1){
+      this.context.fillText(`Время: ${time}`, this.panelX, this.panelY + 80);
+    }else{
+      this.context.fillText(`Очки: ${score}`, this.panelX, this.panelY + 80);
+    }
     this.context.fillText(
       `Осталось линий: ${lines}`,
       this.panelX,

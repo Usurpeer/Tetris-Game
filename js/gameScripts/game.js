@@ -1,5 +1,6 @@
 export default class Game {
   constructor(
+    currentLvl, // текущий уровень, который выбрал пользователь
     countFigureOnLvls, // массив, в котором хранится количество фигур на уровень по индексам
     AllFigures, // двумерный массив со всеми фигурами. Сначала идут на первый уровень, то есть первые на первый, следующие на второй и далее третий
     sizesPlayfield, // двумерный массив размерностей поля
@@ -7,6 +8,7 @@ export default class Game {
     scoresForLvls, // массив количества очков за линию
     quantityLinesForNextLvl
   ) {
+    this._currentLvl = currentLvl;
     this._countFiguresOnLvls = countFigureOnLvls;
     this._figuresOnLvls = AllFigures;
     this._sizesPlayfield = sizesPlayfield;
@@ -37,6 +39,8 @@ export default class Game {
   // поля игрового процесса
   _score = 0; // текущие очки
   _time = 0; // текущее время
+  _startTime = 0;
+  _endTime = 0;
 
   _lines = 0; // текущее количество собранных линий за игру
 
@@ -46,8 +50,14 @@ export default class Game {
 
   nextFigure; // следующая фигура
 
+  isStarting = 0;
   topOut = false; // свойство для проверки завершенности игры
-
+  isGameEnding() {
+    return this.topOut;
+  }
+  getResults() {
+    return { score: this._score, time: this._time };
+  }
   // Метод - Если фигуры абсолютно случайны - возвращает фигуру по случайному индексу из массива всех фигур с учетом уровня сложности
   // Задумка такая: на первом уровне фигуры [0]-[_countFiguresLvl - 1], на втором [0]-[_countFiguresLv2 - 1], на третьем [0]-[_countFiguresLv3 - 1]
   getRandomFigure() {
@@ -95,18 +105,18 @@ export default class Game {
     let weidth = this._sizesPlayfield[this._currentLvl - 1][1];
 
     let playField = [];
-   
-      for (let i = 0; i < height; i++) {
-        playField[i] = [];
-        for (let j = 0; j < weidth; j++) {
-          playField[i][j] = 0;
-        }
+
+    for (let i = 0; i < height; i++) {
+      playField[i] = [];
+      for (let j = 0; j < weidth; j++) {
+        playField[i][j] = 0;
       }
-    
+    }
+
     return playField;
   }
 
-  afterChangeLvl(){
+  afterChangeLvl() {
     let height = this._sizesPlayfield[this._currentLvl - 1][0];
     let weidth = this._sizesPlayfield[this._currentLvl - 1][1];
 
@@ -144,7 +154,15 @@ export default class Game {
     }
   }
   moveDown() {
-    if (this.topOut == true) return false;
+    if (this.isStarting == 0) {
+      this.isStarting = 1;
+      this._startTime = performance.now();
+      this.getCurrentTime();
+    }
+    if (this.topOut == true) {
+      //this.getCurrentTime();
+      return false;
+    }
 
     this.activeFigure.y += 1;
 
@@ -155,6 +173,7 @@ export default class Game {
       this.updateOnNextFigure();
       return false;
     } else {
+      this.getCurrentTime();
       return true;
     }
   }
@@ -294,6 +313,8 @@ export default class Game {
       }
     }
     return {
+      topOut: this.topOut,
+      time: this._time,
       score: this._score,
       currentLvl: this._currentLvl,
       lines: this.getNeededLines(),
@@ -303,7 +324,7 @@ export default class Game {
   }
 
   updateOnNextFigure() {
-    console.log(this.topOut);
+    //console.log(this.topOut);
     if (this.topOut == true) return false;
     this.activeFigure = this.nextFigure;
     this.nextFigure = this.getRandomFigure();
@@ -351,11 +372,12 @@ export default class Game {
   }
   checkLinesForNextLvl() {
     if (this._currentLvl != 3) {
-      if (this._lines >= this._quantityLinesForNextLvl[0]) {
+      if (this._lines >= Number(this._quantityLinesForNextLvl[0])) {
         // если, то это третий уровень сложности
         if (
           this._lines >=
-          this._quantityLinesForNextLvl[1] + this._quantityLinesForNextLvl[0]
+          Number(this._quantityLinesForNextLvl[1]) +
+            Number(this._quantityLinesForNextLvl[0])
         ) {
           this._currentLvl = 3;
           this._playField = this.afterChangeLvl();
@@ -373,11 +395,11 @@ export default class Game {
   getNeededLines() {
     if (this._currentLvl != 1) {
       if (this._currentLvl == 2) {
-        return (
-          this._quantityLinesForNextLvl[1] +
-          this._quantityLinesForNextLvl[0] -
-          this._lines
-        );
+        let val =
+          Number(this._quantityLinesForNextLvl[1]) +
+          Number(this._quantityLinesForNextLvl[0]) -
+          Number(this._lines);
+        return val;
       } else {
         return "";
       }
@@ -389,4 +411,21 @@ export default class Game {
   getSpeed() {
     return this._speedOnLvls[this._currentLvl - 1];
   }
+  // метод, для подсчета времени в секундах
+  getCurrentTime() {
+    this._endTime = performance.now();
+    this._time = Math.round((this._endTime - this._startTime) / 100) / 10;
+    // this._time = this.msToTime(this._endTime - this._startTime);
+    return this._time;
+  }
+  /*msToTime(ms) {
+    let seconds = (ms / 1000).toFixed(1);
+    let minutes = (ms / (1000 * 60)).toFixed(1);
+    let hours = (ms / (1000 * 60 * 60)).toFixed(1);
+    let days = (ms / (1000 * 60 * 60 * 24)).toFixed(1);
+    if (seconds < 60) return seconds;
+    else if (minutes < 60) return minutes;
+    else if (hours < 24) return hours;
+    else return days;
+  }*/
 }

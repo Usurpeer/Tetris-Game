@@ -9,7 +9,6 @@ window.onload = () => {
   }
 };*/
 
-
 const butConstructor = document.querySelector("#contruct");
 const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");

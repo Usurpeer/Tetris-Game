@@ -16,16 +16,20 @@ if (strlen($login) < 4 || strlen($login) > 12) {
     $result = $conn->query($sqlAllFigures);
 
     if ($result->num_rows > 0) {
-        $user_role = ($result->fetch_assoc())['user_role'];
-        if ($user_role == 0) {
+        $user_role = ($result->fetch_assoc());
+        
+        if ($user_role['user_role'] == 0) {
             setcookie('role', 0, 0, "/");
             setcookie('login', $login, 0, "/");
-            header("Location: ..\pages\player_menu_2.html", true, 302);
+            setcookie('id', $user_role['id'], 0, "/");
+
+            header("Location: ..\pages\player_menu.html", true, 302);
             die();
-        } else if ($user_role == '1') {
+        } else if ($user_role['user_role'] == '1') {
             setcookie('role', 1, 0, "/");
             setcookie('login', $login, 0, "/");
-            header("Location: ..\pages\admin_menu_2.html");
+
+            header("Location: ..\pages\admin_menu.html");
             die();
         }
 
