@@ -10,16 +10,16 @@ if (isset($_POST)) {
     $login = str_replace(' ', '', $login);
     $isScoreTime = $data['time']; // подсчет по времени? 
 
-    $scoreTime = $data['scoreTime']; // время игры 
+    $scoreTime = (double) $data['scoreTime']; // время игры 
     $score = (int) $data['score']; // набранные очки
 
     $data2 = array();
 
-    $sqlUpdateFigure = "UPDATE `users` SET `ratingScore`=$score WHERE `id`=$id" and `ratingScore` < $score;
+    $sqlUpdateFigure = "UPDATE `users` SET `ratingScore`=$score WHERE `id`=$id AND `ratingScore` < $score";
 
     $user = "user001";
     if ($isScoreTime == "1" || $isScoreTime == 1) {
-        $sqlUpdateFigure = "UPDATE `users` SET `ratingTime`=$scoreTime WHERE `id`=$id" and `ratingTime` < $scoreTime;
+        $sqlUpdateFigure = "UPDATE `users` SET `ratingTime`=$scoreTime WHERE `id`=$id AND `ratingTime` < $scoreTime";
     }
 
     // проверка была ли удалена фигура

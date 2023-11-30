@@ -40,7 +40,7 @@ async function go() {
   console.log(quantityLinesForNextLvl);
   /////////////////////////////////////////// view
   const root = document.querySelector("#root");
-  const width = 600, // соотношение этих сторон необходимо считать относительно количества фигур
+  const width = 1000, // соотношение этих сторон необходимо считать относительно количества фигур
     height = 800;
 
   const view = new View(
