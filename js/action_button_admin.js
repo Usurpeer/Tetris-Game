@@ -10,16 +10,16 @@ window.onload = () => {
 };*/
 
 
-const butRating = document.querySelector("#contruct");
+const butConstructor = document.querySelector("#contruct");
 const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
 
-butRating.addEventListener("click", () => {
-  window.location.href = "admin_contructor.html";
+butConstructor.addEventListener("click", () => {
+  window.location.href = "admin_constructor.html";
 });
 butSettings.addEventListener("click", () => {
-  window.location.href = "admin_lvl_settings.html";
+  window.location.href = "admin_lvl_constructor.html";
 });
 butAbout.addEventListener("click", () => {
   alert(

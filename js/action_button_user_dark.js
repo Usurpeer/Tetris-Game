@@ -9,11 +9,15 @@ window.onload = () => {
   }
 };*/
 
+const butPlay = document.querySelector("#play");
 const butRating = document.querySelector("#rating");
 const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
 
+butPlay.addEventListener("click", () => {
+  window.location.href = "player_game.html";
+});
 butRating.addEventListener("click", () => {
   window.location.href = "player_rating.html";
 });

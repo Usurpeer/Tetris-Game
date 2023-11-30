@@ -1,3 +1,8 @@
+const butBack = document.querySelector("#back");
+
+butBack.addEventListener("click", () => {
+  window.location.href = "admin_menu.html";
+});
 const btnAdd = document.querySelector("#add_fig");                //кнопка добавить фигуру
 const btnClean = document.querySelector("#clean_fig");            //кнопка сбросить фигуру
 const inputCount = document.querySelector(".input_count");        //вывод количества фигур
