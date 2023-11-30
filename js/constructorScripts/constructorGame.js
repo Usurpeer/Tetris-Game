@@ -199,18 +199,19 @@ export default class ConstructorGame {
     let checkedFigure = [];
     this.arrayCopy(checkedFigure);
 
-    this.setBorders(checkedFigure);
-    // мб нашел ошибку, если фигура будет 1111111111011111, то тк тут нет входа для перебора, то да. Нужно сделать вход не по 1.1, а по перебору - нулю
-
-    // проверить эту реализацию.
-    for (let i = 1; i < checkedFigure.length; i++) {
-      for (let j = 1; j < checkedFigure[i].length; j++) {
-        if (checkedFigure[i][j] == 0) {
-          this.getArrayEmptiness(i, j, checkedFigure);
-          break;
+    if (this.setBorders(checkedFigure)) {
+      for (let i = 1; i < checkedFigure.length; i++) {
+        for (let j = 1; j < checkedFigure[i].length; j++) {
+          if (checkedFigure[i][j] == 0) {
+            this.getArrayEmptiness(i, j, checkedFigure);
+            break;
+          }
         }
       }
     }
+    // мб нашел ошибку, если фигура будет 1111111111011111, то тк тут нет входа для перебора, то да. Нужно сделать вход не по 1.1, а по перебору - нулю
+
+    // проверить эту реализацию.
 
     // проверка, если осталось хоть 1 нулевое значение, значит оно закрыто от границ, значит false
     for (let i = 0; i < checkedFigure.length; i++) {
@@ -265,19 +266,41 @@ export default class ConstructorGame {
   }
   // задает -1 для значений на границах, для того, чтобы задать связь между внутренними
   setBorders(checkedFigure) {
+    let correctBorder = false;
+    let countEmpty = 0;
     for (let i = 0; i < checkedFigure.length; i++) {
       if (checkedFigure[i][0] == 0) {
         checkedFigure[i][0] = -1;
+        correctBorder = true;
+        countEmpty++;
       }
       if (checkedFigure[0][i] == 0) {
         checkedFigure[0][i] = -1;
+        correctBorder = true;
+        countEmpty++;
       }
       if (checkedFigure[checkedFigure.length - 1][i] == 0) {
         checkedFigure[checkedFigure.length - 1][i] = -1;
+        correctBorder = true;
+        countEmpty++;
       }
       if (checkedFigure[i][checkedFigure.length - 1] == 0) {
         checkedFigure[i][checkedFigure.length - 1] = -1;
+        correctBorder = true;
+        countEmpty++;
       }
     }
+    if (countEmpty == 1) {
+      if (
+        checkedFigure[0][0] == -1 ||
+        checkedFigure[checkedFigure.length - 1][0] == -1 ||
+        checkedFigure[0][checkedFigure.length - 1] == -1 ||
+        checkedFigure[checkedFigure.length - 1][checkedFigure.length - 1] == -1
+      ) {
+        return false;
+      }
+    }
+
+    return correctBorder;
   }
 }

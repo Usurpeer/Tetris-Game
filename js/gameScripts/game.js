@@ -1,5 +1,6 @@
 export default class Game {
   constructor(
+    currentLvl, // текущий уровень, который выбрал пользователь
     countFigureOnLvls, // массив, в котором хранится количество фигур на уровень по индексам
     AllFigures, // двумерный массив со всеми фигурами. Сначала идут на первый уровень, то есть первые на первый, следующие на второй и далее третий
     sizesPlayfield, // двумерный массив размерностей поля
@@ -7,6 +8,7 @@ export default class Game {
     scoresForLvls, // массив количества очков за линию
     quantityLinesForNextLvl
   ) {
+    this._currentLvl = currentLvl;
     this._countFiguresOnLvls = countFigureOnLvls;
     this._figuresOnLvls = AllFigures;
     this._sizesPlayfield = sizesPlayfield;
@@ -374,7 +376,8 @@ export default class Game {
         // если, то это третий уровень сложности
         if (
           this._lines >=
-          Number(this._quantityLinesForNextLvl[1]) + Number(this._quantityLinesForNextLvl[0])
+          Number(this._quantityLinesForNextLvl[1]) +
+            Number(this._quantityLinesForNextLvl[0])
         ) {
           this._currentLvl = 3;
           this._playField = this.afterChangeLvl();

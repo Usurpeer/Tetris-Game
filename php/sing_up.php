@@ -23,13 +23,20 @@ if (strlen($login) < 4 || strlen($login) > 12) {
         //запрос к бд на регистрацию
         $password = md5($password);
 
-
         $sqlAllFigures = "INSERT INTO `users` (login, password, ratingScore, ratingTime, user_role) VALUES ('$login', '$password', 0, 0, 0)";
 
         if ($conn->query($sqlAllFigures) === TRUE) {
+
+            // нужно вытащить его id из бд
+            $sqlAllFigures = "SELECT `id` FROM `users` WHERE login = '$login'";
+            $result = $conn->query($sqlAllFigures);
+            $user_role = ($result->fetch_assoc());
+            setcookie('id', $user_role['id'], 0, "/");
+
+
             setcookie('role', 0, 0, "/");
             setcookie('login', $login, 0, "/");
-            header("Location: ..\pages\player_menu_2.html", true, 302);
+            header("Location: ..\pages\player_menu.html", true, 302);
             die();
 
         } else {

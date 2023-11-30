@@ -29,6 +29,7 @@ async function go() {
   const arraySymbol = ConvertAlphabet.convertNumbInAplphabet(allFigures);
 
   const game = new Game(
+    1, // уровень, сюда куки
     countFigureOnLvls,
     arraySymbol,
     sizesPlayfield1,
