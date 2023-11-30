@@ -2,6 +2,7 @@ import Game from "./game.js";
 import View from "./view.js";
 import Controller from "./controller.js";
 import ConvertAlphabet from "../convertToAlpgabet.js";
+import script_cookie from "../get_cookies.js";
 
 // обьявление всего что надо
 let allFigures = [], // массив всех фигур
@@ -14,10 +15,10 @@ let allFigures = [], // массив всех фигур
     [0, 0],
   ], // высота, ширина поля 3*2
   quantityLinesForNextLvl = [0, 0], // количество линий для перехода на следующий уровень
-  rating = 0, // рейтинг
-  theme = 1, // тема 0/1
-  gridOn = 1, // включен ли показ сетки
-  time = 1; // время из куки 1 значит по времени
+  rating = getRatingCookie(), // рейтинг
+  gridOn = script_cookie("gridOn"), // включен ли показ сетки
+  time = script_cookie("сountScore"),
+  gameLvl = Number(script_cookie("lvl")); // время из куки 1 значит по времени
 
 window.onload = go();
 
@@ -29,7 +30,7 @@ async function go() {
   const arraySymbol = ConvertAlphabet.convertNumbInAplphabet(allFigures);
 
   const game = new Game(
-    1, // уровень, сюда куки
+    gameLvl, // уровень, сюда куки
     countFigureOnLvls,
     arraySymbol,
     sizesPlayfield1,
@@ -113,5 +114,15 @@ async function getData() {
     scoresForLvls[2] = data[iterator++];
   } catch (error) {
     console.warn(error);
+  }
+}
+function getRatingCookie() {
+  console.log("Способ подсчета очков: 1-время");
+  console.log(script_cookie("countScore"));
+  let scoringMethod = script_cookie("countScore");
+  if (scoringMethod == 1) {
+    return script_cookie("ratingTime");
+  } else {
+    return script_cookie("ratingScore");
   }
 }

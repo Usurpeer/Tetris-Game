@@ -8,6 +8,7 @@ window.onload = () => {
     window.location.href = "main_log_in_2.html";
   }
 };*/
+let radio = document.querySelectorAll(".rad");
 
 const butConstructor = document.querySelector("#contruct");
 const butSettings = document.querySelector("#settings");
@@ -44,21 +45,18 @@ const stBut3 = document.getElementById("lvl3bt");
 
 stBut1.style.color = "#ffff";
 stBut1.onclick = function () {
-  let radio = document.querySelectorAll(".rad");
   radio[0].checked = true;
   this.style.color = "#ffff";
   stBut2.style.color = "#5B3B3B";
   stBut3.style.color = "#5B3B3B";
 };
 stBut2.onclick = function () {
-  let radio = document.querySelectorAll(".rad");
   radio[1].checked = true;
   this.style.color = "#ffff";
   stBut1.style.color = "#5B3B3B";
   stBut3.style.color = "#5B3B3B";
 };
 stBut3.onclick = function () {
-  let radio = document.querySelectorAll(".rad");
   radio[2].checked = true;
   this.style.color = "#ffff";
   stBut1.style.color = "#5B3B3B";

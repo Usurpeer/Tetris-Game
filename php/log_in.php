@@ -17,11 +17,16 @@ if (strlen($login) < 4 || strlen($login) > 12) {
 
     if ($result->num_rows > 0) {
         $user_role = ($result->fetch_assoc());
-        
+
         if ($user_role['user_role'] == 0) {
             setcookie('role', 0, 0, "/");
             setcookie('login', $login, 0, "/");
             setcookie('id', $user_role['id'], 0, "/");
+            setcookie('gridOn', 1, 0, "/");
+            setcookie('musicOn', 1, 0, "/");
+            setcookie('countScore', 1, 0, "/");
+            setcookie('ratingTime', $user_role['ratingTime'], 0, "/");
+            setcookie('ratingScore', $user_role['ratingScore'], 0, "/");
 
             header("Location: ..\pages\player_menu.html", true, 302);
             die();

@@ -36,6 +36,12 @@ if (strlen($login) < 4 || strlen($login) > 12) {
 
             setcookie('role', 0, 0, "/");
             setcookie('login', $login, 0, "/");
+            setcookie('gridOn', 1, 0, "/");
+            setcookie('musicOn', 1, 0, "/");
+            setcookie('countScore', 1, 0, "/");
+            setcookie('ratingTime', 0, 0, "/");
+            setcookie('ratingScore', 0, 0, "/");
+
             header("Location: ..\pages\player_menu.html", true, 302);
             die();
 

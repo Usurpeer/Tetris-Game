@@ -15,9 +15,13 @@ const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
 
+let radio = document.querySelectorAll(".rad");
+
 butPlay.addEventListener("click", () => {
   //создать куки, в котором выбранный уровень
-
+  document.cookie =
+    "lvl=" + document.querySelector('input[name="lvl"]:checked').value;
+  //console.log(document.querySelector('input[name="lvl"]:checked').value);
   window.location.href = "player_game.html";
 });
 
@@ -44,20 +48,19 @@ const themes = localStorage.getItem("themes");
 if (themes === "blue") {
   stBut1.style.color = "#ffff";
   stBut1.onclick = function () {
-    let radio = document.querySelectorAll(".rad");
     radio[0].checked = true;
     this.style.color = "#ffff";
     stBut2.style.color = "#5B3B3B";
+    stBut3.style.color = "#5B3B3B";
   };
   stBut2.onclick = function () {
-    let radio = document.querySelectorAll(".rad");
     radio[1].checked = true;
     this.style.color = "#ffff";
     stBut1.style.color = "#5B3B3B";
+    stBut3.style.color = "#5B3B3B";
   };
   stBut3.onclick = function () {
-    let radio = document.querySelectorAll(".rad");
-    radio[1].checked = true;
+    radio[2].checked = true;
     this.style.color = "#ffff";
     stBut1.style.color = "#5B3B3B";
     stBut2.style.color = "#5B3B3B";
@@ -65,7 +68,6 @@ if (themes === "blue") {
 } else {
   stBut1.style.boxShadow = "0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset";
   stBut1.onclick = function () {
-    let radio = document.querySelectorAll(".rad");
     radio[0].checked = true;
     this.style.boxShadow = "0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset";
     stBut2.style.color = "#ffff"; //#
@@ -74,7 +76,6 @@ if (themes === "blue") {
     stBut3.style.boxShadow = "0px 0px 15px #ff00f5";
   };
   stBut2.onclick = function () {
-    let radio = document.querySelectorAll(".rad");
     radio[1].checked = true;
     this.style.boxShadow = "0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset";
     stBut1.style.color = "#ffff"; //#
@@ -83,7 +84,6 @@ if (themes === "blue") {
     stBut3.style.boxShadow = "0px 0px 15px #ff00f5";
   };
   stBut3.onclick = function () {
-    let radio = document.querySelectorAll(".rad");
     radio[2].checked = true;
     this.style.boxShadow = "0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset";
     stBut1.style.color = "#ffff"; //#
