@@ -16,7 +16,8 @@ let allFigures = [], // массив всех фигур
   quantityLinesForNextLvl = [0, 0], // количество линий для перехода на следующий уровень
   rating = 0, // рейтинг
   theme = 1, // тема 0/1
-  gridOn = 1; // включен ли показ сетки
+  gridOn = 1, // включен ли показ сетки
+  time = 1; // время из куки 1 значит по времени
 
 window.onload = go();
 
@@ -46,11 +47,15 @@ async function go() {
     width,
     height,
     arraySymbol.length,
-    theme,
+    document.body.className,
     gridOn,
+    time,
     rating
   );
-  const controller = new Controller(game, view);
+
+  // сюда нужен ID из куки
+  let idUser = 2;
+  const controller = new Controller(idUser, game, view);
   window.controller = controller;
   console.log("Низ метода");
 }
