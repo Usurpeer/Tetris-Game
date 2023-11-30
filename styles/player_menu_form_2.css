@@ -15,11 +15,11 @@
   color: white;
   font-size: 130px;
 }
-body.pink .tetris{
+body.pink .tetris {
   margin-top: 12%;
-  font-family: Tetris;
+  font-family: "Tetris";
 }
-body.blue .tetris{
+body.blue .tetris {
   margin-top: 0%;
   font-family: "Bungee";
   -webkit-text-stroke: 1px #555555;
@@ -44,6 +44,12 @@ h3 {
 @font-face {
   font-family: "BellotaText";
   src: url("../webfonts/BellotaText-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Bungee";
+  src: url("../webfonts/Bungee-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
@@ -73,16 +79,16 @@ button {
   border: 0px;
   cursor: pointer;
 }
-body.pink button{
+body.pink button {
   top: 27%;
   background: #ff4dad;
   color: white;
   box-shadow: 0px 0px 15px #ff00f5;
 }
-body.blue button{
+body.blue button {
   top: 27%;
-  background: #ECAA50;
-  color: #5B3B3B;
+  background: #ecaa50;
+  color: #5b3b3b;
   filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
 }
 body.pink button:active {
@@ -106,14 +112,14 @@ body.blue button:active {
   border: 0px;
   margin-left: 20%;
 }
-body.pink .level{
+body.pink .level {
   background: #ff4dad;
   color: white;
   box-shadow: 0px 0px 15px #ff00f5;
 }
-body.blue .level{
-  background: #ECAA50;
-  color: #5B3B3B;
+body.blue .level {
+  background: #ecaa50;
+  color: #5b3b3b;
   filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
 }
 body.pink .level:active {
@@ -138,9 +144,9 @@ h3 {
   cursor: pointer;
   border: none;
 }
-body.pink h3{
+body.pink h3 {
   color: white;
 }
-body.blue h3{
-  color: #5B3B3B;
+body.blue h3 {
+  color: #5b3b3b;
 }

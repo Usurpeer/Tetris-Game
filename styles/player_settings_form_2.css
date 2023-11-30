@@ -8,12 +8,12 @@
   position: absolute;
   overflow: hide;
 }
-form{
+form {
   margin-left: auto;
   margin-right: auto;
   width: 80%;
 }
-.tetris{
+.tetris {
   width: 80%;
   text-align: center;
   position: absolute;
@@ -21,7 +21,7 @@ form{
   color: white;
   font-size: 130px;
 }
-body.pink .tetris{
+body.pink .tetris {
   font-family: "Tetris";
 }
 body.blue .tetris {
@@ -35,15 +35,15 @@ h2 {
   position: absolute;
   text-shadow: white 0px 0px 35px;
   font-size: 64px;
-  font-family: "Feature Mono"; 
+  font-family: "Feature Mono";
   top: 100px;
 }
-body.pink h2{
+body.pink h2 {
   color: #ff40a7;
 }
-body.blue h2{
-  color: #ECAA50;
-  text-shadow: 0px 0px 5px #555555; 
+body.blue h2 {
+  color: #ecaa50;
+  text-shadow: 0px 0px 5px #555555;
 }
 .player {
   position: fixed;
@@ -55,11 +55,11 @@ body.blue h2{
   cursor: pointer;
   border: none;
 }
-body.pink .player{
+body.pink .player {
   color: white;
 }
-body.blue .player{
-  color: #5B3B3B;
+body.blue .player {
+  color: #5b3b3b;
 }
 .back {
   position: fixed;
@@ -72,10 +72,10 @@ body.blue .player{
   background-size: cover;
   cursor: pointer;
 }
-body.pink .back{
+body.pink .back {
   background-image: url("../img/back.png");
 }
-body.blue .back{
+body.blue .back {
   background-image: url("../img/back2.png");
 }
 @font-face {
@@ -87,6 +87,12 @@ body.blue .back{
 @font-face {
   font-family: "BellotaText";
   src: url("../webfonts/BellotaText-Bold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Bungee";
+  src: url("../webfonts/Bungee-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: normal;
 }
@@ -112,20 +118,20 @@ p {
   float: right;
   margin-bottom: -5px;
 }
-body.pink p{
+body.pink p {
   color: white;
 }
-body.blue p{
-  color: #5B3B3B;
+body.blue p {
+  color: #5b3b3b;
 }
-.check{
-  transform:scale(2.2);
+.check {
+  transform: scale(2.2);
   opacity: 0.7;
   margin-left: 25px;
   margin-top: 0px;
   cursor: pointer;
 }
-.form_radio{
+.form_radio {
   position: relative;
   font-size: 30px;
   font-family: "BellotaText";
@@ -135,12 +141,12 @@ body.blue p{
   margin-bottom: 0px;
   margin-top: 10px;
 }
-.rad{
-  transform:scale(2.2);
+.rad {
+  transform: scale(2.2);
   opacity: 0.7;
   cursor: pointer;
 }
-label{
+label {
   font-family: "BellotaText";
   padding-left: 5px;
 }
@@ -148,7 +154,7 @@ label{
   font-family: "BellotaText";
   width: 50%;
   margin-left: 25%;
-  height: 60px;   
+  height: 60px;
   top: 78%;
   position: absolute;
   font-size: 30px;
@@ -156,14 +162,14 @@ label{
   border: 0px;
   cursor: pointer;
 }
-body.pink .theme{
+body.pink .theme {
   background: #ff4dad;
   color: white;
   box-shadow: 0px 0px 15px #ff00f5;
 }
-body.blue .theme{
-  background: #ECAA50;
-  color: #5B3B3B;
+body.blue .theme {
+  background: #ecaa50;
+  color: #5b3b3b;
   filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
 }
 body.pink .theme:active {
