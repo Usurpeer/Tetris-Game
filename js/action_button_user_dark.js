@@ -15,7 +15,7 @@ const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
 
-butStartGame.addEventListener("click", () => {
+butPlay.addEventListener("click", () => {
   //создать куки, в котором выбранный уровень
 
   window.location.href = "player_game.html";
