@@ -25,7 +25,7 @@ body.blue {
   height: 100%;
 }
 
-body .back_red, body.pink .back_red {
+body.pink .back_red {
     background-attachment: fixed;
     width: 140%;
     height: 140%;
@@ -35,7 +35,7 @@ body .back_red, body.pink .back_red {
     background: radial-gradient(circle closest-side at center, #c30e54, #811cb1);
     border-radius: 9999px;
   }
-body .back_blue, body.pink .back_blue {
+body.pink .back_blue {
   background-attachment: fixed;
   width: 80%;
   height: 140%;
