@@ -1,13 +1,13 @@
 "use strict"; //сертификат для проверки ошибок
 
-/*import get_cookies from "./get_cookies.js";
+import get_cookies from "./get_cookies.js";
 
 window.onload = () => {
   let user_role = get_cookies("role");
   if (user_role != "0") {
     window.location.href = "main_log_in_2.html";
   }
-};*/
+};
 
 const butPlay = document.querySelector("#play");
 const butRating = document.querySelector("#rating");

@@ -1,5 +1,6 @@
 // работа с конструктором
 import ConstructorGame from "./constructorGame.js";
+import script_cookie from "../get_cookies.js";
 
 let allFigures = [], // [i][0] - строка фигуры, [i][1] - ID
   currentIndex = 0, // индекс отображаемой фигуры, чтобы знать какая сейчас на экране и удалить изменить ее легко
@@ -20,6 +21,7 @@ const btnRigth = document.querySelector(".btn_right"); //кнопка навиг
 const btnDelete = document.querySelector("#btn_delete");
 const btnUpdate = document.querySelector("#btn_update");
 const btnEnd = document.querySelector("#btn_end");
+const btnback = document.querySelector("#back");
 
 const canvas = document.querySelector("#construct_fig"); //канвас добавление/изменения
 const context = canvas.getContext("2d");
@@ -94,7 +96,7 @@ window.onload = go();
 // запускающий метод, писать всё в нем. Инициализация сверху
 async function go() {
   console.log("go");
-
+  checkRole();
   // инициализация всех данных из бд
   await getDataFigures();
 
@@ -383,5 +385,15 @@ btnDelete.addEventListener("click", () => {
   }
 });
 btnEnd.addEventListener("click", () => {
+  window.location.replace("admin_menu.html");
+});
+function checkRole() {
+  // по загрузке на страницу установить все чекбоксы в соответсвии с куки
+  let user_role = script_cookie("role");
+  if (user_role != "1") {
+    window.location.href = "main_log_in_2.html";
+  }
+}
+btnback.addEventListener("click", () => {
   window.location.replace("admin_menu.html");
 });

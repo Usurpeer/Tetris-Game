@@ -17,6 +17,8 @@ if (isset($_POST)) {
 
     $sqlUpdateFigure = "UPDATE `users` SET `ratingScore`=$score WHERE `id`=$id AND `ratingScore` < $score";
 
+    //////////////
+    //здесь удалитть куки с прошлым рекордом, сделать новую
     $user = "user001";
     if ($isScoreTime == "1" || $isScoreTime == 1) {
         $sqlUpdateFigure = "UPDATE `users` SET `ratingTime`=$scoreTime WHERE `id`=$id AND `ratingTime` < $scoreTime";

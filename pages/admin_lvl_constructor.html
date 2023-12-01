@@ -2,109 +2,109 @@
 <html lang="ru">
 
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="..\styles\design_1.css">
-  <link rel="stylesheet" href="..\styles\admin_constructor_form.css">
-  <link rel="stylesheet" href="..\styles\admin_lvl_constructor.css">
-  <link href="https://fonts.cdnfonts.com/css/tetris" rel="stylesheet">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Feature+Mono&display=swap">
-  <title>Настройки уровня</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="..\styles\design_1.css">
+    <link rel="stylesheet" href="..\styles\admin_constructor_form.css">
+    <link rel="stylesheet" href="..\styles\admin_lvl_constructor.css">
+    <link href="https://fonts.cdnfonts.com/css/tetris" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Feature+Mono&display=swap">
+    <title>Настройки уровня</title>
 </head>
 
 <body class="blue">
-  <div class="back_circle">
-    <div>
-      <button class="back" id="back"></button>
-      <button onclick="myFunction()" class="player" id="player">Администратор</button>
-    </div>
-    <form action="">
-    <h1 class="tetris">TETRIS</h1>
-    <h1 class="lvl">Уровень </h1>
-    <div class="box_construct">
-        
-        <div class="constructor_fig">
-            <h2>Настройка фигур</h2>
-    
-            <div class="added">
-                <p class="title_canvas">Фигуры на уровень</p>
-                <div class="navigation">
-                    <button class="btn_left" id="btn_left_lvl"></button>
-                    <canvas id="added_fig" width="250" height="250"></canvas>
-                    <button class="btn_right" id="btn_right_lvl"></button>
-                </div>
-                    <div class="buttons">
-                    <button class="do_btn" id="delete_fig">Удалить</button>
-                </div>
-            </div>
-    
-            <div class="constructor">
-                <p class="title_canvas">Все фигуры</p>
-                <div class="navigation">
-                    <button class="btn_left" id="btn_left_all"></button>
-                    <canvas id="construct_fig" width="250" height="250"></canvas>
-                    <button class="btn_right" id="btn_right_all"></button>
-                </div>
-                <div class="buttons">
-                    <button class="do_btn" id="add_fig">Добавить</button>
-                </div>
-            </div>
-            <div class="count">
-                <p class="count_fig">Количество фигур: </p> 
-                <input type="text" class="input_count"  id="input_count" readonly>
-            </div>
-            
+    <div class="back_circle">
+        <div>
+            <button class="back" id="back"></button>
+            <button onclick="myFunction()" class="player" id="player">Администратор</button>
         </div>
-        <h2 class="cup">Настройка размерности стакана</h2>
-        <div class="constructor_cup">
-            <div class="width_cup">
-                <p class="cup_p">Ширина</p>
-                <input type="number" class="width_cup_input" value="7"readonly>
-                <button class="btn_min" id="btn_min_w"></button>
-                <button class="btn_plus" id="btn_plus_w"></button>
+        <form action="">
+            <h1 class="tetris">TETRIS</h1>
+            <h1 class="lvl">Уровень </h1>
+            <div class="box_construct">
+
+                <div class="constructor_fig">
+                    <h2>Настройка фигур</h2>
+
+                    <div class="added">
+                        <p class="title_canvas">Фигуры на уровень</p>
+                        <div class="navigation">
+                            <button class="btn_left" id="btn_left_lvl"></button>
+                            <canvas id="added_fig" width="250" height="250"></canvas>
+                            <button class="btn_right" id="btn_right_lvl"></button>
+                        </div>
+                        <div class="buttons">
+                            <button class="do_btn" id="delete_fig">Удалить</button>
+                        </div>
+                    </div>
+
+                    <div class="constructor">
+                        <p class="title_canvas">Все фигуры</p>
+                        <div class="navigation">
+                            <button class="btn_left" id="btn_left_all"></button>
+                            <canvas id="construct_fig" width="250" height="250"></canvas>
+                            <button class="btn_right" id="btn_right_all"></button>
+                        </div>
+                        <div class="buttons">
+                            <button class="do_btn" id="add_fig">Добавить</button>
+                        </div>
+                    </div>
+                    <div class="count">
+                        <p class="count_fig">Количество фигур: </p>
+                        <input type="text" class="input_count" id="input_count" readonly>
+                    </div>
+
+                </div>
+                <h2 class="cup">Настройка размерности стакана</h2>
+                <div class="constructor_cup">
+                    <div class="width_cup">
+                        <p class="cup_p">Ширина</p>
+                        <input type="number" class="width_cup_input" value="7" readonly>
+                        <button class="btn_min" id="btn_min_w"></button>
+                        <button class="btn_plus" id="btn_plus_w"></button>
+                    </div>
+                    <div class="heigth_cup">
+                        <p class="cup_p">Высота</p>
+                        <input type="number" class="heigth_cup_input" value="10" readonly>
+                        <button class="btn_min" id="btn_min_h"></button>
+                        <button class="btn_plus" id="btn_plus_h"></button>
+                    </div>
+                </div>
+                <h2 class="other">Прочие настройки</h2>
+                <div class="other_settings">
+                    <div class="setting">
+                        <span>Скорость падения фигур</span>
+                        <button class="btn_min" id=""></button>
+                        <input type="number" name="speed_fall" id="speed_input" class="speed_input" readonly>
+                        <button class="btn_plus" id="btn_speed"></button>
+                    </div>
+                    <div class="setting2">
+                        <span>Необходимое количество рядов</span>
+                        <button class="btn_min" id=""></button>
+                        <input type="number" name="count_rows" id="" class="speed_input" readonly>
+                        <button class="btn_plus" id="btn_rows"></button>
+                    </div>
+                    <div class="setting3">
+                        <span>Количество начисляемых очков за линию</span>
+                        <button class="btn_min" id=""></button>
+                        <input type="number" name="point_line" id="" class="speed_input" readonly>
+                        <button class="btn_plus" id="btn_point"></button>
+                    </div>
+                </div>
+                <button class="end_setting">Завершить</button>
+                <div style="width: 100%; height: 110px;"></div>
             </div>
-            <div class="heigth_cup">
-                <p class="cup_p">Высота</p>
-                <input type="number" class="heigth_cup_input" value="10"readonly>
-                <button class="btn_min" id="btn_min_h"></button>
-                <button class="btn_plus" id="btn_plus_h"></button>
-            </div>
-        </div>
-        <h2 class="other">Прочие настройки</h2>
-        <div class="other_settings">
-            <div class="setting">
-                <span>Скорость падения фигур</span>
-                <button class="btn_min" id=""></button>
-                <input type="number" name="speed_fall" id="speed_input" class="speed_input" readonly>
-                <button class="btn_plus" id="btn_speed"></button>
-            </div>
-            <div class="setting2">
-                <span>Необходимое количество рядов</span>
-                <button class="btn_min" id=""></button>
-                <input type="number" name="count_rows" id="" class="speed_input" readonly>
-                <button class="btn_plus" id="btn_rows"></button>
-            </div>
-            <div class="setting3">
-                <span>Количество начисляемых очков за линию</span>
-                <button class="btn_min" id=""></button>
-                <input type="number" name="point_line" id="" class="speed_input" readonly>
-                <button class="btn_plus" id="btn_point"></button>
-            </div>
-        </div>
-        <button class="end_setting">Завершить</button>
-        <div style="width: 100%; height: 110px;"></div>
+        </form>
     </div>
-  </form>
-</div>
-<div id="window">
-    <div class="image">
-        <img class="admin_img" src="..\img\admin.png" alt="">  
+    <div id="window">
+        <div class="image">
+            <img class="admin_img" src="..\img\admin.png" alt="">
+        </div>
+        <div class="info">
+            <p class="login">Login</p>
+            <p class="role">Роль: администратор</p>
+        </div>
     </div>
-    <div class="info">
-        <p class="login">Login</p>
-        <p class="role">Роль: администратор</p>
-    </div> 
-</div>
 </body>
-<script src="..\js\action_constructor_fig.js" defer></script>
+<script type="module" src="..\js\action_constructor_fig.js" defer></script>
 
 </html>

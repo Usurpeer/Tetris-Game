@@ -1,10 +1,16 @@
 import script_cookie from "./get_cookies.js";
 
+window.onload = () => {
+  // по загрузке на страницу установить все чекбоксы в соответсвии с куки
+  setCheckbox();
+  let user_role = script_cookie("role");
+  if (user_role != "0") {
+    window.location.href = "main_log_in_2.html";
+  }
+};
+
 const butBack = document.querySelector("#back");
 const radio = document.querySelectorAll(".rad");
-
-// по загрузке на страницу установить все чекбоксы в соответсвии с куки
-window.onload = setCheckbiox();
 
 // по кнопке назад считать все чекбоксы
 butBack.addEventListener("click", () => {
@@ -32,12 +38,12 @@ butBack.addEventListener("click", () => {
   window.location.href = "player_menu.html";
 });
 
-function setCheckbiox() {
+function setCheckbox() {
   // взять значения из куки
   let gridOn = script_cookie("gridOn");
   let musicOn = script_cookie("musicOn");
   let scoringMethod = script_cookie("countScore");
-
+  console.log(gridOn + " " + musicOn + " " + scoringMethod);
   if (gridOn == 1) {
     document.querySelector(".check").checked = true;
   }

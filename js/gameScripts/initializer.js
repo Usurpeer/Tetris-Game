@@ -17,12 +17,13 @@ let allFigures = [], // массив всех фигур
   quantityLinesForNextLvl = [0, 0], // количество линий для перехода на следующий уровень
   rating = getRatingCookie(), // рейтинг
   gridOn = script_cookie("gridOn"), // включен ли показ сетки
-  time = script_cookie("сountScore"),
+  time = script_cookie("countScore"),
   gameLvl = Number(script_cookie("lvl")); // время из куки 1 значит по времени
 
 window.onload = go();
 
 async function go() {
+  checkRole();
   await getData(); // инициализация всего
 
   // нужно преобразовать массив в буквенный вид
@@ -124,5 +125,12 @@ function getRatingCookie() {
     return script_cookie("ratingTime");
   } else {
     return script_cookie("ratingScore");
+  }
+}
+function checkRole() {
+  // по загрузке на страницу установить все чекбоксы в соответсвии с куки
+  let user_role = script_cookie("role");
+  if (user_role != "0") {
+    window.location.href = "main_log_in_2.html";
   }
 }

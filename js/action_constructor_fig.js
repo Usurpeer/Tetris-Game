@@ -1,5 +1,12 @@
 const butBack = document.querySelector("#back");
+import script_cookie from "./get_cookies.js";
 
+window.onload = () => {
+  let user_role = script_cookie("role");
+  if (user_role != "1") {
+    window.location.href = "main_log_in_2.html";
+  }
+};
 butBack.addEventListener("click", () => {
   window.location.href = "admin_menu.html";
 });
