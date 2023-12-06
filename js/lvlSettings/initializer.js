@@ -35,6 +35,8 @@ const btnPlusLines = document.querySelector("#btn_plus_lin");
 const btnMinScore = document.querySelector("#btn_min_score"); //кнопка - очков
 const btnPlusScore = document.querySelector("#btn_plus_score");
 
+const btnback = document.querySelector("#back");
+
 const canvas = document.querySelector("#construct_fig"); //канвас добавление/изменения
 const context = canvas.getContext("2d");
 context.width = 250;
@@ -561,3 +563,6 @@ async function setLvlFigure(idFig) {
     console.warn(error);
   }
 }
+btnback.addEventListener("click", () => {
+  window.location.replace("admin_menu.html");
+});
