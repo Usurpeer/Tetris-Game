@@ -36,12 +36,25 @@
       </div>
     </form>
   </div>
+  <div id="window">
+    <div class="image">
+      <img class="admin_img" src="..\img\user2.png" alt="">
+    </div>
+    <div class="info">
+      <p class="login" id="login">Login</p>
+      <p class="role" id="role">Роль: игрок</p>
+      <p class="rating" id="ratingScore"></p>
+      <p class="rating" id="ratingTime"></p>
+      <button class="exit" id="exit">Выход</button>
+    </div>
+  </div>
   <div>
     <button class="back" id="back"></button>
-    <button class="player" id="player">Игрок</button>
+    <button onclick="myFunction()" class="player" id="player">Игрок</button>
   </div>
 </body>
 <script type="module" src="..\js\theme_cookies.js" defer></script>
 <script type="module" src="..\js\action_button_rating.js" defer></script>
 <script src="..\js\action_window.js"></script>
+<script type="module" src="..\js\getInfoPlayer.js"></script>
 </html>
