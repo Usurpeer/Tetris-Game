@@ -49,7 +49,6 @@ async function go() {
     scoresForLvls,
     quantityLinesForNextLvl
   );
-  console.log(quantityLinesForNextLvl);
   /////////////////////////////////////////// view
   const root = document.querySelector("#root");
   const width = 1000, // соотношение этих сторон необходимо считать относительно количества фигур
@@ -70,7 +69,6 @@ async function go() {
 
   const controller = new Controller(idUser, game, view);
   window.controller = controller;
-  console.log("Низ метода");
 }
 
 // получение всех данных для игры с сервера
@@ -80,8 +78,6 @@ async function getData() {
     const data = await res.json();
 
     const length = data[0];
-
-    console.log(data);
 
     let iterator = 1; // итератор по data
     for (let i = 0; i < length; i++) {
@@ -128,8 +124,6 @@ async function getData() {
   }
 }
 function getRatingCookie() {
-  console.log("Способ подсчета очков: 1-время");
-  console.log(script_cookie("countScore"));
   let scoringMethod = script_cookie("countScore");
   if (scoringMethod == 1) {
     return script_cookie("ratingTime");

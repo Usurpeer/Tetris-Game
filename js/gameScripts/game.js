@@ -164,7 +164,6 @@ export default class Game {
           ii--;
         }
       }
-
     }
 
     return playField;
@@ -383,6 +382,9 @@ export default class Game {
     //console.log(this.topOut);
     if (this.topOut == true) return false;
     this.activeFigure = this.nextFigure;
+    this.activeFigure.x = Math.floor(
+      this._sizesPlayfield[this._currentLvl - 1][1] / 2 - 1
+    );
     this.nextFigure = this.getRandomFigure();
   }
 

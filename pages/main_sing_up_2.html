@@ -14,24 +14,25 @@
 </head>
 
 <body>
-  <form action="..\php\sing_up.php" method="post">
+  <div>
     <div class="back_red"></div>
     <div class="back_blue"></div>
     <h1 class="tetris">TETRIS</h1>
     <h2>Регистрация</h2>
     <div class="box_log">
       <p>Логин</p>
-      <input type="text" name="login" placeholder="Введите логин">
+      <input type="text" name="login" placeholder="Введите логин" id="log_inp">
       <p class="pass">Пароль</p>
-      <input type="password" class="pas" name="password" placeholder="············">
+      <input type="password" class="pas" name="password" placeholder="············" id="pass_inp">
       <p class="pass">Повторите пароль</p>
-      <input type="password" class="pas" name="repeat_password" placeholder="············">
-      <p><button class="login">Зарегистрироваться</button></p>
+      <input type="password" class="pas" name="repeat_password" placeholder="············" id="rep_pass_inp">
+      <p><button class="login" id="log_in_but">Зарегистрироваться</button></p>
       <a href="main_log_in_2.html">У меня уже есть аккаунт</a>
     </div>
-  </form>
+  </div>
   <!--<script type="module" src="..\js\delete_cookies.js" defer></script>-->
   <script src="..\js\action_window.js"></script>
+  <script src="..\js\singUp.js"></script>
 </body>
 
 </html>

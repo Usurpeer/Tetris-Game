@@ -471,7 +471,7 @@ btnDelete.addEventListener("click", () => {
   if (figuresOnLvl.length == 3) {
     alert("Невозможно удалить.\nМинимальное количество фигур.");
   } else {
-    if (figuresOnLvl[indexAllFigures][2] < currentLvl) {
+    if (figuresOnLvl[indexFiguresOnLvl][2] < currentLvl) {
       alert("Невозможно удалить фигуру.");
     } else {
       btnDeleteFunc(figuresOnLvl[indexFiguresOnLvl][1]);
@@ -527,7 +527,7 @@ async function clickOnAdd() {
     indexFiguresOnLvl = 0;
     renderOnLvlFigure(figuresOnLvl[indexFiguresOnLvl][0]);
   } else {
-    alert("Финура неуникальна.");
+    alert("Фигура неуникальна.");
   }
   //если она неуникальна, то ничего не делать
   //
