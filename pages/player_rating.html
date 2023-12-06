@@ -19,15 +19,16 @@
       <h1 class="tetris">TETRIS</h1>
       <h2>Рейтинг</h2>
       <div class="box_log">
-        <label>
-          <input class="rad" type="radio" name="lvl" id="lvl1" checked value="1" hidden>
-          <button class="ball" id="ball">По очкам</button>
-        </label>
-        <label>
-          <input class="rad" type="radio" name="lvl" id="lvl2" value="2" hidden>
-          <button class="time" id="time">По времени</button>
-        </label>
-        <table>
+        <div class="buttons_div">
+          <label>
+            <button class="ball" id="score">По очкам</button>
+          </label>
+          <label>
+            <button class="time" id="time">По времени</button>
+          </label>
+        </div>
+
+        <table class="rating">
           <tr>
             <th>Игрок</td>
             <th>Рекорд</td>
@@ -36,6 +37,10 @@
       </div>
     </form>
   </div>
+  <div>
+    <button class="back" id="back"></button>
+    <button onclick="myFunction()" class="player" id="player">Игрок</button>
+  </div>
   <div id="window">
     <div class="image">
       <img class="admin_img" src="..\img\user2.png" alt="">
@@ -43,18 +48,15 @@
     <div class="info">
       <p class="login" id="login">Login</p>
       <p class="role" id="role">Роль: игрок</p>
-      <p class="rating" id="ratingScore"></p>
-      <p class="rating" id="ratingTime"></p>
+      <p class="rating_p" id="ratingScore"></p>
+      <p class="rating_p" id="ratingTime"></p>
       <button class="exit" id="exit">Выход</button>
     </div>
-  </div>
-  <div>
-    <button class="back" id="back"></button>
-    <button onclick="myFunction()" class="player" id="player">Игрок</button>
   </div>
 </body>
 <script type="module" src="..\js\theme_cookies.js" defer></script>
 <script type="module" src="..\js\action_button_rating.js" defer></script>
 <script src="..\js\action_window.js"></script>
 <script type="module" src="..\js\getInfoPlayer.js"></script>
+
 </html>
