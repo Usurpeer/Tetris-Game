@@ -91,7 +91,13 @@ canvas.onclick = (e) => {
   });
 };
 /////////////////////////////////////////////////////////////////
-window.onload = go();
+window.onload = () => {
+  let user_role = script_cookie("role");
+  if (user_role != "1") {
+    window.location.href = "main_log_in_2.html";
+  }
+  go();
+};
 
 // запускающий метод, писать всё в нем. Инициализация сверху
 async function go() {

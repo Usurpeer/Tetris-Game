@@ -1,6 +1,7 @@
 const butBack = document.querySelector("#back");
 import script_cookie from "./get_cookies.js";
 
+
 window.onload = () => {
   let user_role = script_cookie("role");
   if (user_role != "1") {

@@ -11,7 +11,7 @@ export default class View {
   ) {
     this.rating = rating;
     this._element = element;
-    this._width = width + 70;
+    this._width = width + 180;
     this._height = height;
 
     this.canvas = document.createElement("canvas");
@@ -23,16 +23,12 @@ export default class View {
     this.playfieldBorderWidth = 4; // ширина границы
     this.playfieldX = this.playfieldBorderWidth; // начало игрового поля
     this.playfieldY = this.playfieldBorderWidth;
-    //this.playfieldInnerWidth = (this._width * 2) / 3 - 45; // ширина игрового поля
     this.playfieldHeight = this._height;
-    //this.playfieldInnerWidth =
-    //this.playfieldWidth - this.playfieldBorderWidth * 2; // внутренняя ширина игр поля
+
     this.playfieldInnerheight =
       this.playfieldHeight - this.playfieldBorderWidth * 2;
     ///////////////////////////////////////////////////
     this.panelY = 0;
-    this.panelWidth = this._width / 3;
-    this.panelHeight = this._height;
 
     this._theme = theme;
     this.gridOn = gridOn;
@@ -107,6 +103,9 @@ export default class View {
     this.blockWidth = this.blockHeight;
     this.playfieldInnerWidth = this.blockWidth * playField[0].length;
     this.panelX = this.playfieldInnerWidth + 30;
+
+    this.canvas.width = this.playfieldInnerWidth + 280;
+    this.context = this.canvas.getContext("2d");
     // сюда свойство
     //console.log();
     document.getElementById("root").style =

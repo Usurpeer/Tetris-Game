@@ -117,27 +117,83 @@ export default class Game {
   }
 
   afterChangeLvl() {
+    let oldHeight = this._sizesPlayfield[this._currentLvl - 2][0];
     let height = this._sizesPlayfield[this._currentLvl - 1][0];
     let weidth = this._sizesPlayfield[this._currentLvl - 1][1];
-
     let playField = [];
-    for (let i = 0; i < height; i++) {
-      playField[i] = [];
-      for (let j = 0; j < weidth; j++) {
-        if (
-          i < this._playField.length &&
-          j < this._playField[i].length &&
-          this._playField[i][j] != 0
-        ) {
-          playField[i][j] = this._playField[i][j];
-        } else {
+    if (height - oldHeight > 0) {
+      for (let i = 0; i < height; i++) {
+        playField[i] = [];
+        for (let j = 0; j < weidth; j++) {
+          if (
+            i < this._playField.length &&
+            j < this._playField[i].length &&
+            this._playField[i][j] != 0
+          ) {
+            playField[i][j] = this._playField[i][j];
+          } else {
+            playField[i][j] = 0;
+          }
+        }
+      }
+
+      this.moveInEmptyDown(playField, height - oldHeight);
+    } else {
+      for (let i = 0; i < height; i++) {
+        playField[i] = [];
+        for (let j = 0; j < weidth; j++) {
           playField[i][j] = 0;
         }
       }
+      let ii = playField.length - 1;
+      for (let i = this._playField.length - 1; i > 0; i--) {
+        for (let j = 0; j < this._playField[i].length; j++) {
+          console.log(j);
+          if (j == 9) {
+            console.log("");
+          }
+          if (
+            this._playField.length - i < playField.length - 1 &&
+            ii > 0 &&
+            j < playField[1].length - 1
+          ) {
+            playField[ii][j] = this._playField[i][j];
+          }
+        }
+        if (ii > 0) {
+          ii--;
+        }
+      }
+
     }
+
     return playField;
   }
 
+  // метод, который сдвигает фигуру в левый верхний угол, если там свободно
+  moveInEmptyDown(form, countLines) {
+    for (let k = 0; k < countLines; k++) {
+      // сдвиг матрицы вниз, если надо.
+      for (let i = form.length - 2; i > 0; i--) {
+        for (let j = 0; j < form[0].length; j++) {
+          if (form[i][j] != 0) {
+            form[i + 1][j] = form[i][j];
+            form[i][j] = 0;
+          }
+        }
+      }
+    }
+  }
+  copyArray(arr) {
+    let arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+      arr2[i] = [];
+      for (let j = 0; j < arr[0].length; j++) {
+        arr2[i][j] = arr[i][j];
+      }
+    }
+    return arr2;
+  }
   //методы движения фигуры
   moveLeft() {
     this.activeFigure.x -= 1;
@@ -418,6 +474,7 @@ export default class Game {
     // this._time = this.msToTime(this._endTime - this._startTime);
     return this._time;
   }
+
   /*msToTime(ms) {
     let seconds = (ms / 1000).toFixed(1);
     let minutes = (ms / (1000 * 60)).toFixed(1);

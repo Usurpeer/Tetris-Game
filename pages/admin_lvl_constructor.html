@@ -16,7 +16,7 @@
 
         <form action="">
             <h1 class="tetris">TETRIS</h1>
-            <h1 class="lvl">Уровень </h1>
+            <h1 class="lvl" id="strLvl">Уровень </h1>
             <div class="box_construct">
 
                 <div class="constructor_fig">
@@ -70,24 +70,26 @@
                 <div class="other_settings">
                     <div class="setting">
                         <span>Скорость падения фигур</span>
-                        <button class="btn_min" id=""></button>
-                        <input type="number" name="speed_fall" id="speed_input" class="speed_input" readonly>
-                        <button class="btn_plus" id="btn_speed"></button>
+                        <button class="btn_min" id="btn_min_sp"></button>
+                        <input value="" type="number" name="speed_fall" id="speed_input" class="speed_input speed_fall"
+                            readonly>
+                        <button class="btn_plus" id="btn_plus_sp"></button>
                     </div>
                     <div class="setting2">
                         <span>Необходимое количество рядов</span>
-                        <button class="btn_min" id=""></button>
-                        <input type="number" name="count_rows" id="" class="speed_input" readonly>
-                        <button class="btn_plus" id="btn_rows"></button>
+                        <button class="btn_min" id="btn_min_lin"></button>
+                        <input value="" type="number" name="count_rows" id="countLines" class="speed_input count_rows"
+                            readonly>
+                        <button class="btn_plus" id="btn_plus_lin"></button>
                     </div>
                     <div class="setting3">
                         <span>Количество начисляемых очков за линию</span>
-                        <button class="btn_min" id=""></button>
-                        <input type="number" name="point_line" id="" class="speed_input" readonly>
-                        <button class="btn_plus" id="btn_point"></button>
+                        <button class="btn_min" id="btn_min_score"></button>
+                        <input value="" type="number" name="point_line" id="scoreLine" class="speed_input point_line">
+                        <button class="btn_plus" id="btn_plus_score"></button>
                     </div>
                 </div>
-                <button class="end_setting">Завершить</button>
+                <button class="end_setting" id="btn_end">Завершить</button>
                 <div style="width: 100%; height: 110px;"></div>
             </div>
         </form>
@@ -106,6 +108,7 @@
         <button onclick="myFunction()" class="player" id="player">Администратор</button>
     </div>
 </body>
-<script type="module" src="..\js\action_constructor_fig.js" defer></script>
+<script type="module" src="..\js\lvlSettings/initializer.js" defer></script>
 <script src="..\js\action_window.js"></script>
+
 </html>

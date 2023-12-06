@@ -19,13 +19,13 @@ if (isset($_POST)) {
     }
     //////////////////////////////////////////
 
-    // фигура и ее id
+    // фигура и ее id, ее уровень
     $sqlAllFigures = "SELECT `structure`, `level`, `id` FROM `figures` ORDER BY `level`";
 
     $result = $conn->query($sqlAllFigures);
 
     while ($row = $result->fetch_array()) {
-        array_push($data, $row["structure"], $row["id"]);
+        array_push($data, $row["structure"], $row["id"], $row["level"]);
     }
     //////////////////////////////////////////
 
@@ -45,7 +45,7 @@ if (isset($_POST)) {
     $result = $conn->query($sqlAllFigures);
 
     while ($row = $result->fetch_array()) {
-        array_push($data, $row["structure"], $row["id"]);
+        array_push($data, $row["structure"], $row["id"], $row["level"]);
     }
     //////////////////////////////////////////
 
