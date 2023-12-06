@@ -18,7 +18,8 @@ let allFigures = [], // массив всех фигур
   rating = getRatingCookie(), // рейтинг
   gridOn = script_cookie("gridOn"), // включен ли показ сетки
   time = script_cookie("countScore"),
-  gameLvl = Number(script_cookie("lvl")); // время из куки 1 значит по времени
+  gameLvl = Number(script_cookie("lvl")), // время из куки 1 значит по времени
+  idUser = script_cookie("id");
 
 window.onload = go();
 
@@ -57,7 +58,7 @@ async function go() {
   );
 
   // сюда нужен ID из куки
-  let idUser = 2;
+
   const controller = new Controller(idUser, game, view);
   window.controller = controller;
   console.log("Низ метода");

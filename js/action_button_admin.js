@@ -19,6 +19,8 @@ butConstructor.addEventListener("click", () => {
   window.location.href = "admin_constructor.html";
 });
 butSettings.addEventListener("click", () => {
+  document.cookie =
+    "lvlSetings=" + document.querySelector('input[name="lvl"]:checked').value;
   window.location.href = "admin_lvl_constructor.html";
 });
 butAbout.addEventListener("click", () => {
