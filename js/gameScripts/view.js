@@ -104,7 +104,7 @@ export default class View {
     this.playfieldInnerWidth = this.blockWidth * playField[0].length;
     this.panelX = this.playfieldInnerWidth + 30;
 
-    this.canvas.width = this.playfieldInnerWidth + 280;
+    this.canvas.width = this.playfieldInnerWidth + 500;
     this.context = this.canvas.getContext("2d");
     // сюда свойство
     //console.log();

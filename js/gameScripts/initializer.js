@@ -19,11 +19,20 @@ let allFigures = [], // массив всех фигур
   gridOn = script_cookie("gridOn"), // включен ли показ сетки
   time = script_cookie("countScore"),
   gameLvl = Number(script_cookie("lvl")), // время из куки 1 значит по времени
-  idUser = script_cookie("id");
+  idUser = script_cookie("id"),
+  musicOn = script_cookie("musicOn");
 
 window.onload = go();
-
+function soundClick() {
+  var audio = new Audio(); // Создаём новый элемент Audio
+  audio.src = "../../audio/music_in_game.mp3"; // Указываем путь к звуку "клика"
+  audio.autoplay = true; // Автоматически запускаем
+}
 async function go() {
+  if (musicOn == 1) {
+    soundClick();
+  }
+
   checkRole();
   await getData(); // инициализация всего
 
