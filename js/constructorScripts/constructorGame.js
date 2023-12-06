@@ -43,21 +43,25 @@ export default class ConstructorGame {
 
       // надо сравнить в текущем положении
       if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
+        alert("Фигура неуникальна.");
         return false;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
       if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
+        alert("Фигура неуникальна.");
         return false;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
       if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
+        alert("Фигура неуникальна.");
         return false;
       }
 
       this.newFigure = this.rotateFig(this.newFigure);
       if (this.compareArrays(arraySavedFigure, this.newFigure) == 0) {
+        alert("Фигура неуникальна.");
         return false;
       }
     }
@@ -150,6 +154,7 @@ export default class ConstructorGame {
     for (let i = 0; i < checkedFigure.length; i++) {
       for (let j = 0; j < checkedFigure[i].length; j++) {
         if (checkedFigure[i][j] == 1) {
+          alert("Фигура нецелостна.");
           return false;
         }
       }
@@ -162,7 +167,6 @@ export default class ConstructorGame {
     if (chekedFigure[i][j] != undefined && chekedFigure[i][j] == 1) {
       currentLength[0]++;
       chekedFigure[i][j] = currentLength[0];
-      console.log(chekedFigure);
       // вправо
       if (chekedFigure[i].length > j + 1 && chekedFigure[i][j + 1] == 1) {
         this.getLengthFigure(i, j + 1, chekedFigure, currentLength);
@@ -217,7 +221,7 @@ export default class ConstructorGame {
     for (let i = 0; i < checkedFigure.length; i++) {
       for (let j = 0; j < checkedFigure[i].length; j++) {
         if (checkedFigure[i][j] == 0) {
-          console.log("Фигура содержит пустоты.");
+          alert("Фигура содержит пустоты.");
           return false;
         }
       }
