@@ -1,3 +1,5 @@
+import script_cookie from "../get_cookies.js";
+
 export default class Controller {
   constructor(id, game, view) {
     this.game = game;
@@ -83,13 +85,27 @@ export default class Controller {
 function alertFun(gameState, isScoreTime) {
   let score = "";
   if (isScoreTime == 1) {
+    let oldRecord = script_cookie("ratingTime");
+    if (gameState.time > oldRecord) {
+      document.cookie =
+        "ratingTime=; Max-Age=0; path=/; domain=" + location.host;
+      document.cookie = "ratingTime=" + gameState.time;
+    }
     score = "Ваше Время: " + gameState.time + "сек.";
   } else {
+    let oldRecord = script_cookie("ratingScore");
+    if (gameState.score > oldRecord) {
+      document.cookie =
+        "ratingScore=; Max-Age=0; path=/; domain=" + location.host;
+      document.cookie = "ratingScore=" + gameState.score;
+    }
     score = "Ваши очки: " + gameState.score;
   }
+
   alert("Игра завершена.\n" + score);
   window.location.replace("player_menu.html");
 }
+
 async function sendData(id, gameState, isScoreTime) {
   try {
     let sendArray = {
