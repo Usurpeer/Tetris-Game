@@ -43,15 +43,6 @@ buttons.forEach(function (button) {
   });
 });
 
-function myFunction() {
-  var window = document.getElementById("window");
-  if (window.style.display === "none") {
-    window.style.display = "flex";
-  } else {
-    window.style.display = "none";
-  }
-}
-
 btnAdd.addEventListener("click", () => {
   //добавление фигуры (отрисовка слева)
   context2.clearRect(0, 0, 250, 250);
