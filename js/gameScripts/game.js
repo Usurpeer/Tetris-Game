@@ -60,6 +60,7 @@ export default class Game {
   }
   // Метод - Если фигуры абсолютно случайны - возвращает фигуру по случайному индексу из массива всех фигур с учетом уровня сложности
   // Задумка такая: на первом уровне фигуры [0]-[_countFiguresLvl - 1], на втором [0]-[_countFiguresLv2 - 1], на третьем [0]-[_countFiguresLv3 - 1]
+  prevFig = [-1, -1];
   getRandomFigure() {
     // чтобы не вылетала ошибка при инициализации класса
     if (this._figuresOnLvls[0] != undefined) {
@@ -79,7 +80,11 @@ export default class Game {
       let randomIndex = 0;
 
       randomIndex = Math.floor(Math.random() * (maxIndex + 1) + 0); // ранмдомное число от 0 до maxIndex, но надо максиндекс + 1
-
+      while (this.checkRandomIndex(randomIndex)) {
+        randomIndex = Math.floor(Math.random() * (maxIndex + 1) + 0); // ранмдомное число от 0 до maxIndex, но надо максиндекс + 1
+      }
+      this.prevFig[1] = randomIndex;
+      this.prevFig.splice(1, 0, this.prevFig.splice(0, 1)[0]);
       let stringFig = this._figuresOnLvls[randomIndex] + ""; // получение строки фигуры по случайному индексу из списка всех фигур
 
       // преобразование строки в двумерный массив 4*4
@@ -98,7 +103,12 @@ export default class Game {
       };
     }
   }
-
+  checkRandomIndex(randomIndex) {
+    if (this.prevFig[0] == randomIndex && this.prevFig[1] == randomIndex) {
+      return true;
+    }
+    return false;
+  }
   // метод заполняет нулями поле размерностью по сложности, пока хз надо ли такое. Может пригодится
   get_set_PlayField() {
     let height = this._sizesPlayfield[this._currentLvl - 1][0];
