@@ -9,4 +9,5 @@ window.onload = () => {
   document.cookie = "lvl=; Max-Age=0; path=/; domain=" + location.host;
   document.cookie = "ratingScore=; Max-Age=0; path=/; domain=" + location.host;
   document.cookie = "ratingTime=; Max-Age=0; path=/; domain=" + location.host;
+  document.cookie = "lvlSetings=; Max-Age=0; path=/; domain=" + location.host;
 };
