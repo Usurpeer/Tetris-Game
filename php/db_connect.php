@@ -1,6 +1,6 @@
 <?php
 
-$servername = "192.168.0.106";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "TetrisGame";
