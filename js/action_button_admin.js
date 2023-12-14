@@ -15,6 +15,9 @@ const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
 
+butFaq.addEventListener("click", () => {
+  window.location.href = "admin_faq.html";
+});
 butConstructor.addEventListener("click", () => {
   window.location.href = "admin_constructor.html";
 });

@@ -15,6 +15,10 @@ const butSettings = document.querySelector("#settings");
 const butAbout = document.querySelector("#about");
 const butFaq = document.querySelector("#faq");
 
+butFaq.addEventListener("click", () => {
+  window.location.href = "player_faq.html";
+});
+
 let radio = document.querySelectorAll(".rad");
 
 butPlay.addEventListener("click", () => {
