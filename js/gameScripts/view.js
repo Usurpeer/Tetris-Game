@@ -35,6 +35,7 @@ export default class View {
     this._time = time;
 
     this._element.appendChild(this.canvas);
+    this.getColorsByTheme();
     this.arrayColorsFigures = this.getAllColors(countFigures);
   }
 
@@ -49,38 +50,61 @@ export default class View {
   }
 
   // метод получает случайный цвет из заполненного набора по указанной теме
-  getRandomColor() {
-    let colors = [];
+  colors = [];
+  // условие, что цветов должно быть не <18
+  getColorsByTheme() {
     if (this._theme == "pink") {
-      colors = [
+      this.colors = [
         "red",
+        "crimson",
+        "darkred",
+        "DarkCyan",
+        "DarkKhaki",
+        "DarkSeaGreen",
+        "SeaGreen",
+        "darkorange",
         "orange",
         "blue",
-        "purple",
-        "green",
-        "yellow",
         "SlateBlue",
-        "Cornsilk",
+        "MidnightBlue",
+        "purple",
+        "SlateBlue",
         "RosyBrown",
-        "Sienna",
         "Teal",
         "CadetBlue",
-        "LightGreen",
-        "LightCoral",
+        "RosyBrown"
       ];
     } else if (this._theme == "blue") {
-      colors = [
+      this.colors = [
         "Cornsilk",
         "RosyBrown",
         "Sienna",
         "Teal",
         "CadetBlue",
-        "LightGreen",
         "LightCoral",
+        "Brown",
+        "Coral",
+        "Chocolate",
+        "DarkCyan",
+        "DarkKhaki",
+        "DarkSeaGreen",
+        "IndianRed",
+        "MediumSlateBlue",
+        "Orange",
+        "Peru",
+        "RosyBrown",
+        "SandyBrown",
+        "Salmon",
       ];
     }
-    let index = Math.floor(Math.random() * (colors.length + 0) + 0);
-    let color = colors[index];
+  }
+  getRandomColor() {
+    let index = Math.floor(Math.random() * (this.colors.length + 0) + 0);
+
+    let color = this.colors[index];
+
+    this.colors.splice(index, 1);
+
     return color;
   }
 

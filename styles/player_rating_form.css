@@ -104,7 +104,7 @@ body.blue .back {
   /* margin-top: -30px; */
   padding-top: 10px;
   width: 650px;
-  height: 520px;
+  height: 640px;
   background: rgba(255, 255, 255, 0.17);
   box-shadow: 0px 0px 25px #4d4d4d;
   border-radius: 60px;
@@ -115,7 +115,6 @@ p {
   color: white;
   font-size: 30px;
   font-family: "BellotaText";
-  margin-right: 38%;
   float: right;
   margin-bottom: -5px;
 }
@@ -159,10 +158,13 @@ body.blue .ball:active,
   box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
   filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
 }
-table {
+.rating {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 20%;
+  top: 90px;
+  position: relative;
+  border: 2px solid white;
+  border-radius: 20px;
 }
 body.pink table {
   color: #ffff;
@@ -172,17 +174,22 @@ body.blue table {
 }
 td {
   font-size: 30px;
-
   font-family: "BellotaText";
   text-align: center;
   width: 270px;
   height: 40px;
+  padding: 0px 50px;
 }
 th {
   font-size: 30px;
   font-family: "BellotaText";
+  padding: 5px 50px;
 }
-#window{
+.buttons_div {
+  position: relative;
+  margin-top: 20px;
+}
+#window {
   display: none;
   width: 500px;
   height: 350px;
@@ -192,13 +199,13 @@ th {
   border-radius: 40px;
   box-shadow: 5px 5px 26px #4d4d4d;
 }
-body.blue #window{
-  background-color: #C4D9EB;
+body.blue #window {
+  background-color: #c4d9eb;
 }
-body.pink #window{
+body.pink #window {
   background: rgba(255, 255, 255, 0.17);
 }
-.image{
+.image {
   width: 100px;
   height: 100px;
   border-radius: 90px;
@@ -206,47 +213,63 @@ body.pink #window{
   margin-top: 25px;
   margin-left: 30px;
 }
-.admin_img{
+.admin_img {
   width: 70px;
   height: 70px;
   margin-left: 15px;
   margin-top: 15px;
 }
-.info{
+.info {
   text-align: right;
   width: 300px;
   margin-top: 25px;
 }
-.login, .role, .rating{
+.login,
+.role,
+.rating_p {
   font-size: 28px;
   font-family: "BellotaText";
   margin-top: 5px;
   margin-bottom: 0px;
 }
-#ratingTime{
+#ratingTime {
   margin-bottom: -50px;
 }
-body.blue .login, body.blue .role, body.blue .rating{
-  color: #5B3B3B;
+body.blue .login,
+body.blue .role,
+body.blue .rating_p {
+  color: #5b3b3b;
 }
-body.pink .login, body.pink .role, body.pink .rating{
+body.pink .login,
+body.pink .role,
+body.pink .rating_p {
   color: #fff;
 }
-.exit{
-  margin-top: -50px;
+.exit {
+  margin-top: 70px;
   position: relative;
   height: 50px;
   width: 190px;
   font-family: "BellotaText";
-  background: #ECAA50;
   font-size: 30px;
-  color: #5B3B3B;
   border-radius: 66.15px;
   border: 0px;
   filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.25));
   cursor: pointer;
 }
-.exit:active{
+body.blue .exit {
+  background: #ecaa50;
+  color: #5b3b3b;
+}
+body.pink .exit {
+  background: #ff4dad;
+  color: white;
+  box-shadow: 0px 0px 15px #ff00f5;
+}
+body.blue .exit:active {
   box-shadow: 3px 3px 4px 0px rgba(0, 0, 0, 0.25) inset;
   filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
+}
+body.pink .exit:active {
+  box-shadow: 0px 0px 15px #ff00f5, 0px 0px 15px #ffff inset;
 }

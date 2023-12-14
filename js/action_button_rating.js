@@ -2,7 +2,12 @@
 import script_cookie from "./get_cookies.js";
 let ratingScore = [,],
   ratingTime = [,];
-
+let buttons = document.querySelectorAll("button"); //предотвращение обновления страниц по кнопкам
+buttons.forEach(function (button) {
+  button.addEventListener("click", function (event) {
+    event.preventDefault();
+  });
+});
 window.onload = () => {
   let user_role = script_cookie("role");
   if (user_role != "0") {
@@ -10,7 +15,7 @@ window.onload = () => {
   }
   go();
 };
-const stBut1 = document.getElementById("ball");
+const stBut1 = document.getElementById("score");
 const stBut2 = document.getElementById("time");
 //const back = document.querySelector("#back");
 const butBack = document.querySelector("#back");
@@ -18,11 +23,16 @@ const butBack = document.querySelector("#back");
 butBack.addEventListener("click", () => {
   window.location.href = "player_menu.html";
 });
-
+stBut1.addEventListener("click", () => {
+  createTableScore();
+});
+stBut2.addEventListener("click", () => {
+  createTableTime();
+});
 async function go() {
   await getData();
-
-  // здесь начать заполнять таблицу
+  console.log(ratingScore);
+  createTableScore();
 }
 async function getData() {
   try {
@@ -35,14 +45,13 @@ async function getData() {
     let iterator2 = 0;
     for (let i = 0; i < length; i++) {
       // четный индекс, значит фигура
-
+      ratingScore[iterator2] = [,];
       // login
-      ratingScore[iterator2] = data[iterator];
+      ratingScore[iterator2][0] = data[iterator];
       iterator++; // четный
-      iterator2++;
 
       // score
-      ratingScore[iterator2] = data[iterator];
+      ratingScore[iterator2][1] = data[iterator];
       iterator++; // нечетный
       iterator2++;
     }
@@ -51,18 +60,42 @@ async function getData() {
     iterator2 = 0;
     for (let i = 0; i < len2; i++) {
       // четный индекс, значит фигура
-
+      ratingTime[i] = [,];
       // login
-      ratingTime[iterator2] = data[iterator];
+      ratingTime[iterator2][0] = data[iterator];
       iterator++; // четный
-      iterator2++;
 
       // score
-      ratingTime[iterator2] = data[iterator];
+      ratingTime[iterator2][1] = data[iterator];
       iterator++; // нечетный
       iterator2++;
     }
   } catch (error) {
     console.warn(error);
+  }
+}
+
+function createTableScore() {
+  document.querySelector(".rating").innerHTML = "";
+  let row = document.createElement("tr");
+  row.innerHTML = `<th>Логин</th><th>Очки</th>`;
+  document.querySelector(".rating").appendChild(row);
+  for (let i = 0; i < ratingScore.length; i++) {
+    let row = document.createElement("tr");
+    row.innerHTML = `<th>${ratingScore[i][0]}</th><th>${ratingScore[i][1]}</th>`;
+    document.querySelector(".rating").appendChild(row);
+  }
+}
+function createTableTime() {
+  document.querySelector(".rating").innerHTML = "";
+
+  let row = document.createElement("tr");
+  row.innerHTML = `<th>Логин</th><th>Время (секунды)</th>`;
+  document.querySelector(".rating").appendChild(row);
+
+  for (let i = 0; i < ratingScore.length; i++) {
+    let row = document.createElement("tr");
+    row.innerHTML = `<th>${ratingTime[i][0]}</th><th>${ratingTime[i][1]}</th>`;
+    document.querySelector(".rating").appendChild(row);
   }
 }
