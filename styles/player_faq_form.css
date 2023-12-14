@@ -1,52 +1,53 @@
-h1{
-    font-size: 40px;
-    color: rgb(13, 28, 101);
-    text-align: center;
+h1 {
+  font-size: 40px;
+  color: rgb(13, 28, 101);
+  text-align: center;
 }
-h2{
-    font-size: 30px;
-    color: rgb(13, 28, 101);
-    margin-top: 50px;
-    margin-left: 100px;
+h2 {
+  font-size: 30px;
+  color: rgb(13, 28, 101);
+  margin-top: 50px;
+  margin-left: 100px;
 }
-li{
-    font-size: 23px;
-    margin-bottom: 5px;
-    margin-left: 100px;
+li {
+  font-size: 23px;
+  margin-bottom: 5px;
+  margin-left: 100px;
 }
-li ul li{
-    font-size: 23px;
-    margin-bottom: 5px;
-    margin-left: 0px;
+li ul li {
+  font-size: 23px;
+  margin-bottom: 5px;
+  margin-left: 0px;
 }
-p{
-    font-size: 23px;
-    margin-left: 100px;
-    margin-right: 100px;
+p {
+  font-size: 23px;
+  margin-left: 100px;
+  margin-right: 100px;
 }
-a{
-    color: black;
-    inline-size: 0;
-    font-size: 23px;
+a {
+  color: black;
+  inline-size: 0;
+  font-size: 23px;
 }
-img{
-    width: 750px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+img {
+  width: 750px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.window{
-    width: 400px;
+.window {
+  width: 400px;
 }
-.up{
-    margin-right: 170px;
-    float: right;
+.up {
+  margin-right: 170px;
+  float: right;
 }
-.rating{
-    display: inline;
+.rating {
+  display: inline;
+  width: 700px;
 }
-div{
-    width: 83%;
-    margin-left: auto;
-    margin-right: auto;
+div {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
 }
