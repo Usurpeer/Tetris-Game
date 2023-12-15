@@ -72,7 +72,7 @@ export default class View {
         "RosyBrown",
         "Teal",
         "CadetBlue",
-        "RosyBrown"
+        "RosyBrown",
       ];
     } else if (this._theme == "blue") {
       this.colors = [
@@ -134,17 +134,21 @@ export default class View {
     //console.log();
     document.getElementById("root").style =
       "width: " + (this.panelX + 280) + "px;";
-
+    if (this.gridOn == 0) {
+      this.renderBorder();
+    }
     for (let i = 0; i < playField.length; i++) {
       for (let j = 0; j < playField[i].length; j++) {
         const block = playField[i][j];
+        if (this.gridOn == 1) {
+          this.renderBlockGrid(
+            this.playfieldX + j * this.blockWidth,
+            this.playfieldY + i * this.blockHeight,
+            this.blockWidth,
+            this.blockHeight
+          );
+        }
 
-        this.renderBlockGrid(
-          this.playfieldX + j * this.blockWidth,
-          this.playfieldY + i * this.blockHeight,
-          this.blockWidth,
-          this.blockHeight
-        );
         if (block != "0" && block != undefined) {
           this.renderBlock(
             block,
@@ -258,18 +262,34 @@ export default class View {
   }
 
   renderBlockGrid(x, y, weidth, height) {
-    if (this.gridOn == 1) {
-      this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; // !!!!!!!!!!!!!!!нужно цвет фона
-      if (this._theme == "pink") {
-        // цвет обводки
-        this.context.strokeStyle = "white";
-      } else {
-        this.context.strokeStyle = "#5B3B3B";
-      }
-      this.context.lineWidth = 3; // ширина обводки
-
-      this.context.fillRect(x, y, weidth, height);
-      this.context.strokeRect(x, y, weidth, height); // создание обводки вокруг фигуры
+    this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; // !!!!!!!!!!!!!!!нужно цвет фона
+    if (this._theme == "pink") {
+      // цвет обводки
+      this.context.strokeStyle = "white";
+    } else {
+      this.context.strokeStyle = "#5B3B3B";
     }
+    this.context.lineWidth = 3; // ширина обводки
+
+    this.context.fillRect(x, y, weidth, height);
+    this.context.strokeRect(x, y, weidth, height); // создание обводки вокруг фигуры
+  }
+  renderBorder() {
+    this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; // !!!!!!!!!!!!!!!нужно цвет фона
+    if (this._theme == "pink") {
+      // цвет обводки
+      //this.context.strokeStyle = "white";
+    } else {
+      this.context.strokeStyle = "#5B3B3B";
+    }
+    this.context.lineWidth = 3; // ширина обводки
+
+    this.context.fillRect(0, 0, this.panelX + 2, this.panelY + 2);
+    this.context.strokeRect(
+      3,
+      3,
+      this.playfieldInnerWidth + 2,
+      this.playfieldInnerheight + 2
+    ); // создание обводки вокруг фигуры
   }
 }
