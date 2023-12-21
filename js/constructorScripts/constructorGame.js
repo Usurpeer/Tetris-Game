@@ -2,12 +2,10 @@ export default class ConstructorGame {
   constructor(allFiguresString, newFigure) {
     this.allFiguresString = allFiguresString;
     this.newFigure = this.getArrayFromString(newFigure);
-    this.countFigures = allFiguresString.length;
   }
 
   newFigure = [];
   allFiguresString;
-  countFigures = 0;
 
   // инициализация массива новой фигуры в
   getArrayFromString(stringFig) {
@@ -24,7 +22,11 @@ export default class ConstructorGame {
 
   // итоговый метод, который вызывается и возвращает True/False - результат общей проверки
   isCorrect() {
-    if (this.isUnique() == true && this.isWholeness() == true) {
+    if (
+      this.isUnique() == true &&
+      this.isWholeness() == true &&
+      this.isNoEmpty() == true
+    ) {
       return true;
     }
     return false;
@@ -32,7 +34,7 @@ export default class ConstructorGame {
 
   // проверка уникальности с массивом имеющихся фигур сдвиг, повороты и сравнение
   isUnique() {
-    for (let i = 0; i < this.countFigures; i++) {
+    for (let i = 0; i < this.allFiguresString.length; i++) {
       // получили фигуру, её надо сравнить с newFig поворотами, сдвигами
       let arraySavedFigure = this.getArrayFromString(
         this.allFiguresString[i] + ""
@@ -160,7 +162,7 @@ export default class ConstructorGame {
       }
     }
     console.log("Успешная проверка на целостность.");
-    return this.isNoEmpty();
+    return true;
   }
   // составление длины рекурсивным методом
   getLengthFigure(i, j, chekedFigure, currentLength) {
@@ -213,9 +215,6 @@ export default class ConstructorGame {
         }
       }
     }
-    // мб нашел ошибку, если фигура будет 1111111111011111, то тк тут нет входа для перебора, то да. Нужно сделать вход не по 1.1, а по перебору - нулю
-
-    // проверить эту реализацию.
 
     // проверка, если осталось хоть 1 нулевое значение, значит оно закрыто от границ, значит false
     for (let i = 0; i < checkedFigure.length; i++) {
