@@ -7,7 +7,7 @@ export default class ConstructorGame {
   newFigure = [];
   allFiguresString;
 
-  // инициализация массива новой фигуры в
+  // инициализация массива новой фигуры 
   getArrayFromString(stringFig) {
     // преобразование строки в двумерный массив 4*4
     let arr = [];
@@ -185,10 +185,6 @@ export default class ConstructorGame {
       if (i - 1 >= 0 && chekedFigure[i - 1][j] == 1) {
         this.getLengthFigure(i - 1, j, chekedFigure, currentLength);
       }
-      // первый столбец
-      /*if (chekedFigure.length > i + 1 && chekedFigure[i + 1][j] == 1) {
-        this.getLengthFigure(i + 1, 0, chekedFigure, currentLength);
-      }*/
     }
   }
   arrayCopy(newArray) {

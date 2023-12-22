@@ -7,8 +7,6 @@ export default class Controller {
     this._id = id;
     document.addEventListener("keydown", this.handleKeyDown.bind(this));
     this.view.render(this.game.getState());
-
-    //this.startTimer(); // чтобы фигуры сразу падали
   }
 
   startTimer() {
@@ -35,7 +33,6 @@ export default class Controller {
     if (gameState.topOut == true) {
       // метод, который выводит, что игра закончилась
       console.log("Игра закончилась");
-      // здесь можно вывести окно с результатами, закинуть всё в бд
       if (this.isSending == false) {
         console.log("Игра закончилась данные улелтели в бд.");
         this.isSending = true;
@@ -80,7 +77,7 @@ export default class Controller {
     }
   }
 
-  isSending = false; // флаг, для единоразовй отправки данных в бд
+  isSending = false;
 }
 function alertFun(gameState, isScoreTime) {
   let score = "";
@@ -123,7 +120,6 @@ async function sendData(id, gameState, isScoreTime) {
       body: JSON.stringify(sendArray),
     });
 
-    // данные от ответа сервера
     console.log(await res.json());
   } catch (error) {
     console.warn(error);

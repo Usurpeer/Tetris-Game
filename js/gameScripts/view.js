@@ -130,8 +130,6 @@ export default class View {
 
     this.canvas.width = this.playfieldInnerWidth + 500;
     this.context = this.canvas.getContext("2d");
-    // сюда свойство
-    //console.log();
     document.getElementById("root").style =
       "width: " + (this.panelX + 280) + "px;";
     if (this.gridOn == 0) {
@@ -152,7 +150,7 @@ export default class View {
         if (block != "0" && block != undefined) {
           this.renderBlock(
             block,
-            this.playfieldX + (j - 0) * this.blockWidth, // можно дописать -1 чтобы она была посередине, но так выглядит странно
+            this.playfieldX + (j - 0) * this.blockWidth, 
             this.playfieldY + i * this.blockHeight,
             this.blockWidth,
             this.blockHeight
@@ -262,7 +260,7 @@ export default class View {
   }
 
   renderBlockGrid(x, y, weidth, height) {
-    this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; // !!!!!!!!!!!!!!!нужно цвет фона
+    this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; 
     if (this._theme == "pink") {
       // цвет обводки
       this.context.strokeStyle = "white";
@@ -275,10 +273,9 @@ export default class View {
     this.context.strokeRect(x, y, weidth, height); // создание обводки вокруг фигуры
   }
   renderBorder() {
-    this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; // !!!!!!!!!!!!!!!нужно цвет фона
+    this.context.fillStyle = "rgba(255, 255, 255, 0.17)"; 
     if (this._theme == "pink") {
       // цвет обводки
-      //this.context.strokeStyle = "white";
     } else {
       this.context.strokeStyle = "#5B3B3B";
     }

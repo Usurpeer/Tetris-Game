@@ -16,7 +16,7 @@ export default class Game {
     this._scorePerLine = scoresForLvls;
     this._quantityLinesForNextLvl = quantityLinesForNextLvl;
 
-    this.activeFigure = this.getRandomFigure(); // тк она не инициализирована
+    this.activeFigure = this.getRandomFigure();
     this.nextFigure = this.getRandomFigure();
     this._playField = this.get_set_PlayField();
   }
@@ -225,7 +225,6 @@ export default class Game {
       this.getCurrentTime();
     }
     if (this.topOut == true) {
-      //this.getCurrentTime();
       return false;
     }
 
@@ -389,7 +388,6 @@ export default class Game {
   }
 
   updateOnNextFigure() {
-    //console.log(this.topOut);
     if (this.topOut == true) return false;
     this.activeFigure = this.nextFigure;
     this.activeFigure.x = Math.floor(
@@ -483,18 +481,7 @@ export default class Game {
   getCurrentTime() {
     this._endTime = performance.now();
     this._time = Math.round((this._endTime - this._startTime) / 100) / 10;
-    // this._time = this.msToTime(this._endTime - this._startTime);
     return this._time;
   }
 
-  /*msToTime(ms) {
-    let seconds = (ms / 1000).toFixed(1);
-    let minutes = (ms / (1000 * 60)).toFixed(1);
-    let hours = (ms / (1000 * 60 * 60)).toFixed(1);
-    let days = (ms / (1000 * 60 * 60 * 24)).toFixed(1);
-    if (seconds < 60) return seconds;
-    else if (minutes < 60) return minutes;
-    else if (hours < 24) return hours;
-    else return days;
-  }*/
 }

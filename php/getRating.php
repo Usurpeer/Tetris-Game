@@ -8,6 +8,9 @@ $data = array();
 $result = $conn->query($sqlCountFigures);
 
 while ($row = $result->fetch_array()) {
+    if ($row["COUNT(`id`)"] > 10) {
+        $row["COUNT(`id`)"] = 10;
+    }
     array_push($data, $row["COUNT(`id`)"]);
 }
 
