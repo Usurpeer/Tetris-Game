@@ -1,0 +1,11 @@
+# JavaScript
+*.js   linguist-language=JavaScript
+
+# CSS
+*.css  linguist-language=CSS
+
+# HTML
+*.html linguist-language=HTML
+
+# PHP
+*.php  linguist-language=PHP
