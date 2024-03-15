@@ -278,7 +278,7 @@ async function checkFigure() {
     let figureLeft = getArrayFromString(allFigures[currentIndex][0]);
     renderFigure(figureLeft); // отрисовка фигуры слева
   } else {
-    console.warn("Фигура неуникальная или нецелостна.");
+    console.warn("Фигура неуникальная или не целостна.");
   }
 }
 btnAdd.addEventListener("click", () => {
@@ -314,7 +314,7 @@ async function updateFigure() {
     let figureLeft = getArrayFromString(allFigures[currentIndex][0]);
     renderFigure(figureLeft); // отрисовка фигуры слева
   } else {
-    console.warn("Фигура неуникальная или нецелостна.");
+    console.warn("Фигура неуникальная или не целостна.");
   }
 }
 async function updateFigureInBD(ID, newFig) {

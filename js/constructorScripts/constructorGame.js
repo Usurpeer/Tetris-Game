@@ -7,7 +7,7 @@ export default class ConstructorGame {
   newFigure = [];
   allFiguresString;
 
-  // инициализация массива новой фигуры 
+  // инициализация массива новой фигуры
   getArrayFromString(stringFig) {
     // преобразование строки в двумерный массив 4*4
     let arr = [];
@@ -156,7 +156,7 @@ export default class ConstructorGame {
     for (let i = 0; i < checkedFigure.length; i++) {
       for (let j = 0; j < checkedFigure[i].length; j++) {
         if (checkedFigure[i][j] == 1) {
-          alert("Фигура нецелостна.");
+          alert("Фигура не целостна.");
           return false;
         }
       }
